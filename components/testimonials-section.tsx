@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
 import { TestimonialCard } from "@/components/testimonial-card"
 
 const testimonials = [
@@ -127,37 +127,10 @@ const testimonials = [
   },
 ]
 
+// Duplicate the testimonials to create a seamless loop
+const duplicatedTestimonials = [...testimonials, ...testimonials]
+
 export function TestimonialsSection() {
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const [isDragging, setIsDragging] = useState(false)
-  const [startX, setStartX] = useState(0)
-  const [scrollLeft, setScrollLeft] = useState(0)
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (!scrollRef.current) return
-    setIsDragging(true)
-    setStartX(e.pageX - scrollRef.current.offsetLeft)
-    setScrollLeft(scrollRef.current.scrollLeft)
-  }
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !scrollRef.current) return
-    e.preventDefault()
-    const x = e.pageX - scrollRef.current.offsetLeft
-    const walk = (x - startX) * 2
-    scrollRef.current.scrollLeft = scrollLeft - walk
-  }
-
-  const handleMouseUp = () => {
-    setIsDragging(false)
-  }
-
-  useEffect(() => {
-    const handleMouseUpGlobal = () => setIsDragging(false)
-    document.addEventListener("mouseup", handleMouseUpGlobal)
-    return () => document.removeEventListener("mouseup", handleMouseUpGlobal)
-  }, [])
-
   return (
     <section className="py-20 relative overflow-hidden bg-background">
       <div className="container mx-auto px-4">
@@ -170,35 +143,38 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        <div className="relative">
+        <div className="relative mt-10">
           {/* Left fade overlay */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
 
           {/* Right fade overlay */}
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-          {/* Scrollable container */}
-          <div
-            ref={scrollRef}
-            className="flex gap-6 overflow-x-auto pb-6 cursor-grab active:cursor-grabbing scroll-smooth hide-scrollbar px-4"
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard key={index} {...testimonial} />
-            ))}
+          {/* Marquee container */}
+          <div className="flex overflow-hidden">
+            <motion.div
+              className="flex gap-6 py-4"
+              animate={{
+                x: ["0%", "-50%"],
+              }}
+              transition={{
+                x: {
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatType: "loop",
+                  duration: 60,
+                  ease: "linear",
+                },
+              }}
+            >
+              {duplicatedTestimonials.map((testimonial, index) => (
+                <div key={index} className="w-[350px] flex-shrink-0">
+                  <TestimonialCard {...testimonial} />
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </section>
   )
 }
