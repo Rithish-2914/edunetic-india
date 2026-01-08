@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useEffect, useRef } from "react"
 import { motion, useSpring, useTransform, useMotionValue } from "framer-motion"
 import { Home, BookOpen, Info, Users, Mail } from "lucide-react"
 import { 
@@ -12,8 +12,8 @@ import {
 import { useRouter } from "next/navigation"
 
 export function InteractiveRobot() {
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
+  const mouseX = useMotionValue(0.5)
+  const mouseY = useMotionValue(0.5)
   const robotRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
 
@@ -24,6 +24,7 @@ export function InteractiveRobot() {
         const centerX = rect.left + rect.width / 2
         const centerY = rect.top + rect.height / 2
         
+        // Normalize coordinates to -1 to 1 range
         const relX = (e.clientX - centerX) / (window.innerWidth / 2)
         const relY = (e.clientY - centerY) / (window.innerHeight / 2)
         
@@ -36,9 +37,15 @@ export function InteractiveRobot() {
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [mouseX, mouseY])
 
-  const springConfig = { damping: 20, stiffness: 150 }
-  const eyeX = useSpring(useTransform(mouseX, [-1, 1], [-8, 8]), springConfig)
-  const eyeY = useSpring(useTransform(mouseY, [-1, 1], [-5, 5]), springConfig)
+  const springConfig = { damping: 25, stiffness: 200 }
+  
+  // Head rotation
+  const rotateX = useSpring(useTransform(mouseY, [-1, 1], [15, -15]), springConfig)
+  const rotateY = useSpring(useTransform(mouseX, [-1, 1], [-20, 20]), springConfig)
+  
+  // Eye movement
+  const eyeX = useSpring(useTransform(mouseX, [-1, 1], [-10, 10]), springConfig)
+  const eyeY = useSpring(useTransform(mouseY, [-1, 1], [-6, 6]), springConfig)
 
   const menuItems = [
     { label: "Home", icon: <Home className="w-4 h-4 mr-2" />, path: "/" },
@@ -49,33 +56,52 @@ export function InteractiveRobot() {
   ]
 
   return (
-    <div ref={robotRef} className="relative w-64 h-64 flex items-center justify-center cursor-pointer">
+    <div ref={robotRef} className="relative w-72 h-72 flex items-center justify-center cursor-pointer perspective-1000">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <motion.div 
+            style={{ rotateX, rotateY }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="relative"
+            className="relative preserve-3d"
           >
-            <img 
-              src="/robot.png" 
-              alt="AI Robot Assistant" 
-              className="w-full h-full object-contain filter drop-shadow-2xl"
-            />
-            
-            <div className="absolute top-[35%] left-[30%] w-[40%] h-[15%] flex justify-around pointer-events-none">
-              <motion.div 
-                style={{ x: eyeX, y: eyeY }}
-                className="w-3 h-3 bg-cyan-400 rounded-full shadow-[0_0_10px_#22d3ee]"
+            {/* Main Robot Body/Head */}
+            <div className="relative">
+              <img 
+                src="/robot.png" 
+                alt="AI Robot Assistant" 
+                className="w-full h-full object-contain filter drop-shadow-2xl"
               />
-              <motion.div 
-                style={{ x: eyeX, y: eyeY }}
-                className="w-3 h-3 bg-cyan-400 rounded-full shadow-[0_0_10px_#22d3ee]"
-              />
+              
+              {/* Eye Container */}
+              <div className="absolute top-[34%] left-[28%] w-[44%] h-[18%] flex justify-around pointer-events-none">
+                <div className="relative w-full h-full flex justify-around items-center">
+                  {/* Left Eye */}
+                  <div className="w-6 h-6 bg-[#05080A] rounded-full flex items-center justify-center overflow-hidden border border-cyan-500/30">
+                     <motion.div 
+                      style={{ x: eyeX, y: eyeY }}
+                      className="w-3 h-3 bg-cyan-400 rounded-full shadow-[0_0_15px_#22d3ee]"
+                    />
+                  </div>
+                  {/* Right Eye */}
+                  <div className="w-6 h-6 bg-[#05080A] rounded-full flex items-center justify-center overflow-hidden border border-cyan-500/30">
+                    <motion.div 
+                      style={{ x: eyeX, y: eyeY }}
+                      className="w-3 h-3 bg-cyan-400 rounded-full shadow-[0_0_15px_#22d3ee]"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
+            
+            {/* Floating Glow */}
+            <motion.div 
+               style={{ x: useTransform(mouseX, [-1, 1], [20, -20]), y: useTransform(mouseY, [-1, 1], [20, -20]) }}
+               className="absolute -inset-4 bg-cyan-500/10 rounded-full blur-3xl -z-10 animate-pulse" 
+            />
           </motion.div>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-48 bg-background/95 backdrop-blur-md border-primary/20">
+        <DropdownMenuContent className="w-48 bg-[#05080A]/95 backdrop-blur-xl border-cyan-500/20 text-white shadow-[0_0_30px_rgba(0,229,212,0.1)]">
           {menuItems.map((item) => (
             <DropdownMenuItem 
               key={item.label}
@@ -87,16 +113,19 @@ export function InteractiveRobot() {
                   router.push(item.path)
                 }
               }}
-              className="cursor-pointer hover:bg-primary/10"
+              className="cursor-pointer hover:bg-cyan-500/10 focus:bg-cyan-500/20 transition-colors py-3"
             >
               {item.icon}
-              {item.label}
+              <span className="font-bold">{item.label}</span>
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
       
-      <div className="absolute inset-0 bg-primary/5 rounded-full blur-3xl -z-10 animate-pulse" />
+      <style jsx global>{`
+        .perspective-1000 { perspective: 1000px; }
+        .preserve-3d { transform-style: preserve-3d; }
+      `}</style>
     </div>
   )
 }
