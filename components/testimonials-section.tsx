@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { TestimonialCard } from "@/components/testimonial-card"
 
@@ -131,6 +132,32 @@ const testimonials = [
 const duplicatedTestimonials = [...testimonials, ...testimonials]
 
 export function TestimonialsSection() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return (
+      <section className="py-20 relative overflow-hidden bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-primary">What Students Say</h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Trusted by learners across India who are building future-ready skills
+            </p>
+          </div>
+          <div className="flex gap-6 overflow-hidden py-4 opacity-0">
+             {testimonials.slice(0, 3).map((t, i) => (
+               <div key={i} className="w-[350px] flex-shrink-0" />
+             ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section className="py-20 relative overflow-hidden bg-background">
       <div className="container mx-auto px-4">
@@ -144,13 +171,9 @@ export function TestimonialsSection() {
         </div>
 
         <div className="relative mt-10">
-          {/* Left fade overlay */}
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-
-          {/* Right fade overlay */}
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-          {/* Marquee container */}
           <div className="flex overflow-hidden">
             <motion.div
               className="flex gap-6 py-4"

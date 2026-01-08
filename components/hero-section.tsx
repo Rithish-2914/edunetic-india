@@ -3,8 +3,15 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
 
 export function HeroSection() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
     <section
       id="home"
@@ -17,8 +24,8 @@ export function HeroSection() {
           {/* Left Side: Text Content */}
           <div className="space-y-8 text-left">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={mounted ? { opacity: 0, x: -50 } : false}
+              animate={mounted ? { opacity: 1, x: 0 } : false}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter">
@@ -37,8 +44,8 @@ export function HeroSection() {
             </motion.div>
 
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={mounted ? { opacity: 0, y: 20 } : false}
+              animate={mounted ? { opacity: 1, y: 0 } : false}
               transition={{ delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
@@ -55,8 +62,8 @@ export function HeroSection() {
           {/* Right Side: Founder */}
           <div className="flex flex-col items-center lg:items-end text-center lg:text-right">
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={mounted ? { opacity: 0, x: 50 } : false}
+              animate={mounted ? { opacity: 1, x: 0 } : false}
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="relative group cursor-pointer"
             >
