@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import Script from "next/script"
-import { motion, AnimatePresence } from "framer-motion"
 import { Home, BookOpen, Info, Users, Mail } from "lucide-react"
 import { 
   DropdownMenu, 
@@ -35,7 +34,7 @@ export function InteractiveRobot() {
       <Script 
         src="https://unpkg.com/@splinetool/viewer@1.12.29/build/spline-viewer.js"
         type="module"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
       
       <DropdownMenu>
@@ -44,10 +43,9 @@ export function InteractiveRobot() {
             <spline-viewer 
               url="https://prod.spline.design/nUfX-O7V5Ew-WnL7/scene.splinecode"
               className="w-full h-full"
-              loading="eager"
             ></spline-viewer>
             
-            {/* Clickable Overlay for Dropdown Trigger - ensure it covers the area */}
+            {/* Clickable Overlay */}
             <div className="absolute inset-0 z-30" />
           </div>
         </DropdownMenuTrigger>
@@ -72,7 +70,6 @@ export function InteractiveRobot() {
         </DropdownMenuContent>
       </DropdownMenu>
       
-      {/* Glow Effect Background */}
       <div className="absolute inset-0 bg-cyan-500/10 rounded-full blur-[100px] -z-10 animate-pulse pointer-events-none" />
     </div>
   )
