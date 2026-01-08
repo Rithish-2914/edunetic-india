@@ -7,9 +7,7 @@ const nextConfig = {
     unoptimized: true,
   },
   output: 'standalone',
-  experimental: {
-    allowedReplitOrigins: ['*'],
-  },
+  allowedDevOrigins: ['*'],
 }
 
 export default nextConfig

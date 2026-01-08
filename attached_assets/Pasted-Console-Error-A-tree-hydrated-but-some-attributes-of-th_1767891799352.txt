@@ -1,0 +1,277 @@
+Console Error
+
+A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+
+
+  ...
+    <__next_root_layout_boundary__>
+      <SegmentViewNode type="layout" pagePath="layout.tsx">
+        <SegmentTrieNode>
+        <link>
+        <script>
+        <script>
+        <script>
+        <RootLayout>
+          <html lang="en" className="dark">
+            <body className="poppins_f1...">
+              <LoadingScreen>
+                <AnimatePresence mode="wait">
+                  <PresenceChild isPresent={true} initial={undefined} custom={undefined} presenceAffectsLayout={true} ...>
+                    <motion.div initial={{opacity:1}} exit={{opacity:0, ...}} className="fixed inse...">
+                      <div className="fixed inse..." style={{opacity:1}} ref={function useMotionRef.useCallback}>
+                        <div className="absolute i...">
+                          <motion.div initial={{opacity:0,x:"-...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(-41.07270440759672%) translateY(44.372287893579966%)"
+-                               transform: "translateX(4.65804%) translateY(34.0559%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"-...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(-18.197581584346732%) translateY(13.445019564141802%)"
+-                               transform: "translateX(-7.79952%) translateY(22.2642%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"3...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(35.87771249615392%) translateY(-8.595749701037803%)"
+-                               transform: "translateX(-25.9788%) translateY(4.80407%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"-...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(-18.94843035171807%) translateY(26.33231595067855%)"
+-                               transform: "translateX(8.27309%) translateY(-26.7937%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"2...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(20.022090994616136%) translateY(47.1984980522916%)"
+-                               transform: "translateX(15.4144%) translateY(-14.6007%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"-...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(-12.124536170996002%) translateY(14.329865952175126%)"
+-                               transform: "translateX(36.7512%) translateY(-44.4623%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"-...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(-7.092297302951621%) translateY(-48.760591499298755%)"
+-                               transform: "translateX(11.9112%) translateY(-20.8133%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"4...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(48.50377028852246%) translateY(0.26797687399287184%)"
+-                               transform: "translateX(-29.1151%) translateY(41.7406%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"-...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(-44.21337611032665%) translateY(-2.0108729092682225%)"
+-                               transform: "translateX(7.16272%) translateY(13.523%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"4...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(45.454881812573106%) translateY(-19.145004901329543%)"
+-                               transform: "translateX(-17.1669%) translateY(-47.5182%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"3...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(38.64115655944764%) translateY(32.09973652364266%)"
+-                               transform: "translateX(-10.4087%) translateY(34.742%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"-...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(-19.51969540332501%) translateY(-35.29352160737995%)"
+-                               transform: "translateX(-37.498%) translateY(1.75921%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"2...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(21.185059851828086%) translateY(-31.863326715737372%)"
+-                               transform: "translateX(36.5524%) translateY(40.948%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"2...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(20.532305015992108%) translateY(3.7193493611201305%)"
+-                               transform: "translateX(-38.0771%) translateY(1.99273%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"-...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(-45.35057905261473%) translateY(34.78852456463687%)"
+-                               transform: "translateX(38.3539%) translateY(6.82816%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"-...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(-1.3827848083468908%) translateY(-29.55906060902557%)"
+-                               transform: "translateX(-48.932%) translateY(-26.2479%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"3...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(39.906256146830756%) translateY(43.255759905075166%)"
+-                               transform: "translateX(27.6352%) translateY(22.967%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"3...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(31.231402671268285%) translateY(1.2945305809712977%)"
+-                               transform: "translateX(-26.2537%) translateY(10.7301%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"-...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(-45.70972858946823%) translateY(-41.63666288729407%)"
+-                               transform: "translateX(-3.28629%) translateY(33.0146%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                          <motion.div initial={{opacity:0,x:"-...", ...}} animate={{opacity:[...], ...}} ...>
+                            <div
+                              className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+                              style={{
++                               opacity: 0
+-                               opacity: "0"
++                               transform: "translateX(-5.601156899653134%) translateY(5.564393109840083%)"
+-                               transform: "translateX(-30.8438%) translateY(-5.09774%)"
+                              }}
+                              ref={function useMotionRef.useCallback}
+                            >
+                        ...
+              ...
+components/loading-screen.tsx (29:15) @ <unknown>
+
+
+  27 |           <div className="absolute inset-0 pointer-events-none">
+  28 |             {[...Array(20)].map((_, i) => (
+> 29 |               <motion.div
+     |               ^
+  30 |                 key={i}
+  31 |                 initial={{ 
+  32 |                   opacity: 0, 
+Call Stack
+24
+
+Show 19 ignore-listed frame(s)
+div
+<anonymous>
+<unknown>
+components/loading-screen.tsx (29:15)
+Array.map
+<anonymous>
+LoadingScreen
+components/loading-screen.tsx (28:29)
+RootLayout
+app/layout.tsx (54:9)

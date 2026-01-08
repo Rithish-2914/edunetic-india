@@ -1,18 +1,35 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 
 export function LoadingScreen() {
   const [loading, setLoading] = useState(true)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const timer = setTimeout(() => {
       setLoading(false)
     }, 5500)
 
     return () => clearTimeout(timer)
   }, [])
+
+  // Generate particle positions only on client
+  const particles = useMemo(() => {
+    if (!mounted) return []
+    return [...Array(20)].map((_, i) => ({
+      id: i,
+      initialX: Math.random() * 100 - 50 + "%",
+      initialY: Math.random() * 100 - 50 + "%",
+      animateX: Math.random() * 100 - 50 + "%",
+      animateY: Math.random() * 100 - 50 + "%",
+      duration: Math.random() * 3 + 2,
+    }))
+  }, [mounted])
+
+  if (!mounted) return null
 
   return (
     <AnimatePresence mode="wait">
@@ -25,22 +42,22 @@ export function LoadingScreen() {
         >
           {/* Background Particles */}
           <div className="absolute inset-0 pointer-events-none">
-            {[...Array(20)].map((_, i) => (
+            {particles.map((p) => (
               <motion.div
-                key={i}
+                key={p.id}
                 initial={{ 
                   opacity: 0, 
-                  x: Math.random() * 100 - 50 + "%", 
-                  y: Math.random() * 100 - 50 + "%" 
+                  x: p.initialX, 
+                  y: p.initialY 
                 }}
                 animate={{ 
                   opacity: [0, 0.5, 0],
                   scale: [0.5, 1.5, 0.5],
-                  x: Math.random() * 100 - 50 + "%",
-                  y: Math.random() * 100 - 50 + "%"
+                  x: p.animateX,
+                  y: p.animateY
                 }}
                 transition={{ 
-                  duration: Math.random() * 3 + 2, 
+                  duration: p.duration, 
                   repeat: Infinity, 
                   ease: "easeInOut" 
                 }}
