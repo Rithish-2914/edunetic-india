@@ -171,10 +171,11 @@ export function InteractiveRobot() {
                   const targetId = item.path.slice(1)
                   const el = document.getElementById(targetId)
                   if (el) {
+                    const navbarHeight = 100 // Increased offset to be safe
                     const rect = el.getBoundingClientRect()
                     const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-                    const navbarHeight = 80
                     const targetPosition = rect.top + scrollTop - navbarHeight
+                    
                     window.scrollTo({
                       top: targetPosition,
                       behavior: "smooth",
