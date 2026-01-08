@@ -1,0 +1,82 @@
+"use client"
+
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import { FeaturedCourseCard } from "./featured-course-card"
+import { VideoPlayer } from "./video-player"
+
+const featuredCourses = [
+  {
+    id: 1,
+    title: "AI Curious to AI Serious",
+    description: "Learn AI fundamentals with practical clarity",
+    instructor: "Rahul John Aju · AI Kid of India",
+    thumbnail: "/images/chatgpt-20image-20dec-2031-2c-202025-2c-2010-49-56-20pm.png",
+    duration: "12 hours",
+    learners: "50+",
+    rating: 4.9,
+    playlistUrl: "https://youtube.com/playlist?list=PLYPXjk4-uiobhDPkyWVBrr70Avp5y1Z6-",
+  },
+  {
+    id: 2,
+    title: "AI Learner to AI Earner",
+    description: "Advanced AI concepts for real-world growth",
+    instructor: "Rahul John Aju · AI Kid of India",
+    thumbnail: "/images/ai-learner-to-ai-earner.png",
+    duration: "18 hours",
+    learners: "30+",
+    rating: 5.0,
+    playlistUrl: "https://youtube.com/playlist?list=PLYPXjk4-uioZwrEIAMZHjjcQWkwT2eEMs",
+  },
+]
+
+export function CoursesSection() {
+  const [activeVideo, setActiveVideo] = useState<{ id: string; title: string } | null>(null)
+
+  return (
+    <section id="courses" className="py-24 md:py-32 relative bg-[#05080A] scroll-mt-20">
+      {/* Background Grid Accent */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1A2328_1px,transparent_1px),linear-gradient(to_bottom,#1A2328_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20" />
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Section Header */}
+        <div className="max-w-3xl mx-auto text-center mb-20">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
+            Featured Courses
+          </h2>
+          <p className="text-[#8E9BA4] text-lg md:text-xl leading-relaxed">
+            Carefully curated free courses to introduce students to AI and future skills.
+          </p>
+        </div>
+
+        {/* Courses Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {featuredCourses.map((course) => (
+            <FeaturedCourseCard
+              key={course.id}
+              {...course}
+              onViewPlaylist={() => setActiveVideo({ id: course.playlistUrl, title: course.title })}
+            />
+          ))}
+        </div>
+
+        {/* View All Button */}
+        <div className="text-center mt-16">
+          <Button
+            asChild
+            variant="outline"
+            className="border-[#1A2328] text-[#8E9BA4] hover:text-[#00E5D4] hover:border-[#00E5D4]/40 bg-transparent px-10 py-6 text-sm font-bold tracking-wider uppercase transition-all duration-300 rounded-xl"
+          >
+            <Link href="/courses">View All Courses</Link>
+          </Button>
+        </div>
+      </div>
+
+      {/* Video Modal */}
+      {activeVideo && (
+        <VideoPlayer videoId={activeVideo.id} title={activeVideo.title} onClose={() => setActiveVideo(null)} />
+      )}
+    </section>
+  )
+}
