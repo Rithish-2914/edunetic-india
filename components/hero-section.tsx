@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
+import { InteractiveRobot } from "./interactive-robot"
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
@@ -20,9 +21,9 @@ export function HeroSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00E5D4]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
           {/* Left Side: Text Content */}
-          <div className="space-y-8 text-left">
+          <div className="space-y-8 text-left order-2 lg:order-1">
             <motion.div
               initial={mounted ? { opacity: 0, x: -50 } : false}
               animate={mounted ? { opacity: 1, x: 0 } : false}
@@ -59,15 +60,22 @@ export function HeroSection() {
             </motion.div>
           </div>
 
+          {/* Center: Robot */}
+          <div className="flex justify-center order-1 lg:order-2 relative z-[100]">
+            <div className="w-full max-w-[300px] lg:scale-125 transform transition-transform duration-700">
+              <InteractiveRobot />
+            </div>
+          </div>
+
           {/* Right Side: Founder */}
-          <div className="flex flex-col items-center lg:items-end text-center lg:text-right">
+          <div className="flex flex-col items-center lg:items-end text-center lg:text-right order-3">
             <motion.div
               initial={mounted ? { opacity: 0, x: 50 } : false}
               animate={mounted ? { opacity: 1, x: 0 } : false}
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="relative group cursor-pointer"
             >
-              <div className="relative w-72 h-96 md:w-80 md:h-[450px] overflow-hidden rounded-2xl border-2 border-[#00E5D4]/20 shadow-2xl transition-all duration-500 group-hover:scale-[1.05]">
+              <div className="relative w-64 h-80 overflow-hidden rounded-2xl border-2 border-[#00E5D4]/20 shadow-2xl transition-all duration-500 group-hover:scale-[1.05]">
                 <img 
                   src="/founder-new.png" 
                   alt="Ruthvik Mishra" 
@@ -76,8 +84,8 @@ export function HeroSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#05080A] via-transparent to-transparent opacity-40" />
               </div>
               <div className="mt-6 space-y-1">
-                <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight">Ruthvik Mishra</h3>
-                <p className="text-[#00E5D4] font-bold text-lg md:text-xl uppercase tracking-wider">Founder & CEO</p>
+                <h3 className="text-3xl font-black text-white tracking-tight">Ruthvik Mishra</h3>
+                <p className="text-[#00E5D4] font-bold text-lg uppercase tracking-wider">Founder & CEO</p>
               </div>
             </motion.div>
           </div>
