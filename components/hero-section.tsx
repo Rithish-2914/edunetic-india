@@ -53,9 +53,11 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Center: Robot */}
-          <div className="flex justify-center order-1 lg:order-2 relative z-50 lg:scale-125">
-            <InteractiveRobot />
+          {/* Center: Robot - PRIORITIZED WITH Z-INDEX */}
+          <div className="flex justify-center order-1 lg:order-2 relative z-[100]">
+            <div className="w-full max-w-[600px] lg:scale-150 transform transition-transform duration-700">
+              <InteractiveRobot />
+            </div>
           </div>
 
           {/* Right Side: Founder */}
