@@ -47,7 +47,7 @@ export function HeroSection() {
                 <span className="text-[#00E5D4] cyan-glow">Edunetic India</span>
               </h1>
               <div className="mt-6 space-y-4">
-                <p className="text-xl md:text-2xl text-white font-bold tracking-tight uppercase border-l-4 border-[#00E5D4] pl-4">
+                <p className="text-lg md:text-xl text-white font-bold tracking-tight uppercase border-l-4 border-[#00E5D4] pl-4">
                   Desh Ka Vikaas Sabke Sath
                 </p>
                 <p className="text-[#94A3B8] text-lg leading-relaxed font-medium max-w-md">
@@ -87,7 +87,7 @@ export function HeroSection() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="relative group cursor-pointer"
             >
-              <div className="relative w-64 h-80 overflow-hidden rounded-2xl border-2 border-[#00E5D4]/20 shadow-2xl transition-all duration-500 group-hover:scale-[1.05]">
+              <div className="relative w-72 h-96 md:w-[450px] md:h-[550px] overflow-hidden rounded-3xl border-2 border-[#00E5D4]/20 shadow-2xl transition-all duration-500 group-hover:scale-[1.02]">
                 <img 
                   src="/founder-new.png" 
                   alt="Ruthvik Mishra" 
@@ -95,9 +95,9 @@ export function HeroSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#05080A] via-transparent to-transparent opacity-40" />
               </div>
-              <div className="mt-6 space-y-1">
-                <h3 className="text-3xl font-black text-white tracking-tight">Ruthvik Mishra</h3>
-                <p className="text-[#00E5D4] font-bold text-lg uppercase tracking-wider">Founder & CEO</p>
+              <div className="mt-8 space-y-2 text-center lg:text-right">
+                <h3 className="text-4xl md:text-5xl font-black text-white tracking-tight">Ruthvik Mishra</h3>
+                <p className="text-[#00E5D4] font-bold text-xl md:text-2xl uppercase tracking-wider">Founder & CEO</p>
               </div>
             </motion.div>
           </div>
