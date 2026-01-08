@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Script from "next/script"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { Home, BookOpen, Info, Users, Mail } from "lucide-react"
 import { 
   DropdownMenu, 
@@ -31,25 +31,27 @@ export function InteractiveRobot() {
   if (!mounted) return <div className="w-full h-[500px]" />
 
   return (
-    <div className="relative w-full h-[500px] flex items-center justify-center cursor-pointer group">
+    <div className="relative w-full h-[500px] flex items-center justify-center cursor-pointer group z-20">
       <Script 
         src="https://unpkg.com/@splinetool/viewer@1.12.29/build/spline-viewer.js"
         type="module"
+        strategy="afterInteractive"
       />
       
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <div className="w-full h-full relative">
+          <div className="w-full h-full relative group">
             <spline-viewer 
               url="https://prod.spline.design/nUfX-O7V5Ew-WnL7/scene.splinecode"
               className="w-full h-full"
+              loading="eager"
             ></spline-viewer>
             
-            {/* Clickable Overlay for Dropdown Trigger */}
-            <div className="absolute inset-0 z-10" />
+            {/* Clickable Overlay for Dropdown Trigger - ensure it covers the area */}
+            <div className="absolute inset-0 z-30" />
           </div>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-48 bg-[#05080A]/95 backdrop-blur-xl border-cyan-500/20 text-white shadow-[0_0_30px_rgba(0,229,212,0.1)]">
+        <DropdownMenuContent className="w-48 bg-[#05080A]/95 backdrop-blur-xl border-cyan-500/20 text-white shadow-[0_0_30px_rgba(0,229,212,0.1)] z-[100]">
           {menuItems.map((item) => (
             <DropdownMenuItem 
               key={item.label}
@@ -71,7 +73,7 @@ export function InteractiveRobot() {
       </DropdownMenu>
       
       {/* Glow Effect Background */}
-      <div className="absolute inset-0 bg-cyan-500/5 rounded-full blur-[100px] -z-10 animate-pulse pointer-events-none" />
+      <div className="absolute inset-0 bg-cyan-500/10 rounded-full blur-[100px] -z-10 animate-pulse pointer-events-none" />
     </div>
   )
 }

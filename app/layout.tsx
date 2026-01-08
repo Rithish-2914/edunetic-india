@@ -41,6 +41,8 @@ export const metadata: Metadata = {
   },
 }
 
+import { LoadingScreen } from "@/components/loading-screen"
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -49,6 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${poppins.variable} ${inter.variable} font-sans antialiased`}>
+        <LoadingScreen />
         <GlowingCursor />
         {children}
         <AIAssistant />
