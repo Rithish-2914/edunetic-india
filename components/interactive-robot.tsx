@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Script from "next/script"
+import { useState, useEffect, useRef } from "react"
+import { motion, useSpring, useTransform, useMotionValue } from "framer-motion"
 import { Home, BookOpen, Info, Users, Mail } from "lucide-react"
 import { 
   DropdownMenu, 
@@ -13,15 +13,38 @@ import { useRouter } from "next/navigation"
 
 export function InteractiveRobot() {
   const router = useRouter()
-  const [mounted, setMounted] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const mouseX = useMotionValue(0.5)
+  const mouseY = useMotionValue(0.5)
+  const robotRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    setMounted(true)
-    // Add a backup timer to clear loading state if Spline takes too long
-    const timer = setTimeout(() => setLoading(false), 10000)
-    return () => clearTimeout(timer)
-  }, [])
+    const handleMouseMove = (e: MouseEvent) => {
+      if (robotRef.current) {
+        const rect = robotRef.current.getBoundingClientRect()
+        const centerX = rect.left + rect.width / 2
+        const centerY = rect.top + rect.height / 2
+        
+        const relX = (e.clientX - centerX) / (window.innerWidth / 2)
+        const relY = (e.clientY - centerY) / (window.innerHeight / 2)
+        
+        mouseX.set(relX)
+        mouseY.set(relY)
+      }
+    }
+
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [mouseX, mouseY])
+
+  const springConfig = { damping: 25, stiffness: 200 }
+  
+  // Head rotation
+  const rotateX = useSpring(useTransform(mouseY, [-1, 1], [15, -15]), springConfig)
+  const rotateY = useSpring(useTransform(mouseX, [-1, 1], [-20, 20]), springConfig)
+  
+  // Eye movement
+  const eyeX = useSpring(useTransform(mouseX, [-1, 1], [-10, 10]), springConfig)
+  const eyeY = useSpring(useTransform(mouseY, [-1, 1], [-6, 6]), springConfig)
 
   const menuItems = [
     { label: "Home", icon: <Home className="w-4 h-4 mr-2" />, path: "/" },
@@ -31,35 +54,46 @@ export function InteractiveRobot() {
     { label: "Contact", icon: <Mail className="w-4 h-4 mr-2" />, path: "#contact" },
   ]
 
-  if (!mounted) return <div className="w-full h-[500px]" />
-
   return (
-    <div className="relative w-full h-[500px] flex items-center justify-center cursor-pointer group z-20">
-      <Script 
-        src="https://unpkg.com/@splinetool/viewer@1.12.29/build/spline-viewer.js"
-        type="module"
-        strategy="afterInteractive"
-      />
-      
+    <div ref={robotRef} className="relative w-72 h-72 flex items-center justify-center cursor-pointer perspective-1000 z-20">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <div className="w-full h-full relative group min-h-[500px]">
-            {loading && (
-              <div className="absolute inset-0 flex items-center justify-center bg-[#05080A]/80 backdrop-blur-md z-10 rounded-3xl border border-cyan-500/20">
-                <div className="flex flex-col items-center gap-4">
-                  <div className="w-12 h-12 border-4 border-[#00E5D4] border-t-transparent rounded-full animate-spin shadow-[0_0_15px_rgba(0,229,212,0.5)]" />
-                  <p className="text-cyan-400 font-mono text-xs animate-pulse">SYNCING_3D_ASSETS...</p>
+          <motion.div 
+            style={{ rotateX, rotateY }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="relative preserve-3d"
+          >
+            <div className="relative">
+              <img 
+                src="/robot.png" 
+                alt="AI Robot Assistant" 
+                className="w-full h-full object-contain filter drop-shadow-2xl"
+              />
+              
+              <div className="absolute top-[34%] left-[28%] w-[44%] h-[18%] flex justify-around pointer-events-none">
+                <div className="relative w-full h-full flex justify-around items-center">
+                  <div className="w-6 h-6 bg-[#05080A] rounded-full flex items-center justify-center overflow-hidden border border-cyan-500/30">
+                     <motion.div 
+                      style={{ x: eyeX, y: eyeY }}
+                      className="w-3 h-3 bg-cyan-400 rounded-full shadow-[0_0_15px_#22d3ee]"
+                    />
+                  </div>
+                  <div className="w-6 h-6 bg-[#05080A] rounded-full flex items-center justify-center overflow-hidden border border-cyan-500/30">
+                    <motion.div 
+                      style={{ x: eyeX, y: eyeY }}
+                      className="w-3 h-3 bg-cyan-400 rounded-full shadow-[0_0_15px_#22d3ee]"
+                    />
+                  </div>
                 </div>
               </div>
-            )}
-            <spline-viewer 
-              url="https://prod.spline.design/nUfX-O7V5Ew-WnL7/scene.splinecode"
-              className="w-full h-full block"
-            ></spline-viewer>
+            </div>
             
-            {/* Clickable Overlay - Ensure it's above the Spline viewer but below the menu */}
-            <div className="absolute inset-0 z-30 bg-transparent" />
-          </div>
+            <motion.div 
+               style={{ x: useTransform(mouseX, [-1, 1], [20, -20]), y: useTransform(mouseY, [-1, 1], [20, -20]) }}
+               className="absolute -inset-4 bg-cyan-500/10 rounded-full blur-3xl -z-10 animate-pulse" 
+            />
+          </motion.div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-48 bg-[#05080A]/95 backdrop-blur-xl border-cyan-500/20 text-white shadow-[0_0_30px_rgba(0,229,212,0.1)] z-[100]">
           {menuItems.map((item) => (
@@ -82,15 +116,10 @@ export function InteractiveRobot() {
         </DropdownMenuContent>
       </DropdownMenu>
       
-      <div className="absolute inset-0 bg-cyan-500/10 rounded-full blur-[100px] -z-10 animate-pulse pointer-events-none" />
+      <style jsx global>{`
+        .perspective-1000 { perspective: 1000px; }
+        .preserve-3d { transform-style: preserve-3d; }
+      `}</style>
     </div>
   )
-}
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'spline-viewer': any;
-    }
-  }
 }

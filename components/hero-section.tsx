@@ -54,7 +54,7 @@ export function HeroSection() {
           </div>
 
           {/* Center: Robot */}
-          <div className="flex justify-center order-1 lg:order-2 lg:scale-125">
+          <div className="flex justify-center order-1 lg:order-2">
             <InteractiveRobot />
           </div>
 
@@ -64,15 +64,15 @@ export function HeroSection() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative group"
+              className="relative group cursor-pointer"
             >
-              <div className="relative w-64 h-80 overflow-hidden rounded-2xl border-2 border-[#00E5D4]/20 shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
+              <div className="relative w-64 h-80 overflow-hidden rounded-2xl border-2 border-[#00E5D4]/20 shadow-2xl transition-all duration-500 group-hover:scale-[1.05]">
                 <img 
-                  src="/founder.jpg" 
+                  src="/founder-new.png" 
                   alt="Ruthvik Mishra" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#05080A] via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#05080A] via-transparent to-transparent opacity-40" />
               </div>
               <div className="mt-6 space-y-1">
                 <h3 className="text-3xl font-black text-white tracking-tight">Ruthvik Mishra</h3>

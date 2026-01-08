@@ -75,7 +75,7 @@ export function LoadingScreen() {
               transition={{ delay: 3.2, duration: 1 }}
               className="mt-10 text-white font-black uppercase tracking-[0.4em] text-sm md:text-lg text-center opacity-90"
             >
-              The Future of Learning
+              Desh Ka Vikaas Sabke Sath
             </motion.p>
             
             {/* India/Coding Detail */}
