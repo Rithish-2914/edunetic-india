@@ -35,7 +35,7 @@ export function HeroSection() {
       <div className="container mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center max-w-7xl mx-auto">
           {/* Left Side: Text Content */}
-          <div className="space-y-8 text-center lg:text-left">
+          <div className="space-y-8 text-center lg:text-left order-2 lg:order-1">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -73,14 +73,14 @@ export function HeroSection() {
           </div>
 
           {/* Center: Robot */}
-          <div className="flex justify-center relative z-[100]">
+          <div className="flex justify-center relative z-[100] order-1 lg:order-2">
             <div className="w-full max-w-[280px] lg:scale-110">
               <InteractiveRobot />
             </div>
           </div>
 
           {/* Right Side: Founder */}
-          <div className="flex flex-col items-center lg:items-end text-center lg:text-right">
+          <div className="flex flex-col items-center lg:items-end text-center lg:text-right order-3">
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -98,28 +98,6 @@ export function HeroSection() {
               <div className="mt-8 space-y-2 text-center lg:text-right">
                 <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight">Ruthvik Mishra</h3>
                 <p className="text-[#00E5D4] font-bold text-lg md:text-xl uppercase tracking-wider">Founder & CEO</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </div>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative group cursor-pointer"
-            >
-              <div className="relative w-72 h-96 md:w-[450px] md:h-[550px] overflow-hidden rounded-3xl border-2 border-[#00E5D4]/20 shadow-2xl transition-all duration-500 group-hover:scale-[1.02]">
-                <img 
-                  src="/founder-new.png" 
-                  alt="Ruthvik Mishra" 
-                  className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#05080A] via-transparent to-transparent opacity-40" />
-              </div>
-              <div className="mt-8 space-y-2 text-center lg:text-right">
-                <h3 className="text-4xl md:text-5xl font-black text-white tracking-tight">Ruthvik Mishra</h3>
-                <p className="text-[#00E5D4] font-bold text-xl md:text-2xl uppercase tracking-wider">Founder & CEO</p>
               </div>
             </motion.div>
           </div>
