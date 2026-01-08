@@ -14,9 +14,13 @@ import { useRouter } from "next/navigation"
 export function InteractiveRobot() {
   const router = useRouter()
   const [mounted, setMounted] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     setMounted(true)
+    // Add a backup timer to clear loading state if Spline takes too long
+    const timer = setTimeout(() => setLoading(false), 10000)
+    return () => clearTimeout(timer)
   }, [])
 
   const menuItems = [
@@ -34,19 +38,27 @@ export function InteractiveRobot() {
       <Script 
         src="https://unpkg.com/@splinetool/viewer@1.12.29/build/spline-viewer.js"
         type="module"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
       />
       
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <div className="w-full h-full relative group">
+          <div className="w-full h-full relative group min-h-[500px]">
+            {loading && (
+              <div className="absolute inset-0 flex items-center justify-center bg-[#05080A]/80 backdrop-blur-md z-10 rounded-3xl border border-cyan-500/20">
+                <div className="flex flex-col items-center gap-4">
+                  <div className="w-12 h-12 border-4 border-[#00E5D4] border-t-transparent rounded-full animate-spin shadow-[0_0_15px_rgba(0,229,212,0.5)]" />
+                  <p className="text-cyan-400 font-mono text-xs animate-pulse">SYNCING_3D_ASSETS...</p>
+                </div>
+              </div>
+            )}
             <spline-viewer 
               url="https://prod.spline.design/nUfX-O7V5Ew-WnL7/scene.splinecode"
-              className="w-full h-full"
+              className="w-full h-full block"
             ></spline-viewer>
             
-            {/* Clickable Overlay */}
-            <div className="absolute inset-0 z-30" />
+            {/* Clickable Overlay - Ensure it's above the Spline viewer but below the menu */}
+            <div className="absolute inset-0 z-30 bg-transparent" />
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-48 bg-[#05080A]/95 backdrop-blur-xl border-cyan-500/20 text-white shadow-[0_0_30px_rgba(0,229,212,0.1)] z-[100]">
