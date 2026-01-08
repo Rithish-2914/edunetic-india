@@ -28,8 +28,8 @@ export function HeroSection() {
                 <span className="text-[#00E5D4] cyan-glow">Edunetic India</span>
               </h1>
               <div className="mt-6 space-y-4">
-                <p className="text-xl md:text-2xl text-white font-bold tracking-tight uppercase">
-                  The Future of Learning
+                <p className="text-xl md:text-2xl text-white font-bold tracking-tight uppercase border-l-4 border-[#00E5D4] pl-4">
+                  Desh Ka Vikaas Sabke Sath
                 </p>
                 <p className="text-[#94A3B8] text-lg leading-relaxed font-medium max-w-md">
                   Experience the next generation of education. Our AI-powered platform provides cutting-edge learning paths for tomorrow's innovators in India.
@@ -54,7 +54,7 @@ export function HeroSection() {
           </div>
 
           {/* Center: Robot */}
-          <div className="flex justify-center order-1 lg:order-2">
+          <div className="flex justify-center order-1 lg:order-2 relative z-50 lg:scale-125">
             <InteractiveRobot />
           </div>
 

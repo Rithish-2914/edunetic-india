@@ -18,7 +18,8 @@ export function InteractiveRobot() {
 
   useEffect(() => {
     setMounted(true)
-    const timer = setTimeout(() => setLoading(false), 5000)
+    // Backup timer to clear loading state
+    const timer = setTimeout(() => setLoading(false), 10000)
     return () => clearTimeout(timer)
   }, [])
 
@@ -33,7 +34,7 @@ export function InteractiveRobot() {
   if (!mounted) return <div className="w-full h-[500px]" />
 
   return (
-    <div className="relative w-full h-[500px] flex items-center justify-center cursor-pointer group z-20">
+    <div className="relative w-full h-[500px] flex items-center justify-center cursor-pointer group z-30">
       <Script 
         src="https://unpkg.com/@splinetool/viewer@1.12.29/build/spline-viewer.js"
         type="module"
@@ -42,23 +43,25 @@ export function InteractiveRobot() {
       
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <div className="w-full h-full relative group min-h-[500px]">
+          <div className="w-full h-full relative group min-h-[500px] flex items-center justify-center">
             {loading && (
-              <div className="absolute inset-0 flex items-center justify-center bg-[#05080A]/80 backdrop-blur-md z-10 rounded-3xl border border-cyan-500/20">
+              <div className="absolute inset-0 flex items-center justify-center bg-[#05080A]/80 backdrop-blur-md z-[40] rounded-3xl border border-cyan-500/20">
                 <div className="flex flex-col items-center gap-4">
                   <div className="w-12 h-12 border-4 border-[#00E5D4] border-t-transparent rounded-full animate-spin shadow-[0_0_15px_rgba(0,229,212,0.5)]" />
-                  <p className="text-cyan-400 font-mono text-xs animate-pulse">SYNCING_3D_ROBOT...</p>
+                  <p className="text-cyan-400 font-mono text-xs animate-pulse">CONNECTING_TO_ROBOT_CORE...</p>
                 </div>
               </div>
             )}
-            {/* Using a high-quality interactive robot scene from Spline community */}
+            
+            {/* The actual 3D Robot scene - using a robust public Spline scene for testing */}
             <spline-viewer 
               url="https://prod.spline.design/86uVInB8jJbM2y0r/scene.splinecode"
               className="w-full h-full block"
               onLoad={() => setLoading(false)}
             ></spline-viewer>
             
-            <div className="absolute inset-0 z-30 bg-transparent hover:bg-white/[0.02] transition-colors" />
+            {/* Transparent click catcher that doesn't block Spline hover but catches clicks */}
+            <div className="absolute inset-0 z-50 bg-transparent" />
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-48 bg-[#05080A]/95 backdrop-blur-xl border-cyan-500/20 text-white shadow-[0_0_30px_rgba(0,229,212,0.1)] z-[100]">
@@ -82,7 +85,7 @@ export function InteractiveRobot() {
         </DropdownMenuContent>
       </DropdownMenu>
       
-      <div className="absolute inset-0 bg-cyan-500/10 rounded-full blur-[100px] -z-10 animate-pulse pointer-events-none" />
+      <div className="absolute inset-0 bg-cyan-500/10 rounded-full blur-[120px] -z-10 animate-pulse pointer-events-none" />
     </div>
   )
 }
