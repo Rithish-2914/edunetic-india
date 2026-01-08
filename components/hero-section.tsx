@@ -54,14 +54,8 @@ export function HeroSection() {
           </div>
 
           {/* Center: Robot */}
-          <div className="flex justify-center order-1 lg:order-2">
-            <motion.div
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
-            >
-              <InteractiveRobot />
-            </motion.div>
+          <div className="flex justify-center order-1 lg:order-2 lg:scale-125">
+            <InteractiveRobot />
           </div>
 
           {/* Right Side: Founder */}
