@@ -109,8 +109,8 @@
 
 /* Enhanced neon effects and animations */
 @layer utilities {
-  .cyan-glow {
-    text-shadow: 0 0 15px var(--primary);
+  .cyan-text {
+    color: #00E5D4;
   }
 
   .cyan-box-glow {

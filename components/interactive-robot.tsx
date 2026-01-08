@@ -168,9 +168,15 @@ export function InteractiveRobot() {
               key={item.label}
               onClick={() => {
                 if (item.path.startsWith("#")) {
-                  const el = document.getElementById(item.path.slice(1))
+                  const targetId = item.path.slice(1)
+                  const el = document.getElementById(targetId)
                   if (el) {
-                    el.scrollIntoView({ behavior: 'smooth' })
+                    const navbarHeight = 80
+                    const targetPosition = el.offsetTop - navbarHeight
+                    window.scrollTo({
+                      top: targetPosition,
+                      behavior: "smooth",
+                    })
                   }
                 } else {
                   router.push(item.path)

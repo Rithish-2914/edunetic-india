@@ -35,21 +35,21 @@ export function HeroSection() {
       <div className="container mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center max-w-7xl mx-auto">
           {/* Left Side: Text Content */}
-          <div className="space-y-8 text-center lg:text-left order-2 lg:order-1">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter">
-                <span className="text-white">Welcome to</span>
-                <br />
-                <span className="text-[#00E5D4] cyan-glow">Edunetic India</span>
-              </h1>
-              <div className="mt-6 space-y-4">
-                <p className="text-lg md:text-xl text-white font-bold tracking-tight uppercase border-l-4 border-[#00E5D4] pl-4">
-                  Desh Ka Vikaas Sabke Sath
-                </p>
+            <div className="space-y-8 text-center lg:text-left order-2 lg:order-1">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
+                <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter">
+                  <span className="text-foreground">Welcome to</span>
+                  <br />
+                  <span className="text-[#00E5D4]">Edunetic India</span>
+                </h1>
+                <div className="mt-6 space-y-4">
+                  <p className="text-lg md:text-xl text-foreground font-bold tracking-tight uppercase border-l-4 border-[#00E5D4] pl-4">
+                    Desh Ka Vikaas Sabke Sath
+                  </p>
                 <p className="text-[#94A3B8] text-lg leading-relaxed font-medium max-w-md mx-auto lg:mx-0">
                   Experience the next generation of education. Our AI-powered platform provides cutting-edge learning paths for tomorrow's innovators in India.
                 </p>

@@ -73,10 +73,10 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" onClick={(e) => handleNavClick(e, "#home")} className="flex items-center gap-2 group">
+          <Link href="/" onClick={() => window.location.reload()} className="flex items-center gap-2 group">
             <img src="/logo.png" alt="Edunetic Logo" className="w-8 h-8 object-contain" />
             <div className="text-2xl font-bold tracking-tight">
-              <span className="text-[#00E5D4] cyan-glow">Edunetic India</span>
+              <span className="text-[#00E5D4]">Edunetic India</span>
             </div>
           </Link>
 
