@@ -6,7 +6,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  allowedDevOrigins: ['*'],
+  output: 'standalone',
+  experimental: {
+    allowedReplitOrigins: ['*'],
+  },
 }
 
 export default nextConfig

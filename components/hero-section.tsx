@@ -33,54 +33,57 @@ export function HeroSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00E5D4]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
-          {/* Left Side: Text Content */}
-          <div className="space-y-8 text-left order-2 lg:order-1">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter">
-                <span className="text-white">Welcome to</span>
-                <br />
-                <span className="text-[#00E5D4] cyan-glow">Edunetic India</span>
-              </h1>
-              <div className="mt-6 space-y-4">
-                <p className="text-lg md:text-xl text-white font-bold tracking-tight uppercase border-l-4 border-[#00E5D4] pl-4">
-                  Desh Ka Vikaas Sabke Sath
-                </p>
-                <p className="text-[#94A3B8] text-lg leading-relaxed font-medium max-w-md">
-                  Experience the next generation of education. Our AI-powered platform provides cutting-edge learning paths for tomorrow's innovators in India.
-                </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center max-w-7xl mx-auto">
+          {/* Left Side: Content Wrapper */}
+          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12">
+            {/* Robot (Side-positioned) */}
+            <div className="flex-shrink-0 relative z-[100]">
+              <div className="w-full max-w-[280px] lg:scale-110">
+                <InteractiveRobot />
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 pt-4"
-            >
-              <Button
-                asChild
-                size="lg"
-                className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 font-black text-lg px-8 py-6 rounded-full shadow-[0_0_30px_rgba(0,229,212,0.3)]"
+            {/* Text Content */}
+            <div className="space-y-8 text-center lg:text-left">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
               >
-                <Link href="#courses">Explore Courses</Link>
-              </Button>
-            </motion.div>
-          </div>
+                <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter">
+                  <span className="text-white">Welcome to</span>
+                  <br />
+                  <span className="text-[#00E5D4] cyan-glow">Edunetic India</span>
+                </h1>
+                <div className="mt-6 space-y-4">
+                  <p className="text-lg md:text-xl text-white font-bold tracking-tight uppercase border-l-4 border-[#00E5D4] pl-4">
+                    Desh Ka Vikaas Sabke Sath
+                  </p>
+                  <p className="text-[#94A3B8] text-lg leading-relaxed font-medium max-w-md mx-auto lg:mx-0">
+                    Experience the next generation of education. Our AI-powered platform provides cutting-edge learning paths for tomorrow's innovators in India.
+                  </p>
+                </div>
+              </motion.div>
 
-          {/* Center: Robot */}
-          <div className="flex justify-center order-1 lg:order-2 relative z-[100]">
-            <div className="w-full max-w-[300px] lg:scale-125 transform transition-transform duration-700">
-              <InteractiveRobot />
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4"
+              >
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 font-black text-lg px-8 py-6 rounded-full shadow-[0_0_30px_rgba(0,229,212,0.3)]"
+                >
+                  <Link href="#courses">Explore Courses</Link>
+                </Button>
+              </motion.div>
             </div>
           </div>
 
           {/* Right Side: Founder */}
-          <div className="flex flex-col items-center lg:items-end text-center lg:text-right order-3">
+          <div className="flex flex-col items-center lg:items-end text-center lg:text-right">
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
