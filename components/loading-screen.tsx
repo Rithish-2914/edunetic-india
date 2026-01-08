@@ -72,17 +72,17 @@ export function LoadingScreen() {
               initial={{ opacity: 0, scale: 0.1, rotate: -10 }}
               animate={{ 
                 opacity: 1, 
-                scale: [0.1, 1.3, 0.95],
-                rotate: [ -10, 5, -5, 0],
-                x: [0, -20, 20, -15, 15, 0],
-                y: [0, 10, -10, 15, -15, 0]
+                scale: [0.1, 1.1, 1],
+                rotate: [ -5, 5, -5, 0],
+                x: [0, -5, 5, -3, 3, 0],
+                y: [0, 3, -3, 4, -4, 0]
               }}
               transition={{ 
                 opacity: { duration: 1.2, ease: "easeOut" },
-                scale: { duration: 4.8, times: [0, 0.6, 1], ease: "easeInOut" },
-                rotate: { duration: 2, ease: "easeOut" },
-                x: { duration: 0.3, repeat: 10, ease: "easeInOut" },
-                y: { duration: 0.25, repeat: 12, ease: "easeInOut" }
+                scale: { duration: 4, times: [0, 0.6, 1], ease: "easeInOut" },
+                rotate: { duration: 3, ease: "easeOut" },
+                x: { duration: 0.5, repeat: 6, ease: "easeInOut" },
+                y: { duration: 0.45, repeat: 7, ease: "easeInOut" }
               }}
               className="w-48 h-48 md:w-64 md:h-64 mb-12"
             >
