@@ -9,7 +9,7 @@ export function LoadingScreen() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false)
-    }, 5000)
+    }, 5500)
 
     return () => clearTimeout(timer)
   }, [])
@@ -21,41 +21,69 @@ export function LoadingScreen() {
           key="loader"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#05080A]"
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#05080A] overflow-hidden"
         >
-          <div className="relative flex flex-col items-center">
+          {/* Background Particles */}
+          <div className="absolute inset-0 pointer-events-none">
+            {[...Array(20)].map((_, i) => (
+              <motion.div
+                key={i}
+                initial={{ 
+                  opacity: 0, 
+                  x: Math.random() * 100 - 50 + "%", 
+                  y: Math.random() * 100 - 50 + "%" 
+                }}
+                animate={{ 
+                  opacity: [0, 0.5, 0],
+                  scale: [0.5, 1.5, 0.5],
+                  x: Math.random() * 100 - 50 + "%",
+                  y: Math.random() * 100 - 50 + "%"
+                }}
+                transition={{ 
+                  duration: Math.random() * 3 + 2, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                className="absolute w-1 h-1 bg-[#00E5D4] rounded-full blur-[1px]"
+              />
+            ))}
+          </div>
+
+          <div className="relative flex flex-col items-center z-10">
             {/* Logo: Fade In + Shake + Zoom Out */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.1 }}
+              initial={{ opacity: 0, scale: 0.1, rotate: -10 }}
               animate={{ 
                 opacity: 1, 
-                scale: [0.1, 1.2, 0.9],
-                x: [0, -15, 15, -10, 10, 0],
+                scale: [0.1, 1.3, 0.95],
+                rotate: [ -10, 5, -5, 0],
+                x: [0, -20, 20, -15, 15, 0],
                 y: [0, 10, -10, 15, -15, 0]
               }}
               transition={{ 
                 opacity: { duration: 1.2, ease: "easeOut" },
-                scale: { duration: 4.5, times: [0, 0.6, 1], ease: "easeInOut" },
-                x: { duration: 0.4, repeat: 8, ease: "easeInOut" },
-                y: { duration: 0.3, repeat: 10, ease: "easeInOut" }
+                scale: { duration: 4.8, times: [0, 0.6, 1], ease: "easeInOut" },
+                rotate: { duration: 2, ease: "easeOut" },
+                x: { duration: 0.3, repeat: 10, ease: "easeInOut" },
+                y: { duration: 0.25, repeat: 12, ease: "easeInOut" }
               }}
-              className="w-40 h-40 md:w-56 md:h-56 mb-12"
+              className="w-48 h-48 md:w-64 md:h-64 mb-12"
             >
               <img 
-                src="/robot.png" 
+                src="/logo.png" 
                 alt="Edunetic Logo" 
-                className="w-full h-full object-contain filter drop-shadow-[0_0_30px_rgba(0,229,212,0.6)]"
+                className="w-full h-full object-contain filter drop-shadow-[0_0_40px_rgba(0,229,212,0.7)]"
               />
             </motion.div>
 
             {/* Company Name: Cyan-White Underlined */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
+              transition={{ delay: 1.5, duration: 1 }}
               className="relative"
             >
-              <h1 className="text-5xl md:text-7xl font-black tracking-tighter flex items-center gap-2">
+              <h1 className="text-5xl md:text-8xl font-black tracking-tighter flex items-center gap-2">
                 <span className="text-[#00E5D4]">Edu</span>
                 <span className="text-white">netic</span>
                 <span className="text-[#00E5D4]">India</span>
@@ -63,8 +91,8 @@ export function LoadingScreen() {
               <motion.div 
                 initial={{ width: 0 }}
                 animate={{ width: "100%" }}
-                transition={{ delay: 2.2, duration: 1.2, ease: "circOut" }}
-                className="absolute -bottom-3 left-0 h-1.5 bg-[#00E5D4] rounded-full shadow-[0_0_20px_#00E5D4]"
+                transition={{ delay: 2.5, duration: 1.5, ease: "circOut" }}
+                className="absolute -bottom-4 left-0 h-2 bg-[#00E5D4] rounded-full shadow-[0_0_30px_#00E5D4]"
               />
             </motion.div>
 
@@ -72,8 +100,8 @@ export function LoadingScreen() {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 3.2, duration: 1 }}
-              className="mt-10 text-white font-black uppercase tracking-[0.4em] text-sm md:text-lg text-center opacity-90"
+              transition={{ delay: 3.5, duration: 1.2 }}
+              className="mt-12 text-white font-black uppercase tracking-[0.5em] text-sm md:text-xl text-center opacity-90 italic"
             >
               Desh Ka Vikaas Sabke Sath
             </motion.p>
@@ -81,15 +109,15 @@ export function LoadingScreen() {
             {/* India/Coding Detail */}
             <motion.div 
               initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.6, 0] }}
+              animate={{ opacity: [0, 0.8, 0] }}
               transition={{ repeat: Infinity, duration: 1.5 }}
-              className="absolute -bottom-32 font-mono text-xs text-[#00E5D4]/50 tracking-widest"
+              className="absolute -bottom-40 font-mono text-xs md:text-sm text-[#00E5D4]/60 tracking-[0.3em]"
             >
-              {`// CODING_THE_FUTURE_OF_INDIA_...`}
+              {`// INITIALIZING_INDIA_GEN_AI_...`}
             </motion.div>
           </div>
           
-          <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,var(--primary)_0%,transparent_70%)]" />
+          <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_center,var(--primary)_0%,transparent_70%)]" />
         </motion.div>
       )}
     </AnimatePresence>
