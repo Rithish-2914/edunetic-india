@@ -25,16 +25,50 @@ export default function CoursesPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {COURSES.map((course) => (
-              <CourseCard
-                key={course.id}
-                id={course.id}
-                title={course.title}
-                creator={course.creator}
-                duration={course.duration}
-              />
-            ))}
+          <div className="space-y-16">
+            {/* Free Courses Section */}
+            <section>
+              <div className="flex items-center gap-4 mb-8">
+                <h2 className="text-3xl font-bold text-white">Free Courses</h2>
+                <div className="h-px flex-1 bg-white/10" />
+                <span className="px-3 py-1 bg-[#00E5D4]/10 text-[#00E5D4] text-xs font-bold rounded-full border border-[#00E5D4]/20">
+                  {COURSES.filter(c => !c.isPaid).length} Available
+                </span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                {COURSES.filter(c => !c.isPaid).map((course) => (
+                  <CourseCard
+                    key={course.id}
+                    id={course.id}
+                    title={course.title}
+                    creator={course.creator}
+                    duration={course.duration}
+                  />
+                ))}
+              </div>
+            </section>
+
+            {/* Paid Courses Section */}
+            <section>
+              <div className="flex items-center gap-4 mb-8">
+                <h2 className="text-3xl font-bold text-white opacity-50">Paid Courses</h2>
+                <div className="h-px flex-1 bg-white/5" />
+                <span className="px-3 py-1 bg-white/5 text-white/40 text-xs font-bold rounded-full border border-white/10">
+                  Coming Soon
+                </span>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-3xl p-12 text-center">
+                <div className="w-16 h-16 bg-[#00E5D4]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-8 h-8 text-[#00E5D4]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Exciting Premium Content On the Way</h3>
+                <p className="text-[#8E9BA4] max-w-sm mx-auto">
+                  We're currently crafting high-impact premium courses to accelerate your learning. Stay tuned!
+                </p>
+              </div>
+            </section>
           </div>
         </div>
       </main>

@@ -10,6 +10,7 @@ export interface Course {
   creator: string
   duration: string
   type: "playlist"
+  isPaid?: boolean
   videos: PlaylistVideo[]
 }
 
@@ -20,6 +21,7 @@ export const COURSES: Course[] = [
     creator: "Raultherockstar",
     duration: "30 Days",
     type: "playlist",
+    isPaid: false,
     videos: [
       { day: 1, title: "What is AI?", youtubeId: "DI2gyY8WxSg" },
       { day: 2, title: "Machine Learning and Neural Networks", youtubeId: "f0Tf0S2f_Hk" },
@@ -52,6 +54,7 @@ export const COURSES: Course[] = [
     creator: "Raultherockstar",
     duration: "7 Weeks",
     type: "playlist",
+    isPaid: false,
     videos: [
       { day: 1, title: "What Is AI?", youtubeId: "8Gko-J-1PdA" },
       { day: 2, title: "AI Browsers Research for You", youtubeId: "Y-5uL0zFz8A" },
