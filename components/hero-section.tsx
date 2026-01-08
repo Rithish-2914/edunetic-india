@@ -13,6 +13,18 @@ export function HeroSection() {
     setMounted(true)
   }, [])
 
+  if (!mounted) {
+    return (
+      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 grid-background px-4 bg-[#05080A]">
+        <div className="container mx-auto">
+          <div className="text-left max-w-xl">
+            <h1 className="text-5xl md:text-7xl font-black leading-tight text-white opacity-0">Welcome to Edunetic India</h1>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section
       id="home"
@@ -25,8 +37,8 @@ export function HeroSection() {
           {/* Left Side: Text Content */}
           <div className="space-y-8 text-left order-2 lg:order-1">
             <motion.div
-              initial={mounted ? { opacity: 0, x: -50 } : false}
-              animate={mounted ? { opacity: 1, x: 0 } : false}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter">
@@ -45,8 +57,8 @@ export function HeroSection() {
             </motion.div>
 
             <motion.div 
-              initial={mounted ? { opacity: 0, y: 20 } : false}
-              animate={mounted ? { opacity: 1, y: 0 } : false}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
@@ -70,8 +82,8 @@ export function HeroSection() {
           {/* Right Side: Founder */}
           <div className="flex flex-col items-center lg:items-end text-center lg:text-right order-3">
             <motion.div
-              initial={mounted ? { opacity: 0, x: 50 } : false}
-              animate={mounted ? { opacity: 1, x: 0 } : false}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="relative group cursor-pointer"
             >
