@@ -42,8 +42,8 @@ export function CoursesSection() {
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
-            Featured Courses
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight">
+            Learner To <span className="text-[#00E5D4] cyan-glow">Earner</span>
           </h2>
           <p className="text-[#8E9BA4] text-lg md:text-xl leading-relaxed">
             Carefully curated free courses to introduce students to AI and future skills.
