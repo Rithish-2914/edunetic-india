@@ -59,7 +59,7 @@ export function FutureSchoolSection() {
   }
 
   return (
-    <section className="py-24 bg-[#05080A] relative overflow-hidden">
+    <section className="py-24 bg-[#05080A] relative overflow-hidden grid-background">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white uppercase">Future School Model</h2>
@@ -72,7 +72,7 @@ export function FutureSchoolSection() {
           {pillars.map((pillar, index) => (
             <Card
               key={index}
-              className="bg-[#0B1215] border-gray-800 hover:border-primary/40 transition-all duration-500 rounded-xl overflow-hidden group relative"
+              className="bg-[#0B1215] border-gray-800 hover:border-[#00E5D4]/40 transition-all duration-500 rounded-xl overflow-hidden group relative hover:shadow-[0_0_30px_rgba(0,229,212,0.1)] hover:-translate-y-1"
             >
               <CardContent className="p-8 h-full flex flex-col items-start space-y-6">
                 {/* Background Number */}

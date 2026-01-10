@@ -72,7 +72,7 @@ export function AboutSection() {
           {cards.map((card, index) => (
             <Card
               key={index}
-              className="bg-[#0B1215] border-white/5 hover:border-[#00E5D4]/30 transition-all duration-500 group overflow-hidden relative rounded-2xl flex flex-col h-full"
+              className="bg-[#0B1215] border-white/5 hover:border-[#00E5D4]/30 transition-all duration-500 group overflow-hidden relative rounded-2xl flex flex-col h-full hover:shadow-[0_0_30px_rgba(0,229,212,0.1)] hover:-translate-y-1"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
               

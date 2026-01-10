@@ -27,7 +27,7 @@ export function FeaturedCourseCard({
   onViewPlaylist,
 }: FeaturedCourseCardProps) {
   return (
-    <Card className="group relative bg-[#0B1215] border-[#1A2328] hover:border-[#00E5D4]/40 transition-all duration-500 overflow-hidden rounded-2xl flex flex-col h-full">
+    <Card className="group relative bg-[#0B1215] border-[#1A2328] hover:border-[#00E5D4]/40 transition-all duration-500 overflow-hidden rounded-2xl flex flex-col h-full hover:shadow-[0_0_30px_rgba(0,229,212,0.1)] hover:-translate-y-1">
       <CardContent className="p-0 flex flex-col h-full">
         {/* Top: Thumbnail */}
         <div className="relative aspect-[16/9] overflow-hidden bg-muted">

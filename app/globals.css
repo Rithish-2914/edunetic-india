@@ -122,6 +122,7 @@
       linear-gradient(to bottom, oklch(0.2 0.02 210 / 0.8) 1.5px, transparent 1.5px);
     background-size: 4rem 4rem;
     position: relative;
+    overflow: hidden;
   }
 
   .grid-background::after {
@@ -131,9 +132,25 @@
     background-image: linear-gradient(to right, var(--primary) 1px, transparent 1px),
       linear-gradient(to bottom, var(--primary) 1px, transparent 1px);
     background-size: 4rem 4rem;
-    opacity: 0.15;
-    filter: blur(2px);
+    opacity: 0.1;
+    filter: blur(1.5px);
     pointer-events: none;
+    z-index: 0;
+    animation: grid-pulse 8s ease-in-out infinite;
+  }
+
+  @keyframes grid-pulse {
+    0%, 100% { opacity: 0.08; }
+    50% { opacity: 0.15; }
+  }
+
+  .cyan-glow {
+    text-shadow: 0 0 20px rgba(0, 229, 212, 0.5);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px rgba(0, 229, 212, 0.3);
+    border-color: rgba(0, 229, 212, 0.5);
   }
 
   .neon-text {

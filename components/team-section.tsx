@@ -21,8 +21,8 @@ const leadership = [
 
 export function TeamSection() {
   return (
-    <section id="team" className="py-24 relative bg-[#05080A] scroll-mt-32">
-      <div className="container mx-auto px-4">
+    <section id="team" className="py-24 relative bg-[#05080A] scroll-mt-32 grid-background">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-4xl md:text-5xl font-black mb-4 text-[#00E5D4] uppercase tracking-tight">MEET THE TEAM</h2>
           <p className="text-lg text-muted-foreground/80 font-medium">

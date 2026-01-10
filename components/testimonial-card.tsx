@@ -10,7 +10,7 @@ interface TestimonialCardProps {
 
 export function TestimonialCard({ name, role, rating, text }: TestimonialCardProps) {
   return (
-    <Card className="bg-[#0B1215] border border-border/30 flex-shrink-0 w-[340px] hover:border-primary/40 transition-all duration-300 hover:-translate-y-1">
+    <Card className="bg-[#0B1215] border border-border/30 flex-shrink-0 w-[340px] hover:border-[#00E5D4]/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(0,229,212,0.1)]">
       <CardContent className="p-6 space-y-4">
         {/* Star Rating */}
         <div className="flex gap-1">

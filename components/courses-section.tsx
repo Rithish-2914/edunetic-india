@@ -35,10 +35,7 @@ export function CoursesSection() {
   const [activeVideo, setActiveVideo] = useState<{ id: string; title: string } | null>(null)
 
   return (
-    <section id="courses" className="py-24 md:py-32 relative bg-[#05080A] scroll-mt-24">
-      {/* Background Grid Accent */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1A2328_1px,transparent_1px),linear-gradient(to_bottom,#1A2328_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20" />
-
+    <section id="courses" className="py-24 md:py-32 relative bg-[#05080A] scroll-mt-24 grid-background">
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-20">
