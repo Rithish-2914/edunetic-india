@@ -1,5 +1,8 @@
+"use client"
+
 import { Card, CardContent } from "@/components/ui/card"
 import { Target, Rocket, Lightbulb, Users, GraduationCap, Zap } from "lucide-react"
+import { motion } from "framer-motion"
 
 const leadership = [
   {
@@ -23,16 +26,28 @@ export function TeamSection() {
   return (
     <section id="team" className="py-24 relative bg-[#05080A] scroll-mt-32 grid-background">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-20"
+        >
           <h2 className="text-4xl md:text-5xl font-black mb-4 text-[#00E5D4] uppercase tracking-tight">MEET THE TEAM</h2>
           <p className="text-lg text-muted-foreground/80 font-medium">
             The people shaping the future of AI-powered education
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {/* Founder */}
-          <div className="group">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="group"
+          >
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/5 bg-[#0B1215] transition-all duration-500 hover:border-[#00E5D4]/30 hover:-translate-y-2">
               <img
                 src="/images/founder-ruthvik-mishra.jpg"
@@ -45,10 +60,17 @@ export function TeamSection() {
                 <p className="text-[#00E5D4] text-sm font-black uppercase tracking-wider">Founder & CEO</p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {leadership.map((member, index) => (
-            <div key={index} className="group">
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group"
+            >
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/5 bg-[#0B1215] transition-all duration-500 hover:border-[#00E5D4]/30 hover:-translate-y-2">
                 {member.image ? (
                   <img
@@ -67,7 +89,7 @@ export function TeamSection() {
                   <p className="text-[#00E5D4] text-sm font-black uppercase tracking-wider">{member.title}</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

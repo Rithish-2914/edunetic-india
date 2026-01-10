@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button"
 import { Menu, X, Sun, Moon } from "lucide-react"
 import { useTheme } from "next-themes"
 
+import { motion, AnimatePresence } from "framer-motion"
+
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -67,16 +69,21 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-[#0B1215]/80 backdrop-blur-xl border-b border-[#00E5D4]/10" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled ? "py-3 bg-[#0B1215]/80 backdrop-blur-xl border-b border-[#00E5D4]/10 shadow-lg" : "py-5 bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           <Link href="/" onClick={() => window.location.reload()} className="flex items-center gap-2 group">
-            <img src="/logo.png" alt="Edunetic Logo" className="w-8 h-8 object-contain" />
+            <motion.img 
+              whileHover={{ rotate: 10, scale: 1.1 }}
+              src="/logo.png" 
+              alt="Edunetic Logo" 
+              className="w-10 h-10 object-contain transition-all" 
+            />
             <div className="text-2xl font-bold tracking-tight">
-              <span className="text-[#00E5D4] uppercase">EDUNETIC INDIA</span>
+              <span className="text-[#00E5D4] uppercase group-hover:cyan-glow transition-all duration-300">EDUNETIC INDIA</span>
             </div>
           </Link>
 
@@ -87,9 +94,10 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-foreground/70 hover:text-[#00E5D4] font-bold tracking-tight transition-colors"
+                className="relative text-foreground/70 hover:text-[#00E5D4] font-bold tracking-tight transition-colors group"
               >
                 {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00E5D4] transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
           </div>
@@ -104,12 +112,14 @@ export function Navbar() {
             >
               {mounted && (theme === "dark" ? <Sun size={20} /> : <Moon size={20} />)}
             </Button>
-            <Button
-              asChild
-              className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 transition-all duration-300 font-bold px-6 rounded-full shadow-[0_0_20px_rgba(0,229,212,0.2)]"
-            >
-              <Link href="#contact" onClick={(e) => handleNavClick(e, "#contact")}>Login/Signup</Link>
-            </Button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                asChild
+                className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 transition-all duration-300 font-bold px-6 rounded-full shadow-[0_0_20px_rgba(0,229,212,0.2)]"
+              >
+                <Link href="#contact" onClick={(e) => handleNavClick(e, "#contact")}>Login/Signup</Link>
+              </Button>
+            </motion.div>
             
             {/* Mobile Menu Toggle */}
             <Button
@@ -125,20 +135,27 @@ export function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-[#0B1215] border-b border-[#00E5D4]/10 py-4 px-4 space-y-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}
-              className="block text-foreground/70 hover:text-[#00E5D4] font-bold tracking-tight transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      )}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden absolute top-full left-0 right-0 bg-[#0B1215] border-b border-[#00E5D4]/10 py-4 px-4 space-y-4 overflow-hidden"
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="block text-foreground/70 hover:text-[#00E5D4] font-bold tracking-tight transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   )
 }

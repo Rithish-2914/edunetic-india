@@ -29,7 +29,14 @@ export function HeroSection() {
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 grid-background px-4"
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00E5D4]/5 rounded-full blur-[120px] pointer-events-none" />
+      <motion.div 
+        animate={{ 
+          scale: [1, 1.1, 1],
+          opacity: [0.05, 0.08, 0.05]
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00E5D4] rounded-full blur-[120px] pointer-events-none" 
+      />
 
       <div className="container mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
@@ -43,7 +50,7 @@ export function HeroSection() {
                 <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter uppercase">
                   <span className="text-foreground">Welcome to</span>
                   <br />
-                  <span className="text-[#00E5D4]">EDUNETIC INDIA</span>
+                  <span className="text-[#00E5D4] cyan-glow">EDUNETIC INDIA</span>
                 </h1>
                 <div className="mt-6 space-y-4">
                   <p className="text-lg md:text-xl text-foreground font-bold tracking-tight uppercase border-l-4 border-[#00E5D4] pl-4">
