@@ -144,7 +144,7 @@ export function FutureSchoolSection() {
                     <Input 
                       required 
                       className="bg-black/40 border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-white" 
-                      placeholder="John Doe"
+                      placeholder="Ruthvik Mishra"
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
                     />
@@ -155,7 +155,7 @@ export function FutureSchoolSection() {
                       required 
                       type="email" 
                       className="bg-black/40 border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-white" 
-                      placeholder="john@example.com"
+                      placeholder="ruthvik@gmail.com"
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
                     />

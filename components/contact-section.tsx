@@ -115,7 +115,7 @@ export function ContactSection() {
                       <Input
                         id="email"
                         type="email"
-                        placeholder="ruthvik@example.com"
+                        placeholder="ruthvik@gmail.com"
                         required
                         className="bg-[#05080A] border-white/10 h-12 focus:border-[#00E5D4]/50 focus:ring-[#00E5D4]/20 rounded-xl"
                       />
