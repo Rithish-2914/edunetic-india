@@ -92,7 +92,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-border mt-8 pt-8 text-center">
           <p className="text-muted-foreground text-sm">
-            &copy; {new Date().getFullYear()} Edunetic India. All rights reserved.
+            &copy; 2025 Edunetic India. All rights reserved.
           </p>
         </div>
       </div>
