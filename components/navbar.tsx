@@ -76,7 +76,7 @@ export function Navbar() {
           <Link href="/" onClick={() => window.location.reload()} className="flex items-center gap-2 group">
             <img src="/logo.png" alt="Edunetic Logo" className="w-8 h-8 object-contain" />
             <div className="text-2xl font-bold tracking-tight">
-              <span className="text-[#00E5D4]">Edunetic India</span>
+              <span className="text-[#00E5D4] uppercase">EDUNETIC INDIA</span>
             </div>
           </Link>
 

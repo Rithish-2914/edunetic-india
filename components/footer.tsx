@@ -25,8 +25,8 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="text-2xl font-bold">
-              <span className="text-primary neon-text">Edunetic</span>
-              <span className="text-foreground"> India</span>
+              <span className="text-primary neon-text uppercase">EDUNETIC</span>
+              <span className="text-foreground uppercase"> INDIA</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               The Future of Learning - Transforming education through AI-powered innovation.

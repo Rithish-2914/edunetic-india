@@ -67,22 +67,16 @@ export function LoadingScreen() {
           </div>
 
           <div className="relative flex flex-col items-center z-10">
-            {/* Logo: Fade In + Shake + Zoom Out */}
+            {/* Logo: Fade In + Zoom Out */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.1, rotate: -10 }}
+              initial={{ opacity: 0, scale: 0.1 }}
               animate={{ 
                 opacity: 1, 
                 scale: [0.1, 1.1, 1],
-                rotate: [ -5, 5, -5, 0],
-                x: [0, -5, 5, -3, 3, 0],
-                y: [0, 3, -3, 4, -4, 0]
               }}
               transition={{ 
                 opacity: { duration: 1.2, ease: "easeOut" },
                 scale: { duration: 4, times: [0, 0.6, 1], ease: "easeInOut" },
-                rotate: { duration: 3, ease: "easeOut" },
-                x: { duration: 0.5, repeat: 6, ease: "easeInOut" },
-                y: { duration: 0.45, repeat: 7, ease: "easeInOut" }
               }}
               className="w-48 h-48 md:w-64 md:h-64 mb-12"
             >
@@ -100,8 +94,8 @@ export function LoadingScreen() {
               transition={{ delay: 1.5, duration: 1 }}
               className="relative"
             >
-              <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-[#00E5D4]">
-                Edunetic India
+              <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-[#00E5D4] uppercase">
+                EDUNETIC INDIA
               </h1>
               <motion.div 
                 initial={{ width: 0 }}

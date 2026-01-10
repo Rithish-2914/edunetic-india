@@ -40,10 +40,10 @@ export function HeroSection() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
-                <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter">
+                <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter uppercase">
                   <span className="text-foreground">Welcome to</span>
                   <br />
-                  <span className="text-[#00E5D4]">Edunetic India</span>
+                  <span className="text-[#00E5D4]">EDUNETIC INDIA</span>
                 </h1>
                 <div className="mt-6 space-y-4">
                   <p className="text-lg md:text-xl text-foreground font-bold tracking-tight uppercase border-l-4 border-[#00E5D4] pl-4">
