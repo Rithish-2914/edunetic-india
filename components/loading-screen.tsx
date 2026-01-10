@@ -93,17 +93,15 @@ export function LoadingScreen() {
               />
             </motion.div>
 
-            {/* Company Name: Cyan-White Underlined */}
+            {/* Company Name: Full Cyan */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.5, duration: 1 }}
               className="relative"
             >
-              <h1 className="text-5xl md:text-8xl font-black tracking-tighter flex items-center gap-2">
-                <span className="text-[#00E5D4]">Edu</span>
-                <span className="text-white">netic</span>
-                <span className="text-[#00E5D4]">India</span>
+              <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-[#00E5D4]">
+                Edunetic India
               </h1>
               <motion.div 
                 initial={{ width: 0 }}
