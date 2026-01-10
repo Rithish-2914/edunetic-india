@@ -80,6 +80,20 @@ export function Navbar() {
             </div>
           </Link>
 
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="text-foreground/70 hover:text-[#00E5D4] font-bold tracking-tight transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
           {/* CTA Button & Theme Toggle */}
           <div className="flex items-center gap-4">
             <Button
@@ -96,9 +110,35 @@ export function Navbar() {
             >
               <Link href="#contact" onClick={(e) => handleNavClick(e, "#contact")}>Login/Signup</Link>
             </Button>
+            
+            {/* Mobile Menu Toggle */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="lg:hidden"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X /> : <Menu />}
+            </Button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-[#0B1215] border-b border-[#00E5D4]/10 py-4 px-4 space-y-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
+              className="block text-foreground/70 hover:text-[#00E5D4] font-bold tracking-tight transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      )}
     </nav>
   )
 }

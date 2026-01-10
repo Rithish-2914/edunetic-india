@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
-import { InteractiveRobot } from "./interactive-robot"
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
@@ -33,9 +32,9 @@ export function HeroSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00E5D4]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
           {/* Left Side: Text Content */}
-            <div className="space-y-8 text-center lg:text-left order-2 lg:order-1">
+            <div className="space-y-8 text-center lg:text-left">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -72,15 +71,8 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Center: Robot */}
-          <div className="flex justify-center relative z-[100] order-1 lg:order-2">
-            <div className="w-full max-w-[280px] lg:scale-110">
-              <InteractiveRobot />
-            </div>
-          </div>
-
           {/* Right Side: Founder */}
-          <div className="flex flex-col items-center lg:items-end text-center lg:text-right order-3">
+          <div className="flex flex-col items-center lg:items-end text-center lg:text-right">
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
