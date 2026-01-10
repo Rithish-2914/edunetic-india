@@ -1,8 +1,11 @@
+import { Card, CardContent } from "@/components/ui/card"
+import { Target, Rocket, Lightbulb, Users, GraduationCap, Zap } from "lucide-react"
+
 const leadership = [
   {
-    name: "Kushagra Shahi",
-    title: "Co-Founder",
-    image: "/images/kushagra-shahi.jpg",
+    name: "Arnav Jain",
+    title: "Co-Founder & COO",
+    image: null,
   },
   {
     name: "Anant Agrawal",
@@ -47,11 +50,17 @@ export function TeamSection() {
           {leadership.map((member, index) => (
             <div key={index} className="group">
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/5 bg-[#0B1215] transition-all duration-500 hover:border-[#00E5D4]/30 hover:-translate-y-2">
-                <img
-                  src={member.image || "/placeholder.svg"}
-                  alt={member.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+                {member.image ? (
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#0B1215] to-[#05080A]">
+                    <Users className="w-20 h-20 text-[#00E5D4]/20" />
+                  </div>
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#05080A] via-[#05080A]/20 to-transparent opacity-70" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <h4 className="text-2xl font-bold text-white mb-1">{member.name}</h4>
