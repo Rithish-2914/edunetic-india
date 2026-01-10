@@ -121,6 +121,19 @@
     background-image: linear-gradient(to right, oklch(0.2 0.02 210 / 0.8) 1.5px, transparent 1.5px),
       linear-gradient(to bottom, oklch(0.2 0.02 210 / 0.8) 1.5px, transparent 1.5px);
     background-size: 4rem 4rem;
+    position: relative;
+  }
+
+  .grid-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to right, var(--primary) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--primary) 1px, transparent 1px);
+    background-size: 4rem 4rem;
+    opacity: 0.15;
+    filter: blur(2px);
+    pointer-events: none;
   }
 
   .neon-text {
