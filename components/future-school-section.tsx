@@ -206,10 +206,9 @@ export function FutureSchoolSection() {
                       </SelectTrigger>
                       <SelectContent className="bg-[#0B1215] border-white/10">
                         <SelectItem value="cbse">CBSE</SelectItem>
-                        <SelectItem value="icse">ICSE / ISC</SelectItem>
-                        <SelectItem value="state">State Board</SelectItem>
-                        <SelectItem value="ib">IB / IGCSE</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
+                        <SelectItem value="icse">ICSE</SelectItem>
+                        <SelectItem value="state">STATE BOARD</SelectItem>
+                        <SelectItem value="ib">IB</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
