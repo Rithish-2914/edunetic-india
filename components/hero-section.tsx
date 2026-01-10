@@ -61,13 +61,15 @@ export function HeroSection() {
               transition={{ delay: 0.5 }}
               className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4"
             >
-              <Button
-                asChild
-                size="lg"
-                className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 font-black text-lg px-8 py-6 rounded-full shadow-[0_0_30px_rgba(0,229,212,0.3)]"
-              >
-                <Link href="#courses">Explore Courses</Link>
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 font-black text-lg px-8 py-6 rounded-full shadow-[0_0_30px_rgba(0,229,212,0.3)]"
+                >
+                  <Link href="#courses">Explore Courses</Link>
+                </Button>
+              </motion.div>
             </motion.div>
           </div>
 

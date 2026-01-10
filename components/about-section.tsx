@@ -1,5 +1,8 @@
+"use client"
+
 import { Card, CardContent } from "@/components/ui/card"
 import { Target, Rocket, Lightbulb, Users, GraduationCap, Zap } from "lucide-react"
+import { motion } from "framer-motion"
 
 const cards = [
   {
@@ -57,7 +60,13 @@ export function AboutSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-20"
+        >
           <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tight">
             <span className="text-white">About </span>
             <span className="text-[#00E5D4] cyan-glow">Us</span>
@@ -65,45 +74,58 @@ export function AboutSection() {
           <p className="text-[#94A3B8] text-lg md:text-xl font-medium leading-relaxed">
             Edunetic India is an education innovation company transforming how students learn, think, and grow.
           </p>
-        </div>
+        </motion.div>
 
         {/* Info Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {cards.map((card, index) => (
-            <Card
+            <motion.div
               key={index}
-              className="bg-[#0B1215] border-white/5 hover:border-[#00E5D4]/30 transition-all duration-500 group overflow-hidden relative rounded-2xl flex flex-col h-full hover:shadow-[0_0_30px_rgba(0,229,212,0.1)] hover:-translate-y-1"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-              
-              <CardContent className="p-8 space-y-6 relative z-10 flex flex-col h-full">
-                {/* Icon */}
-                <div className="w-14 h-14 rounded-xl bg-[#00E5D4]/5 flex items-center justify-center group-hover:bg-[#00E5D4]/10 transition-all duration-500 flex-shrink-0">
-                  <card.icon className="w-7 h-7 text-[#00E5D4]" />
-                </div>
+              <Card
+                className="bg-[#0B1215] border-white/5 hover:border-[#00E5D4]/30 transition-all duration-500 group overflow-hidden relative rounded-2xl flex flex-col h-full hover:shadow-[0_0_30px_rgba(0,229,212,0.1)] hover:-translate-y-1"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                
+                <CardContent className="p-8 space-y-6 relative z-10 flex flex-col h-full">
+                  {/* Icon */}
+                  <div className="w-14 h-14 rounded-xl bg-[#00E5D4]/5 flex items-center justify-center group-hover:bg-[#00E5D4]/10 transition-all duration-500 flex-shrink-0">
+                    <card.icon className="w-7 h-7 text-[#00E5D4]" />
+                  </div>
 
-                <div className="space-y-3 flex-grow">
-                  <h3 className="text-2xl font-black text-white group-hover:text-[#00E5D4] transition-colors">
-                    {card.title}
-                  </h3>
-                  <p className="text-[#94A3B8] text-base leading-relaxed font-medium">
-                    {card.description}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+                  <div className="space-y-3 flex-grow">
+                    <h3 className="text-2xl font-black text-white group-hover:text-[#00E5D4] transition-colors">
+                      {card.title}
+                    </h3>
+                    <p className="text-[#94A3B8] text-base leading-relaxed font-medium">
+                      {card.description}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
         
         {/* Bottom Belief */}
-        <div className="mt-20 text-center max-w-2xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-20 text-center max-w-2xl mx-auto"
+        >
           <div className="p-8 rounded-3xl bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5 border border-white/5">
              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Our belief is clear:</h3>
              <p className="text-[#00E5D4] text-xl md:text-2xl font-black italic">
                "Education should prepare students for life, not just exams."
              </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )
