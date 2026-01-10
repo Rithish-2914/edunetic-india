@@ -19,7 +19,7 @@ export function CourseCard({ id, title, creator, duration }: CourseCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: false, amount: 0.2 }}
       transition={{ duration: 0.5 }}
     >
       <Card className="group bg-[#0B1215] border-[#1A2328] hover:border-[#00E5D4]/50 transition-all duration-500 overflow-hidden rounded-2xl hover:translate-y-[-4px] hover:shadow-[0_20px_50px_-12px_rgba(0,229,212,0.2)]">

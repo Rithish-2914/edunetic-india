@@ -83,7 +83,7 @@ export function Navbar() {
               className="w-10 h-10 object-contain transition-all" 
             />
             <div className="text-2xl font-bold tracking-tight">
-              <span className="text-[#00E5D4] uppercase group-hover:cyan-glow transition-all duration-300">EDUNETIC INDIA</span>
+              <span className="text-[#00E5D4] uppercase transition-all duration-300">EDUNETIC INDIA</span>
             </div>
           </Link>
 

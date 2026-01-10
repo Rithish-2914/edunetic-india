@@ -63,13 +63,13 @@ export function AboutSection() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
           <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tight">
             <span className="text-white">About </span>
-            <span className="text-[#00E5D4] cyan-glow">Us</span>
+            <span className="text-[#00E5D4]">Us</span>
           </h2>
           <p className="text-[#94A3B8] text-lg md:text-xl font-medium leading-relaxed">
             Edunetic India is an education innovation company transforming how students learn, think, and grow.
@@ -83,7 +83,7 @@ export function AboutSection() {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Card
@@ -115,7 +115,7 @@ export function AboutSection() {
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.6 }}
           className="mt-20 text-center max-w-2xl mx-auto"
         >
