@@ -65,8 +65,8 @@ export function CoursesSection() {
         <div className="text-center mt-16">
           <Button
             asChild
-            variant="outline"
-            className="border-[#1A2328] text-[#8E9BA4] hover:text-[#00E5D4] hover:border-[#00E5D4]/40 bg-transparent px-10 py-6 text-sm font-bold tracking-wider uppercase transition-all duration-300 rounded-xl"
+            size="lg"
+            className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 font-black text-lg px-12 py-7 rounded-full shadow-[0_0_30px_rgba(0,229,212,0.4)] hover:shadow-[0_0_50px_rgba(0,229,212,0.6)] transition-all duration-300 transform hover:scale-105"
           >
             <Link href="/courses">View All Courses</Link>
           </Button>
