@@ -200,17 +200,25 @@ export function FutureSchoolSection() {
                   </div>
                   <div className="space-y-2">
                     <Label className="text-sm font-bold text-gray-300 uppercase tracking-wider">Board Affiliation</Label>
-                    <Select onValueChange={(v) => setFormData({...formData, board: v})}>
-                      <SelectTrigger className="bg-black/40 border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-white">
-                        <SelectValue placeholder="Select Board" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-[#0B1215] border-white/10">
-                        <SelectItem value="cbse">CBSE</SelectItem>
-                        <SelectItem value="icse">ICSE</SelectItem>
-                        <SelectItem value="state">STATE BOARD</SelectItem>
-                        <SelectItem value="ib">IB</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <div className="relative">
+                      <select 
+                        required
+                        className="w-full bg-black/40 border border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-white px-4 appearance-none cursor-pointer outline-none"
+                        value={formData.board}
+                        onChange={(e) => setFormData({...formData, board: e.target.value})}
+                      >
+                        <option value="" disabled className="bg-[#0B1215]">Select Board</option>
+                        <option value="cbse" className="bg-[#0B1215]">CBSE</option>
+                        <option value="icse" className="bg-[#0B1215]">ICSE</option>
+                        <option value="state" className="bg-[#0B1215]">STATE BOARD</option>
+                        <option value="ib" className="bg-[#0B1215]">IB</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
