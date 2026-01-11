@@ -29,6 +29,7 @@ export const metadata: Metadata = {
 }
 
 import { LoadingScreen } from "@/components/loading-screen"
+import { ThemeProvider } from "@/components/theme-provider"
 
 export default function RootLayout({
   children,
@@ -36,13 +37,20 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.variable} ${inter.variable} font-sans antialiased`}>
-        <LoadingScreen />
-        <GlowingCursor />
-        {children}
-        <AIAssistant />
-        <Analytics />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <LoadingScreen />
+          <GlowingCursor />
+          {children}
+          <AIAssistant />
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   )
