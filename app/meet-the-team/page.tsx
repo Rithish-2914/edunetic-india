@@ -75,19 +75,20 @@ export default function MeetTheTeam() {
                   )}
                   
                   {/* Overlay for Info */}
-                  <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center p-6">
+                  <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center text-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30">
                     <motion.div
                       initial={{ y: 20, opacity: 0 }}
                       whileHover={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 0.4 }}
                       className="space-y-4"
                     >
-                      <h3 className="text-3xl font-black text-white tracking-tight">{member.name}</h3>
+                      <h3 className="text-3xl font-black text-white tracking-tight leading-tight">{member.name}</h3>
                       <div className="flex items-center justify-center gap-2">
                         <div className="h-px w-8 bg-[#00E5D4]" />
                         <p className="text-[#00E5D4] font-black uppercase text-xs tracking-[0.2em]">{member.role}</p>
                         <div className="h-px w-8 bg-[#00E5D4]" />
                       </div>
-                      <p className="text-slate-200 text-sm italic font-medium leading-relaxed max-w-[280px]">
+                      <p className="text-slate-200 text-sm italic font-medium leading-relaxed max-w-[280px] line-clamp-6">
                         "{member.quote}"
                       </p>
                     </motion.div>

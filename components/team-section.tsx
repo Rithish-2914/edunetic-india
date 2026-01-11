@@ -1,8 +1,9 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
-import { Target, Rocket, Lightbulb, Users, GraduationCap, Zap, ShieldCheck } from "lucide-react"
+import { Target, Rocket, Lightbulb, Users, GraduationCap, Zap, ShieldCheck, ChevronRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import Link from "next/link"
 
 const leadership = [
   {
@@ -42,7 +43,7 @@ export function TeamSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mb-16">
           {/* Founder */}
           <TeamMemberCard 
             name="Ruthvik Mishra"
@@ -59,6 +60,20 @@ export function TeamSection() {
             />
           ))}
         </div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          className="flex justify-center"
+        >
+          <Link href="/meet-the-team">
+            <button className="group flex items-center gap-2 bg-[#00E5D4]/10 hover:bg-[#00E5D4] text-[#00E5D4] hover:text-[#05080A] px-8 py-4 rounded-full font-black uppercase tracking-widest transition-all duration-300 border border-[#00E5D4]/20 hover:border-transparent shadow-[0_0_20px_rgba(0,229,212,0.1)] hover:shadow-[0_0_30px_rgba(0,229,212,0.3)]">
+              Meet The Whole Team
+              <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+            </button>
+          </Link>
+        </motion.div>
       </div>
     </section>
   )
