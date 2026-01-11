@@ -28,6 +28,12 @@ export function Navbar() {
 
   // <CHANGE> Added smooth scroll handler with cross-page navigation support
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // If it's an external link or a full page navigation (not a hash link)
+    if (!href.startsWith("#")) {
+      setIsMobileMenuOpen(false)
+      return // Allow default navigation for non-hash links
+    }
+
     e.preventDefault()
     setIsMobileMenuOpen(false)
 
@@ -44,18 +50,7 @@ export function Navbar() {
       })
     } else if (pathname !== "/") {
       // If on another page, navigate to home and then scroll
-      router.push("/")
-      setTimeout(() => {
-        const element = document.getElementById(targetId)
-        if (element) {
-          const navbarHeight = 80
-          const targetPosition = element.offsetTop - navbarHeight
-          window.scrollTo({
-            top: targetPosition,
-            behavior: "smooth",
-          })
-        }
-      }, 100)
+      router.push(`/${href}`)
     }
   }
 
@@ -89,13 +84,13 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="relative text-foreground/70 hover:text-[#00E5D4] font-bold tracking-tight transition-colors group"
+                className="relative text-foreground/70 hover:text-[#00E5D4] text-sm font-bold tracking-tight transition-colors group whitespace-nowrap"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00E5D4] transition-all duration-300 group-hover:w-full" />
