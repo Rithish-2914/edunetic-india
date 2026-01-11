@@ -49,7 +49,7 @@ export function TeamSection() {
             name="Ruthvik Mishra"
             title="Founder & CEO"
             image="/images/founder-ruthvik-mishra.jpg"
-            quote="Entrepreneurship is the ultimate education. Building a product, leading a team, and mastering tech through real-world wins and losses is the only way to build a truly capable version of yourself."
+            quote="Entrepreneurship is the ultimate education. Mastering tech through real-world wins and losses is the only way to build a truly capable version of yourself."
           />
 
           {leadership.map((member, index) => (
