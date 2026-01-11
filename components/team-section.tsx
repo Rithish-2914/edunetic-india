@@ -8,7 +8,7 @@ const leadership = [
   {
     name: "Arnav Jain",
     title: "Co-Founder & COO",
-    image: null,
+    image: "/images/arnav-jain.jpg",
     quote: "Operational excellence is the foundation of innovation. We are building the infrastructure for the next generation of learners."
   },
   {
