@@ -63,22 +63,24 @@ export function Navbar() {
   ]
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "py-3 bg-[#0B1215]/80 backdrop-blur-xl border-b border-[#00E5D4]/10 shadow-lg" : "py-5 bg-transparent"
-      }`}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
-          <Link href="/" onClick={() => window.location.reload()} className="flex items-center gap-2 group">
+    <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+      <nav
+        className={`transition-all duration-500 rounded-full border border-white/10 shadow-2xl overflow-hidden ${
+          isScrolled 
+            ? "bg-[#0B1215]/80 backdrop-blur-xl py-2 px-6 w-full max-w-6xl" 
+            : "bg-[#0B1215]/40 backdrop-blur-md py-3 px-8 w-fit"
+        }`}
+      >
+        <div className="flex items-center gap-12">
+          <Link href="/" onClick={() => window.location.reload()} className="flex items-center gap-2 group shrink-0">
             <motion.img 
               whileHover={{ rotate: 10, scale: 1.1 }}
               src="/logo.png" 
               alt="Edunetic Logo" 
-              className="w-10 h-10 object-contain transition-all" 
+              className="w-8 h-8 object-contain transition-all" 
             />
-            <div className="text-2xl font-bold tracking-tight">
-              <span className="text-[#00E5D4] uppercase transition-all duration-300">EDUNETIC INDIA</span>
+            <div className="text-xl font-bold tracking-tight">
+              <span className="text-[#00E5D4] uppercase transition-all duration-300">EDUNETIC</span>
             </div>
           </Link>
 
@@ -89,7 +91,7 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="relative text-foreground/70 hover:text-[#00E5D4] text-sm font-bold tracking-tight transition-colors group whitespace-nowrap"
+                className="relative text-foreground/70 hover:text-[#00E5D4] text-xs font-black uppercase tracking-widest transition-colors group whitespace-nowrap"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00E5D4] transition-all duration-300 group-hover:w-full" />
@@ -98,19 +100,19 @@ export function Navbar() {
           </div>
 
           {/* CTA Button & Theme Toggle */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="rounded-full w-10 h-10 text-[#94A3B8] hover:text-[#00E5D4] hover:bg-[#00E5D4]/10 transition-colors"
+              className="rounded-full w-8 h-8 text-[#94A3B8] hover:text-[#00E5D4] hover:bg-[#00E5D4]/10 transition-colors"
             >
-              {mounted && (theme === "dark" ? <Sun size={20} /> : <Moon size={20} />)}
+              {mounted && (theme === "dark" ? <Sun size={16} /> : <Moon size={16} />)}
             </Button>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 asChild
-                className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 transition-all duration-300 font-bold px-6 rounded-full shadow-[0_0_20px_rgba(0,229,212,0.2)]"
+                className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 transition-all duration-300 font-black text-[10px] uppercase tracking-wider px-5 py-0 h-8 rounded-full shadow-[0_0_15px_rgba(0,229,212,0.2)]"
               >
                 <Link href="#contact" onClick={(e) => handleNavClick(e, "#contact")}>Login/Signup</Link>
               </Button>
@@ -120,37 +122,37 @@ export function Navbar() {
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden"
+              className="lg:hidden w-8 h-8"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X /> : <Menu />}
+              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </Button>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden absolute top-full left-0 right-0 bg-[#0B1215] border-b border-[#00E5D4]/10 py-4 px-4 space-y-4 overflow-hidden"
-          >
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="block text-foreground/70 hover:text-[#00E5D4] font-bold tracking-tight transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div 
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden mt-4 space-y-4 pb-2"
+            >
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="block text-foreground/70 hover:text-[#00E5D4] font-bold tracking-tight transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+    </div>
   )
 }
