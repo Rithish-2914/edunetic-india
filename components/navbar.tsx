@@ -61,6 +61,7 @@ export function Navbar() {
 
   const navLinks = [
     { href: "#home", label: "Home" },
+    { href: "/meet-the-team", label: "Meet the Team" },
     { href: "#courses", label: "Courses" },
     { href: "#about", label: "About Us" },
     { href: "#team", label: "Team" },
