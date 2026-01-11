@@ -10,25 +10,25 @@ const teamMembers = [
     name: "Ruthvik Mishra",
     role: "Founder & CEO",
     image: "/images/founder-ruthvik-mishra.jpg",
-    quote: "Education should prepare students for life, not just exams."
+    quote: "Entrepreneurship is the ultimate education. Building a product, leading a team, and mastering tech through real-world wins and losses is the only way to build a truly capable version of yourself."
   },
   {
     name: "Arnav Jain",
     role: "Co-Founder & COO",
     image: null,
-    quote: "Building the operational backbone for India's AI future."
+    quote: "Operational excellence is the foundation of innovation. We are building the infrastructure for the next generation of learners."
   },
   {
     name: "Anant Agrawal",
     role: "CFO",
     image: "/images/anant-agrawal.jpg",
-    quote: "Ensuring sustainable growth for accessible quality education."
+    quote: "Financial literacy combined with AI is the ultimate superpower for the modern economy."
   },
   {
     name: "Vedant Tiwari",
     role: "CTO",
     image: "/images/vedant-tiwari.jpg",
-    quote: "Scaling AI innovation to every classroom in the country."
+    quote: "Technology is most powerful when it's invisible. Our goal is to make AI a natural extension of the learning process."
   }
 ]
 
@@ -75,16 +75,19 @@ export default function MeetTheTeam() {
                   )}
                   
                   {/* Overlay for Info */}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center p-6">
+                  <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center text-center p-6">
                     <motion.div
                       initial={{ y: 20, opacity: 0 }}
                       whileHover={{ y: 0, opacity: 1 }}
                       className="space-y-4"
                     >
-                      <h3 className="text-2xl font-bold text-white">{member.name}</h3>
-                      <p className="text-[#00E5D4] font-black uppercase text-sm tracking-widest">{member.role}</p>
-                      <div className="w-8 h-1 bg-[#00E5D4] mx-auto rounded-full" />
-                      <p className="text-slate-200 text-sm italic font-medium leading-relaxed">
+                      <h3 className="text-3xl font-black text-white tracking-tight">{member.name}</h3>
+                      <div className="flex items-center justify-center gap-2">
+                        <div className="h-px w-8 bg-[#00E5D4]" />
+                        <p className="text-[#00E5D4] font-black uppercase text-xs tracking-[0.2em]">{member.role}</p>
+                        <div className="h-px w-8 bg-[#00E5D4]" />
+                      </div>
+                      <p className="text-slate-200 text-sm italic font-medium leading-relaxed max-w-[280px]">
                         "{member.quote}"
                       </p>
                     </motion.div>

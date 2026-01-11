@@ -73,13 +73,13 @@ function TeamMemberCard({ name, title, image, quote, delay = 0 }: any) {
       transition={{ duration: 0.5, delay }}
       className="group relative"
     >
-      <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/5 bg-[#0B1215] transition-all duration-500">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/5 bg-[#0B1215] transition-all duration-500 hover:border-[#00E5D4]/30 hover:-translate-y-2">
         {/* Main Image */}
         {image ? (
           <img
             src={image}
             alt={name}
-            className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+            className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#0B1215] to-[#05080A]">
@@ -88,34 +88,13 @@ function TeamMemberCard({ name, title, image, quote, delay = 0 }: any) {
         )}
         
         {/* Default Overlay Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#05080A] via-[#05080A]/40 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-0" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#05080A] via-[#05080A]/40 to-transparent opacity-80" />
 
-        {/* Hover Content Overlay */}
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center items-center p-6 text-center">
-          <motion.div 
-            initial={{ y: 20, opacity: 0 }}
-            whileHover={{ y: 0, opacity: 1 }}
-            className="space-y-3"
-          >
-            <h3 className="text-3xl font-black text-white tracking-tight">{name}</h3>
-            <div className="flex items-center justify-center gap-2">
-              <div className="h-px w-8 bg-[#00E5D4]" />
-              <p className="text-[#00E5D4] text-sm font-black uppercase tracking-[0.2em]">{title}</p>
-              <div className="h-px w-8 bg-[#00E5D4]" />
-            </div>
-            {quote && (
-              <p className="text-sm text-gray-300 font-medium italic leading-relaxed mt-4 max-w-[200px]">
-                "{quote}"
-              </p>
-            )}
-          </motion.div>
-        </div>
-
-        {/* Initial Info (hidden by default, only visible if you want a subtle hint, but user asked to show ONLY on hover) */}
-        {/* <div className="absolute bottom-0 left-0 right-0 p-6 transition-opacity duration-300 group-hover:opacity-0">
+        {/* Info (Visible by default on home page) */}
+        <div className="absolute bottom-0 left-0 right-0 p-6">
           <h4 className="text-2xl font-bold text-white mb-1">{name}</h4>
           <p className="text-[#00E5D4] text-sm font-black uppercase tracking-wider">{title}</p>
-        </div> */}
+        </div>
       </div>
     </motion.div>
   )
