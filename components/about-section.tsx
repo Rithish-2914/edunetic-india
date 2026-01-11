@@ -51,7 +51,7 @@ const cards = [
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-24 relative bg-[#05080A] scroll-mt-32 overflow-hidden grid-background">
+    <section id="about" className="py-24 relative bg-background scroll-mt-32 overflow-hidden grid-background">
       <div className="absolute inset-0 opacity-90 pointer-events-none" />
       
       {/* Decorative blobs */}

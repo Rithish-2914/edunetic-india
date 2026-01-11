@@ -159,7 +159,7 @@ export function TestimonialsSection() {
   }
 
   return (
-    <section className="py-20 relative overflow-hidden bg-[#05080A] grid-background">
+    <section className="py-20 relative overflow-hidden bg-background grid-background">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">

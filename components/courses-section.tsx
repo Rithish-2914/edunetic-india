@@ -35,7 +35,7 @@ export function CoursesSection() {
   const [activeVideo, setActiveVideo] = useState<{ id: string; title: string } | null>(null)
 
   return (
-    <section id="courses" className="py-24 md:py-32 relative bg-[#05080A] scroll-mt-24 grid-background">
+    <section id="courses" className="py-24 md:py-32 relative bg-background scroll-mt-24 grid-background">
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-20">

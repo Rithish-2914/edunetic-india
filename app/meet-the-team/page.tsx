@@ -34,7 +34,7 @@ const teamMembers = [
 
 export default function MeetTheTeam() {
   return (
-    <div className="min-h-screen bg-[#05080A]">
+    <div className="min-h-screen bg-background">
       <Navbar />
       <main className="pt-32 pb-20 px-4">
         <div className="container mx-auto">

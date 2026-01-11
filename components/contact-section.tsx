@@ -29,7 +29,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-[#05080A] scroll-mt-32 grid-background">
+    <section id="contact" className="py-24 relative overflow-hidden bg-background scroll-mt-32 grid-background">
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">

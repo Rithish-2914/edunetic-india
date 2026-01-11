@@ -49,7 +49,7 @@ const eduneticPoints = [
 
 export function ComparisonSection() {
   return (
-    <section className="py-24 relative bg-[#05080A]">
+    <section className="py-24 relative bg-background">
       <div className="absolute inset-0 grid-background opacity-30 pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">

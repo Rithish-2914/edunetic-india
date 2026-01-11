@@ -162,7 +162,7 @@ export function AIAssistant() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: "100%", opacity: 0 }}
               transition={{ type: "spring", damping: 28, stiffness: 220 }}
-              className="fixed top-0 right-0 h-full w-full max-w-md bg-[#05080A]/80 backdrop-blur-3xl border-l border-white/10 z-[120] shadow-2xl flex flex-col"
+              className="fixed top-0 right-0 h-full w-full max-w-md bg-background/80 backdrop-blur-3xl border-l border-white/10 z-[120] shadow-2xl flex flex-col"
             >
               <div className="p-8 border-b border-white/5 flex items-center justify-between">
                 <div className="flex items-center gap-4">

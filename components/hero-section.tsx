@@ -14,7 +14,7 @@ export function HeroSection() {
 
   if (!mounted) {
     return (
-      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 grid-background px-4 bg-[#05080A]">
+      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 grid-background px-4 bg-background">
         <div className="container mx-auto">
           <div className="text-left max-w-xl">
             <h1 className="text-5xl md:text-7xl font-black leading-tight text-white opacity-0">Edunetic India</h1>

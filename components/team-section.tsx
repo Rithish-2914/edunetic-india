@@ -28,7 +28,7 @@ const leadership = [
 
 export function TeamSection() {
   return (
-    <section id="team" className="py-24 relative bg-[#05080A] scroll-mt-32 grid-background">
+    <section id="team" className="py-24 relative bg-background scroll-mt-32 grid-background">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
