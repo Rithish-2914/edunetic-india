@@ -111,11 +111,11 @@ function TeamMemberCard({ name, title, image, quote, delay = 0 }: any) {
           </motion.div>
         </div>
 
-        {/* Initial Info (only visible when not hovered) */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 transition-opacity duration-300 group-hover:opacity-0">
+        {/* Initial Info (hidden by default, only visible if you want a subtle hint, but user asked to show ONLY on hover) */}
+        {/* <div className="absolute bottom-0 left-0 right-0 p-6 transition-opacity duration-300 group-hover:opacity-0">
           <h4 className="text-2xl font-bold text-white mb-1">{name}</h4>
           <p className="text-[#00E5D4] text-sm font-black uppercase tracking-wider">{title}</p>
-        </div>
+        </div> */}
       </div>
     </motion.div>
   )
