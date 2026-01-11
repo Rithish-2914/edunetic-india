@@ -80,7 +80,7 @@ export function Navbar() {
               className="w-8 h-8 object-contain transition-all" 
             />
             <div className="text-xl font-bold tracking-tight">
-              <span className="text-[#00E5D4] uppercase transition-all duration-300">EDUNETIC</span>
+              <span className="text-[#00E5D4] uppercase transition-all duration-300">EDUNETIC INDIA</span>
             </div>
           </Link>
 
