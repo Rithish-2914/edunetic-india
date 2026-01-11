@@ -37,13 +37,13 @@ export function TeamSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-black mb-4 text-[#00E5D4] uppercase tracking-tight">MEET THE TEAM</h2>
+          <h2 className="text-4xl md:text-5xl font-black mb-4 text-[#00E5D4] uppercase tracking-tight">MEET THE VISIONARIES</h2>
           <p className="text-lg text-muted-foreground/80 font-medium">
             The people shaping the future of AI-powered education
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
           {/* Founder */}
           <TeamMemberCard 
             name="Ruthvik Mishra"
@@ -52,13 +52,13 @@ export function TeamSection() {
             quote="Entrepreneurship is the ultimate education. Mastering tech through real-world wins and losses is the only way to build a truly capable version of yourself."
           />
 
-          {leadership.map((member, index) => (
-            <TeamMemberCard 
-              key={index}
-              {...member}
-              delay={index * 0.1}
-            />
-          ))}
+          <TeamMemberCard 
+            name="Arnav Jain"
+            title="Co-Founder & COO"
+            image="/images/arnav-jain.jpg"
+            quote="Operational excellence is the foundation of innovation. We are building the infrastructure for the next generation of learners."
+            delay={0.1}
+          />
         </div>
 
         <motion.div 
