@@ -166,11 +166,11 @@ export function AIAssistant() {
             >
               <div className="p-8 border-b border-white/5 flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#0B1215] border border-white/10 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-background border border-white/10 flex items-center justify-center">
                     <div className="w-4 h-1 bg-[#00E5D4] rounded-full shadow-[0_0_10px_#00E5D4]" />
                   </div>
                   <div>
-                    <h3 className="text-white font-bold text-lg tracking-tight">AI Assistant</h3>
+                    <h3 className="text-foreground font-bold text-lg tracking-tight">AI Assistant</h3>
                     <p className="text-[#00E5D4] text-[10px] uppercase tracking-widest font-bold opacity-80">
                       Neural Link Active
                     </p>
@@ -178,7 +178,7 @@ export function AIAssistant() {
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-2 rounded-lg hover:bg-white/5 text-white/40 hover:text-white transition-colors"
+                  className="p-2 rounded-lg hover:bg-white/5 text-foreground/40 hover:text-foreground transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -212,7 +212,7 @@ export function AIAssistant() {
                     placeholder="Ask anything..."
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    className="w-full bg-[#0B1215] border border-white/10 rounded-xl py-4 px-6 pr-16 text-sm text-white focus:outline-none focus:border-[#00E5D4]/40 transition-colors shadow-inner"
+                    className="w-full bg-background border border-white/10 rounded-xl py-4 px-6 pr-16 text-sm text-foreground focus:outline-none focus:border-[#00E5D4]/40 transition-colors shadow-inner"
                   />
                   <button
                     type="submit"

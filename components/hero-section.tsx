@@ -92,10 +92,10 @@ export function HeroSection() {
                   alt="Ruthvik Mishra" 
                   className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#05080A] via-transparent to-transparent opacity-40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-40" />
               </div>
               <div className="mt-8 space-y-2 text-center lg:text-right">
-                <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight">Ruthvik Mishra</h3>
+                <h3 className="text-3xl md:text-4xl font-black text-foreground tracking-tight">Ruthvik Mishra</h3>
                 <p className="text-[#00E5D4] font-bold text-lg md:text-xl uppercase tracking-wider">Founder & CEO</p>
               </div>
             </motion.div>

@@ -28,9 +28,9 @@ function CoursePlaylistClient({ id }: { id: string }) {
 
   if (!course) {
     return (
-      <div className="min-h-screen bg-[#05080A] flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center space-y-4">
-          <h1 className="text-3xl font-bold text-white">Playlist Not Found</h1>
+          <h1 className="text-3xl font-bold text-foreground">Playlist Not Found</h1>
           <Button asChild className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90">
             <Link href="/courses">
               <ArrowLeft size={16} className="mr-2" />
@@ -43,12 +43,12 @@ function CoursePlaylistClient({ id }: { id: string }) {
   }
 
   return (
-    <div className="min-h-screen bg-[#05080A] text-white selection:bg-[#00E5D4]/30 flex flex-col">
+    <div className="min-h-screen bg-background text-foreground selection:bg-[#00E5D4]/30 flex flex-col">
       <Navbar />
 
       <main className="flex-1 pt-20 flex flex-col overflow-hidden">
         {/* Course Header Bar */}
-        <div className="border-b border-[#1A2328] bg-[#0B1215] flex-shrink-0">
+        <div className="border-b border-[#1A2328] bg-background flex-shrink-0">
           <div className="container mx-auto px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Button
@@ -64,7 +64,7 @@ function CoursePlaylistClient({ id }: { id: string }) {
               </Button>
               <div className="h-6 w-px bg-[#1A2328]" />
               <div className="hidden sm:block">
-                <h1 className="text-sm font-bold text-white uppercase tracking-widest">{course.title}</h1>
+                <h1 className="text-sm font-bold text-foreground uppercase tracking-widest">{course.title}</h1>
               </div>
             </div>
 
@@ -87,7 +87,7 @@ function CoursePlaylistClient({ id }: { id: string }) {
           </div>
 
           {/* RIGHT: Main Video Viewport */}
-          <div className="flex-1 bg-[#05080A] flex flex-col overflow-hidden">
+          <div className="flex-1 bg-background flex flex-col overflow-hidden">
             <div className="flex-1 flex items-center justify-center p-4 md:p-8 lg:p-12">
               <div className="w-full max-w-5xl shadow-[0_0_100px_-20px_rgba(0,229,212,0.15)] rounded-2xl overflow-hidden border border-[#1A2328]">
                 <VideoPlayer
@@ -98,14 +98,14 @@ function CoursePlaylistClient({ id }: { id: string }) {
             </div>
 
             {/* Current Video Info Overlay */}
-            <div className="p-6 bg-[#0B1215] border-t border-[#1A2328]">
+            <div className="p-6 bg-background border-t border-[#1A2328]">
               <div className="max-w-5xl mx-auto">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-[10px] font-bold uppercase tracking-widest text-[#00E5D4] bg-[#00E5D4]/10 px-2 py-0.5 rounded">
                     Playing Now
                   </span>
                 </div>
-                <h2 className="text-xl md:text-2xl font-bold text-white mb-1">
+                <h2 className="text-xl md:text-2xl font-bold text-foreground mb-1">
                   {course.videos.find((v) => v.youtubeId === activeVideoId)?.title}
                 </h2>
                 <p className="text-[#8E9BA4] text-sm">
@@ -118,7 +118,7 @@ function CoursePlaylistClient({ id }: { id: string }) {
       </main>
 
       {/* Simplified footer for workspace view */}
-      <footer className="py-4 px-6 border-t border-[#1A2328] bg-[#05080A] text-center text-[10px] text-[#2A3338] uppercase tracking-[0.2em] flex-shrink-0">
+      <footer className="py-4 px-6 border-t border-[#1A2328] bg-background text-center text-[10px] text-[#2A3338] uppercase tracking-[0.2em] flex-shrink-0">
         Edunetic India © {new Date().getFullYear()} • Professional Playlist System
       </footer>
     </div>

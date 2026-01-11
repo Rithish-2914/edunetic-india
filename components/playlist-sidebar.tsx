@@ -12,9 +12,9 @@ interface PlaylistSidebarProps {
 
 export function PlaylistSidebar({ videos, activeVideoId, onVideoSelect }: PlaylistSidebarProps) {
   return (
-    <div className="h-full bg-[#0B1215] border-r border-[#1A2328] overflow-hidden flex flex-col">
+    <div className="h-full bg-background border-r border-[#1A2328] overflow-hidden flex flex-col">
       <div className="p-6 border-b border-[#1A2328]">
-        <h2 className="text-xl font-bold text-white mb-2">Course Content</h2>
+        <h2 className="text-xl font-bold text-foreground mb-2">Course Content</h2>
         <div className="flex items-center gap-2">
           <span className="text-[#8E9BA4] text-sm font-medium">{videos.length} Days of Learning</span>
         </div>
@@ -48,7 +48,7 @@ export function PlaylistSidebar({ videos, activeVideoId, onVideoSelect }: Playli
                   <h3
                     className={cn(
                       "text-sm font-semibold mb-1 line-clamp-2 transition-colors",
-                      isActive ? "text-[#00E5D4]" : "text-white group-hover:text-[#00E5D4]",
+                      isActive ? "text-[#00E5D4]" : "text-foreground group-hover:text-[#00E5D4]",
                     )}
                   >
                     {video.title}

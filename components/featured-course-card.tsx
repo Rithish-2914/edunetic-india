@@ -49,7 +49,7 @@ export function FeaturedCourseCard({
         <div className="p-6 md:p-8 flex flex-col flex-grow">
           <div className="space-y-4 mb-6">
             <div className="space-y-1">
-              <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#00E5D4] transition-colors duration-300 leading-tight tracking-tight">
+              <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-[#00E5D4] transition-colors duration-300 leading-tight tracking-tight">
                 {title}
               </h3>
               <p className="text-[#8E9BA4] text-sm leading-relaxed line-clamp-1">{description}</p>

@@ -56,7 +56,7 @@ export function ComparisonSection() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tight">
-            <span className="text-white">Education. </span>
+            <span className="text-foreground">Education. </span>
             <span className="text-[#00E5D4] cyan-glow">Then vs Now</span>
           </h2>
           <p className="text-[#94A3B8] text-lg md:text-xl font-medium leading-relaxed">
@@ -67,9 +67,9 @@ export function ComparisonSection() {
         {/* Comparison Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* Traditional Education Card */}
-          <Card className="bg-[#0B1215]/50 border-white/5 rounded-2xl overflow-hidden backdrop-blur-sm opacity-70">
+          <Card className="bg-background/50 border-white/5 rounded-2xl overflow-hidden backdrop-blur-sm opacity-70">
             <CardContent className="p-8 space-y-8">
-              <h3 className="text-2xl font-black text-white/60 text-center">Traditional Education</h3>
+              <h3 className="text-2xl font-black text-foreground/60 text-center">Traditional Education</h3>
 
               <ul className="space-y-5">
                 {traditionalPoints.map((point, index) => (
@@ -85,7 +85,7 @@ export function ComparisonSection() {
           </Card>
 
           {/* Edunetic Way Card */}
-          <Card className="bg-[#0B1215] border-[#00E5D4]/30 rounded-2xl overflow-hidden relative group hover:border-[#00E5D4]/50 transition-all duration-500 lg:scale-105">
+          <Card className="bg-background border-[#00E5D4]/30 rounded-2xl overflow-hidden relative group hover:border-[#00E5D4]/50 transition-all duration-500 lg:scale-105">
             {/* Glow effect */}
             <div className="absolute inset-0 bg-[#00E5D4]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#00E5D4]/10 rounded-full blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
@@ -99,7 +99,7 @@ export function ComparisonSection() {
                     <div className="w-10 h-10 rounded-lg bg-[#00E5D4]/10 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-[#00E5D4]/20 transition-all duration-300">
                       <point.icon className="w-5 h-5 text-[#00E5D4]" />
                     </div>
-                    <span className="text-white text-base leading-relaxed font-medium pt-2">{point.text}</span>
+                    <span className="text-foreground text-base leading-relaxed font-medium pt-2">{point.text}</span>
                   </li>
                 ))}
               </ul>

@@ -110,7 +110,7 @@ export function LoadingScreen() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 3.5, duration: 1.2 }}
-              className="mt-12 text-white font-black uppercase tracking-[0.5em] text-sm md:text-xl text-center opacity-90 italic"
+              className="mt-12 text-foreground font-black uppercase tracking-[0.5em] text-sm md:text-xl text-center opacity-90 italic"
             >
               Desh Ka Vikaas Sabke Sath
             </motion.p>

@@ -29,7 +29,7 @@ export function VideoPlayer({ videoId, title, onClose }: VideoPlayerProps) {
       <div className="relative w-full max-w-4xl bg-background rounded-2xl overflow-hidden border border-[#1A2328] shadow-[0_0_50px_-12px_rgba(0,229,212,0.2)]">
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-[#00E5D4] hover:text-[#05080A] transition-all"
+          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-foreground hover:bg-[#00E5D4] hover:text-[#05080A] transition-all"
         >
           <X size={20} />
         </button>

@@ -68,7 +68,7 @@ export function AboutSection() {
           className="text-center max-w-3xl mx-auto mb-20"
         >
           <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tight">
-            <span className="text-white">About </span>
+            <span className="text-foreground">About </span>
             <span className="text-[#00E5D4]">Us</span>
           </h2>
           <p className="text-[#94A3B8] text-lg md:text-xl font-medium leading-relaxed">
@@ -87,7 +87,7 @@ export function AboutSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Card
-                className="bg-[#0B1215] border-white/5 hover:border-[#00E5D4]/30 transition-all duration-500 group overflow-hidden relative rounded-2xl flex flex-col h-full hover:shadow-[0_0_30px_rgba(0,229,212,0.1)] hover:-translate-y-1"
+                className="bg-card border-white/5 hover:border-[#00E5D4]/30 transition-all duration-500 group overflow-hidden relative rounded-2xl flex flex-col h-full hover:shadow-[0_0_30px_rgba(0,229,212,0.1)] hover:-translate-y-1"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 
@@ -98,7 +98,7 @@ export function AboutSection() {
                   </div>
 
                   <div className="space-y-3 flex-grow">
-                    <h3 className="text-2xl font-black text-white group-hover:text-[#00E5D4] transition-colors">
+                    <h3 className="text-2xl font-black text-foreground group-hover:text-[#00E5D4] transition-colors">
                       {card.title}
                     </h3>
                     <p className="text-[#94A3B8] text-base leading-relaxed font-medium">
@@ -120,7 +120,7 @@ export function AboutSection() {
           className="mt-20 text-center max-w-2xl mx-auto"
         >
           <div className="p-8 rounded-3xl bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5 border border-white/5">
-             <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Our belief is clear:</h3>
+             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">Our belief is clear:</h3>
              <p className="text-[#00E5D4] text-xl md:text-2xl font-black italic">
                "Education should prepare students for life, not just exams."
              </p>

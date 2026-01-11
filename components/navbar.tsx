@@ -99,16 +99,8 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* CTA Button & Theme Toggle */}
+          {/* CTA Button */}
           <div className="flex items-center gap-3">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="rounded-full w-8 h-8 text-[#94A3B8] hover:text-[#00E5D4] hover:bg-[#00E5D4]/10 transition-colors"
-            >
-              {mounted && (theme === "dark" ? <Sun size={16} /> : <Moon size={16} />)}
-            </Button>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 asChild

@@ -62,7 +62,7 @@ export function FutureSchoolSection() {
     <section className="py-24 bg-background relative overflow-hidden grid-background">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white uppercase">Future School Model</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-foreground uppercase">Future School Model</h2>
           <p className="text-lg text-gray-400 font-medium max-w-2xl mx-auto">
             A structured AI-powered education framework for next-generation institutions
           </p>
@@ -72,7 +72,7 @@ export function FutureSchoolSection() {
           {pillars.map((pillar, index) => (
             <Card
               key={index}
-              className="bg-[#0B1215] border-gray-800 hover:border-[#00E5D4]/40 transition-all duration-500 rounded-xl overflow-hidden group relative hover:shadow-[0_0_30px_rgba(0,229,212,0.1)] hover:-translate-y-1"
+              className="bg-card border-gray-800 hover:border-[#00E5D4]/40 transition-all duration-500 rounded-xl overflow-hidden group relative hover:shadow-[0_0_30px_rgba(0,229,212,0.1)] hover:-translate-y-1"
             >
               <CardContent className="p-8 h-full flex flex-col items-start space-y-6">
                 {/* Background Number */}
@@ -92,7 +92,7 @@ export function FutureSchoolSection() {
 
                 {/* Content */}
                 <div className="space-y-4 pt-4">
-                  <h3 className="text-xl font-bold text-white tracking-tight leading-snug">{pillar.title}</h3>
+                  <h3 className="text-xl font-bold text-foreground tracking-tight leading-snug">{pillar.title}</h3>
                   <p className="text-sm text-gray-400 leading-relaxed font-medium">{pillar.description}</p>
                 </div>
               </CardContent>
@@ -123,7 +123,7 @@ export function FutureSchoolSection() {
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              className="bg-[#0B1215] border border-[#00E5D4]/20 p-8 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto custom-scrollbar relative"
+              className="bg-card border border-[#00E5D4]/20 p-8 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto custom-scrollbar relative"
             >
               <button
                 onClick={() => setShowForm(false)}
@@ -133,7 +133,7 @@ export function FutureSchoolSection() {
               </button>
 
               <div className="mb-8">
-                <h2 className="text-3xl font-black text-white mb-2 uppercase tracking-tight">Partner with <span className="text-[#00E5D4]">EDUNETIC</span></h2>
+                <h2 className="text-3xl font-black text-foreground mb-2 uppercase tracking-tight">Partner with <span className="text-[#00E5D4]">EDUNETIC</span></h2>
                 <p className="text-gray-400 font-medium">Please fill in the details below to start our journey together.</p>
               </div>
 
@@ -143,7 +143,7 @@ export function FutureSchoolSection() {
                     <Label className="text-sm font-bold text-gray-300 uppercase tracking-wider">Full Name</Label>
                     <Input 
                       required 
-                      className="bg-black/40 border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-white" 
+                      className="bg-background border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-foreground" 
                       placeholder="Ruthvik Mishra"
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
@@ -154,7 +154,7 @@ export function FutureSchoolSection() {
                     <Input 
                       required 
                       type="email" 
-                      className="bg-black/40 border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-white" 
+                      className="bg-background border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-foreground" 
                       placeholder="ruthvik@gmail.com"
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
@@ -168,7 +168,7 @@ export function FutureSchoolSection() {
                     <Input 
                       required 
                       type="tel" 
-                      className="bg-black/40 border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-white" 
+                      className="bg-background border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-foreground" 
                       placeholder="+91 00000 00000"
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
@@ -178,7 +178,7 @@ export function FutureSchoolSection() {
                     <Label className="text-sm font-bold text-gray-300 uppercase tracking-wider">School / Organization Name</Label>
                     <Input 
                       required 
-                      className="bg-black/40 border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-white" 
+                      className="bg-background border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-foreground" 
                       placeholder="Enter name"
                       value={formData.orgName}
                       onChange={(e) => setFormData({...formData, orgName: e.target.value})}
@@ -192,7 +192,7 @@ export function FutureSchoolSection() {
                     <Input 
                       required 
                       type="number" 
-                      className="bg-black/40 border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-white" 
+                      className="bg-background border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-foreground" 
                       placeholder="e.g. 500"
                       value={formData.studentCount}
                       onChange={(e) => setFormData({...formData, studentCount: e.target.value})}
@@ -203,15 +203,15 @@ export function FutureSchoolSection() {
                     <div className="relative">
                       <select 
                         required
-                        className="w-full bg-black/40 border border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-white px-4 appearance-none cursor-pointer outline-none"
+                        className="w-full bg-background border border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-foreground px-4 appearance-none cursor-pointer outline-none"
                         value={formData.board}
                         onChange={(e) => setFormData({...formData, board: e.target.value})}
                       >
-                        <option value="" disabled className="bg-[#0B1215]">Select Board</option>
-                        <option value="cbse" className="bg-[#0B1215]">CBSE</option>
-                        <option value="icse" className="bg-[#0B1215]">ICSE</option>
-                        <option value="state" className="bg-[#0B1215]">STATE BOARD</option>
-                        <option value="ib" className="bg-[#0B1215]">IB</option>
+                        <option value="" disabled className="bg-background">Select Board</option>
+                        <option value="cbse" className="bg-background">CBSE</option>
+                        <option value="icse" className="bg-background">ICSE</option>
+                        <option value="state" className="bg-background">STATE BOARD</option>
+                        <option value="ib" className="bg-background">IB</option>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -226,7 +226,7 @@ export function FutureSchoolSection() {
                   <Label className="text-sm font-bold text-gray-300 uppercase tracking-wider">School Location (City, State)</Label>
                   <Input 
                     required 
-                    className="bg-black/40 border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-white" 
+                    className="bg-background border-white/10 focus:border-[#00E5D4]/50 h-12 rounded-xl text-foreground" 
                     placeholder="Enter location"
                     value={formData.location}
                     onChange={(e) => setFormData({...formData, location: e.target.value})}
@@ -243,11 +243,11 @@ export function FutureSchoolSection() {
                     >
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="single" id="r1" className="border-[#00E5D4] text-[#00E5D4]" />
-                        <Label htmlFor="r1" className="text-white cursor-pointer">Single</Label>
+                        <Label htmlFor="r1" className="text-foreground cursor-pointer">Single</Label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="multiple" id="r2" className="border-[#00E5D4] text-[#00E5D4]" />
-                        <Label htmlFor="r2" className="text-white cursor-pointer">Multiple</Label>
+                        <Label htmlFor="r2" className="text-foreground cursor-pointer">Multiple</Label>
                       </div>
                     </RadioGroup>
                   </div>
@@ -260,11 +260,11 @@ export function FutureSchoolSection() {
                     >
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="single" id="r3" className="border-[#00E5D4] text-[#00E5D4]" />
-                        <Label htmlFor="r3" className="text-white cursor-pointer">Single Branch</Label>
+                        <Label htmlFor="r3" className="text-foreground cursor-pointer">Single Branch</Label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="franchise" id="r4" className="border-[#00E5D4] text-[#00E5D4]" />
-                        <Label htmlFor="r4" className="text-white cursor-pointer">Franchise</Label>
+                        <Label htmlFor="r4" className="text-foreground cursor-pointer">Franchise</Label>
                       </div>
                     </RadioGroup>
                   </div>

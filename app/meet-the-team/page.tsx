@@ -43,8 +43,8 @@ export default function MeetTheTeam() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center max-w-3xl mx-auto mb-20"
           >
-            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight text-[#00E5D4] uppercase">
-              Meet The Team
+            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight text-foreground uppercase">
+              Meet The <span className="text-[#00E5D4]">Team</span>
             </h1>
             <p className="text-[#94A3B8] text-xl font-medium">
               The visionaries and innovators behind Edunetic India.
@@ -61,7 +61,7 @@ export default function MeetTheTeam() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group relative"
               >
-                <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/5 bg-[#0B1215] transition-all duration-500 hover:border-[#00E5D4]/30">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/5 bg-card transition-all duration-500 hover:border-[#00E5D4]/30">
                   {member.image ? (
                     <img
                       src={member.image}
@@ -88,15 +88,15 @@ export default function MeetTheTeam() {
                         <p className="text-[#00E5D4] font-black uppercase text-xs tracking-[0.2em]">{member.role}</p>
                         <div className="h-px w-8 bg-[#00E5D4]" />
                       </div>
-                      <p className="text-slate-200 text-sm italic font-medium leading-relaxed max-w-[280px]">
+                      <p className="text-[#94A3B8] text-sm italic font-medium leading-relaxed max-w-[280px]">
                         "{member.quote}"
                       </p>
                     </motion.div>
                   </div>
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#05080A] via-transparent to-transparent opacity-80 group-hover:opacity-0 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80 group-hover:opacity-0 transition-opacity" />
                   <div className="absolute bottom-0 left-0 right-0 p-6 group-hover:opacity-0 transition-opacity">
-                    <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
+                    <h3 className="text-xl font-bold text-foreground mb-1">{member.name}</h3>
                     <p className="text-[#00E5D4] text-xs font-black uppercase tracking-wider">{member.role}</p>
                   </div>
                 </div>

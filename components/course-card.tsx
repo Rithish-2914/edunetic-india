@@ -22,7 +22,7 @@ export function CourseCard({ id, title, creator, duration }: CourseCardProps) {
       viewport={{ once: false, amount: 0.2 }}
       transition={{ duration: 0.5 }}
     >
-      <Card className="group bg-[#0B1215] border-[#1A2328] hover:border-[#00E5D4]/50 transition-all duration-500 overflow-hidden rounded-2xl hover:translate-y-[-4px] hover:shadow-[0_20px_50px_-12px_rgba(0,229,212,0.2)]">
+      <Card className="group bg-card border-[#1A2328] hover:border-[#00E5D4]/50 transition-all duration-500 overflow-hidden rounded-2xl hover:translate-y-[-4px] hover:shadow-[0_20px_50px_-12px_rgba(0,229,212,0.2)]">
         <CardContent className="p-8 space-y-6">
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-2 text-[#8E9BA4] text-xs">
@@ -36,7 +36,7 @@ export function CourseCard({ id, title, creator, duration }: CourseCardProps) {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-2xl font-bold text-white group-hover:text-[#00E5D4] transition-colors duration-300 leading-tight">
+            <h3 className="text-2xl font-bold text-foreground group-hover:text-[#00E5D4] transition-colors duration-300 leading-tight">
               {title}
             </h3>
           </div>

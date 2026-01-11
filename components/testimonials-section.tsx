@@ -163,7 +163,7 @@ export function TestimonialsSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-primary">What Students Say</span>
+            <span className="text-foreground">What Students Say</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Trusted by learners across India who are building future-ready skills

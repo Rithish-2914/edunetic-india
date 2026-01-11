@@ -88,7 +88,7 @@ function TeamMemberCard({ name, title, image, quote, delay = 0 }: any) {
       transition={{ duration: 0.5, delay }}
       className="group relative"
     >
-      <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/5 bg-[#0B1215] transition-all duration-500 hover:border-[#00E5D4]/30 hover:-translate-y-2">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/5 bg-card transition-all duration-500 hover:border-[#00E5D4]/30 hover:-translate-y-2">
         {/* Main Image */}
         {image ? (
           <img
@@ -103,11 +103,11 @@ function TeamMemberCard({ name, title, image, quote, delay = 0 }: any) {
         )}
         
         {/* Default Overlay Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#05080A] via-[#05080A]/40 to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent opacity-80" />
 
         {/* Info (Visible by default on home page) */}
         <div className="absolute bottom-0 left-0 right-0 p-6">
-          <h4 className="text-2xl font-bold text-white mb-1">{name}</h4>
+          <h4 className="text-2xl font-bold text-foreground mb-1">{name}</h4>
           <p className="text-[#00E5D4] text-sm font-black uppercase tracking-wider">{title}</p>
         </div>
       </div>

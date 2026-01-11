@@ -33,7 +33,7 @@ export function ContactSection() {
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Get In Touch</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">Get In Touch</h2>
           <p className="text-lg text-slate-400 leading-relaxed">
             Questions, partnerships, or collaborations — we’re here to talk.
           </p>
@@ -52,7 +52,7 @@ export function ContactSection() {
                   <h4 className="text-sm font-semibold uppercase tracking-wider text-[#00E5D4] mb-1">Email Us</h4>
                   <a
                     href="mailto:eduneticindia@zohomail.in"
-                    className="text-xl font-medium text-white hover:text-[#00E5D4] transition-colors duration-300 block mb-1"
+                    className="text-xl font-medium text-foreground hover:text-[#00E5D4] transition-colors duration-300 block mb-1"
                   >
                     eduneticindia@zohomail.in
                   </a>
@@ -69,7 +69,7 @@ export function ContactSection() {
                   <h4 className="text-sm font-semibold uppercase tracking-wider text-[#00E5D4] mb-1">Call Us</h4>
                   <a
                     href="tel:+916394397986"
-                    className="text-xl font-medium text-white hover:text-[#00E5D4] transition-colors duration-300 block mb-1"
+                    className="text-xl font-medium text-foreground hover:text-[#00E5D4] transition-colors duration-300 block mb-1"
                   >
                     +91 6394397986
                   </a>
@@ -84,7 +84,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h4 className="text-sm font-semibold uppercase tracking-wider text-[#00E5D4] mb-1">Based In</h4>
-                  <p className="text-xl font-medium text-white">India</p>
+                  <p className="text-xl font-medium text-foreground">India</p>
                 </div>
               </div>
             </div>
@@ -93,7 +93,7 @@ export function ContactSection() {
           {/* Right Column — Contact Form */}
           <div className="relative">
             <div className="absolute -inset-4 bg-[#00E5D4]/5 blur-3xl rounded-full opacity-30 pointer-events-none" />
-            <div className="relative bg-[#0B1215] border border-white/5 p-8 md:p-10 rounded-2xl shadow-2xl">
+            <div className="relative bg-card border border-white/5 p-8 md:p-10 rounded-2xl shadow-2xl">
               {!isSuccess ? (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -105,7 +105,7 @@ export function ContactSection() {
                         id="name"
                         placeholder="Ruthvik Mishra"
                         required
-                        className="bg-[#05080A] border-white/10 h-12 focus:border-[#00E5D4]/50 focus:ring-[#00E5D4]/20 rounded-xl"
+                        className="bg-background border-white/10 h-12 focus:border-[#00E5D4]/50 focus:ring-[#00E5D4]/20 rounded-xl"
                       />
                     </div>
                     <div className="space-y-2">
@@ -117,7 +117,7 @@ export function ContactSection() {
                         type="email"
                         placeholder="ruthvik@gmail.com"
                         required
-                        className="bg-[#05080A] border-white/10 h-12 focus:border-[#00E5D4]/50 focus:ring-[#00E5D4]/20 rounded-xl"
+                        className="bg-background border-white/10 h-12 focus:border-[#00E5D4]/50 focus:ring-[#00E5D4]/20 rounded-xl"
                       />
                     </div>
                   </div>
@@ -130,7 +130,7 @@ export function ContactSection() {
                       id="subject"
                       placeholder="Partnership Inquiry"
                       required
-                      className="bg-[#05080A] border-white/10 h-12 focus:border-[#00E5D4]/50 focus:ring-[#00E5D4]/20 rounded-xl"
+                      className="bg-background border-white/10 h-12 focus:border-[#00E5D4]/50 focus:ring-[#00E5D4]/20 rounded-xl"
                     />
                   </div>
 
@@ -143,7 +143,7 @@ export function ContactSection() {
                       placeholder="Tell us more about how we can collaborate..."
                       rows={5}
                       required
-                      className="bg-[#05080A] border-white/10 focus:border-[#00E5D4]/50 focus:ring-[#00E5D4]/20 rounded-xl resize-none p-4"
+                      className="bg-background border-white/10 focus:border-[#00E5D4]/50 focus:ring-[#00E5D4]/20 rounded-xl resize-none p-4"
                     />
                   </div>
 
@@ -160,7 +160,7 @@ export function ContactSection() {
                   <div className="w-20 h-20 rounded-full bg-[#00E5D4]/10 flex items-center justify-center mx-auto mb-6">
                     <CheckCircle2 className="w-10 h-10 text-[#00E5D4]" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white">Message Sent!</h3>
+                  <h3 className="text-2xl font-bold text-foreground">Message Sent!</h3>
                   <p className="text-slate-400 max-w-xs mx-auto">
                     Thank you for reaching out. We've received your inquiry and will get back to you shortly.
                   </p>
