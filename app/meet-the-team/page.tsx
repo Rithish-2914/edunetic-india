@@ -88,7 +88,7 @@ export default function MeetTheTeam() {
                         <p className="text-[#00E5D4] font-black uppercase text-xs tracking-[0.2em]">{member.role}</p>
                         <div className="h-px w-8 bg-[#00E5D4]" />
                       </div>
-                      <p className="text-slate-200 text-sm italic font-medium leading-relaxed max-w-[280px] line-clamp-6">
+                      <p className="text-slate-200 text-sm italic font-medium leading-relaxed max-w-[280px]">
                         "{member.quote}"
                       </p>
                     </motion.div>
