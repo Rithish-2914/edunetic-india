@@ -48,12 +48,9 @@ export function HeroSection() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
                 <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter uppercase">
-                  <span className="text-[#00E5D4] cyan-glow">EDUNETIC INDIA</span>
+                  Desh Ka <span className="text-[#00E5D4] cyan-glow">Vikaas</span> Sabke <span className="text-[#00E5D4] cyan-glow">Saath</span>
                 </h1>
                 <div className="mt-6 space-y-4">
-                  <p className="text-lg md:text-xl text-foreground font-bold tracking-tight uppercase border-l-4 border-[#00E5D4] pl-4">
-                    Desh Ka Vikaas Sabke Saath
-                  </p>
                 <p className="text-[#94A3B8] text-lg leading-relaxed font-medium max-w-md mx-auto lg:mx-0">
                   Experience the next generation of education. Our AI-powered platform provides cutting-edge learning paths for tomorrow's innovators in India.
                 </p>
