@@ -1,7 +1,7 @@
-// Firebase initialization + Auth helpers (browser-safe)
+// Firebase initialization + Auth helpers (SSR-safe)
 // Usage: import { registerWithEmail, signInWithEmail, signInWithGoogle, signOutUser, sendPasswordReset, onAuthStateChangedListener, getCurrentUser } from './firebase'
 
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps, getApp } from "firebase/app";
 // getAnalytics will only be used in browser; wrap in try/catch
 import { getAnalytics } from "firebase/analytics";
 import {
@@ -28,8 +28,13 @@ const firebaseConfig = {
   measurementId: "G-HLRWBJ2W24",
 };
 
-// Initialize Firebase app (safe to run on server)
-const app = initializeApp(firebaseConfig);
+// Initialize Firebase app only once (works in server or client)
+let app;
+if (!getApps().length) {
+  app = initializeApp(firebaseConfig);
+} else {
+  app = getApp();
+}
 
 // Analytics (optional; only initialize in browser)
 let analytics: ReturnType<typeof getAnalytics> | null = null;
@@ -51,7 +56,9 @@ let googleProviderInstance: GoogleAuthProvider | null = null;
 function ensureAuth(): Auth {
   if (authInstance) return authInstance;
   if (typeof window === "undefined") {
-    throw new Error("Firebase Auth can only be used in the browser. Ensure you call auth functions from client components or inside useEffect.");
+    throw new Error(
+      "Firebase Auth can only be used in the browser. Ensure you call auth functions from client components or inside useEffect."
+    );
   }
   authInstance = getAuth(app);
   return authInstance;
@@ -166,7 +173,6 @@ function getCurrentUser(): User | null {
 export {
   app,
   analytics,
-  // Note: export functions; avoid exporting an auth instance directly to prevent accidental server usage
   registerWithEmail,
   signInWithEmail,
   signInWithGoogle,
