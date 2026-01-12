@@ -1,23 +1,40 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { use, useEffect, useState } from "react"
 import { Navbar } from "@/components/navbar"
 import { PlaylistSidebar } from "@/components/playlist-sidebar"
 import { VideoPlayer } from "@/components/video-player"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Share2 } from "lucide-react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { COURSES } from "@/lib/courses-data"
+import { useAuth } from "@/context/auth-context"
 
-export default async function CoursePlaylistPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params
+export default function CoursePlaylistPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params)
+  const { user, loading } = useAuth()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push("/login")
+    }
+  }, [user, loading, router])
+
+  if (loading || !user) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-[#00E5D4]"></div>
+      </div>
+    )
+  }
 
   return <CoursePlaylistClient id={id} />
 }
 
 function CoursePlaylistClient({ id }: { id: string }) {
   const course = COURSES.find((c) => c.id === id)
-
   const [activeVideoId, setActiveVideoId] = useState<string>("")
 
   useEffect(() => {
@@ -117,7 +134,6 @@ function CoursePlaylistClient({ id }: { id: string }) {
         </div>
       </main>
 
-      {/* Simplified footer for workspace view */}
       <footer className="py-4 px-6 border-t border-[#1A2328] bg-background text-center text-[10px] text-[#2A3338] uppercase tracking-[0.2em] flex-shrink-0">
         Edunetic India © {new Date().getFullYear()} • Professional Playlist System
       </footer>

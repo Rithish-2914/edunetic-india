@@ -7,6 +7,9 @@ import Link from "next/link"
 
 import { motion } from "framer-motion"
 
+import { useAuth } from "@/context/auth-context"
+import { useRouter } from "next/navigation"
+
 interface CourseCardProps {
   id: string
   title: string
@@ -15,6 +18,17 @@ interface CourseCardProps {
 }
 
 export function CourseCard({ id, title, creator, duration }: CourseCardProps) {
+  const { user } = useAuth()
+  const router = useRouter()
+
+  const handleEnroll = () => {
+    if (!user) {
+      router.push("/login")
+    } else {
+      router.push(`/courses/${id}`)
+    }
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -42,10 +56,10 @@ export function CourseCard({ id, title, creator, duration }: CourseCardProps) {
           </div>
 
           <Button
-            asChild
+            onClick={handleEnroll}
             className="w-full bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 font-semibold rounded-xl h-11 shadow-[0_0_20px_-5px_rgba(0,229,212,0.3)] hover:shadow-[0_0_25px_-5px_rgba(0,229,212,0.5)] transition-all duration-300"
           >
-            <Link href={`/courses/${id}`}>View Playlist</Link>
+            Enroll Now
           </Button>
         </CardContent>
       </Card>

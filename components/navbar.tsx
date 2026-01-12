@@ -9,6 +9,9 @@ import { useTheme } from "next-themes"
 
 import { motion, AnimatePresence } from "framer-motion"
 
+import { useAuth } from "@/context/auth-context"
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -16,6 +19,7 @@ export function Navbar() {
   const { theme, setTheme } = useTheme()
   const router = useRouter()
   const pathname = usePathname()
+  const { user, logout } = useAuth()
 
   useEffect(() => {
     setMounted(true)
@@ -55,11 +59,11 @@ export function Navbar() {
   }
 
   const navLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#courses", label: "Courses" },
-    { href: "#about", label: "About Us" },
-    { href: "#team", label: "Team" },
-    { href: "#contact", label: "Contact" },
+    { href: "/#home", label: "Home" },
+    { href: "/#courses", label: "Courses" },
+    { href: "/#about", label: "About Us" },
+    { href: "/#team", label: "Team" },
+    { href: "/#contact", label: "Contact" },
   ]
 
   return (
@@ -72,7 +76,7 @@ export function Navbar() {
         }`}
       >
         <div className="flex items-center gap-12">
-          <Link href="/" onClick={() => window.location.reload()} className="flex items-center gap-2 group shrink-0">
+          <Link href="/" onClick={() => { if (pathname === "/") window.location.reload(); }} className="flex items-center gap-2 group shrink-0">
             <motion.img 
               whileHover={{ rotate: 10, scale: 1.1 }}
               src="/logo.png" 
@@ -99,16 +103,34 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* CTA Button / User Profile */}
           <div className="flex items-center gap-3">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                asChild
-                className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 transition-all duration-300 font-black text-[10px] uppercase tracking-wider px-5 py-0 h-8 rounded-full shadow-[0_0_15px_rgba(0,229,212,0.2)]"
-              >
-                <Link href="#contact" onClick={(e) => handleNavClick(e, "#contact")}>Login/Signup</Link>
-              </Button>
-            </motion.div>
+            {user ? (
+              <div className="flex items-center gap-4">
+                <Button 
+                  variant="ghost" 
+                  onClick={logout}
+                  className="text-foreground/70 hover:text-[#00E5D4] text-[10px] uppercase font-bold tracking-widest h-8"
+                >
+                  Logout
+                </Button>
+                <Avatar className="h-8 w-8 border border-[#00E5D4]/20 shadow-[0_0_15px_rgba(0,229,212,0.1)]">
+                  <AvatarImage src={user.photoURL || ""} alt={user.displayName || "User"} />
+                  <AvatarFallback className="bg-[#1A2328] text-[#00E5D4] text-[10px] font-bold">
+                    {user.displayName?.charAt(0) || user.email?.charAt(0) || "U"}
+                  </AvatarFallback>
+                </Avatar>
+              </div>
+            ) : (
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  asChild
+                  className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 transition-all duration-300 font-black text-[10px] uppercase tracking-wider px-5 py-0 h-8 rounded-full shadow-[0_0_15px_rgba(0,229,212,0.2)]"
+                >
+                  <Link href="/login">Login/Signup</Link>
+                </Button>
+              </motion.div>
+            )}
             
             {/* Mobile Menu Toggle */}
             <Button
