@@ -29,6 +29,17 @@ const featuredCourses = [
     rating: 5.0,
     playlistUrl: "https://youtube.com/playlist?list=PLYPXjk4-uioZwrEIAMZHjjcQWkwT2eEMs",
   },
+  {
+    id: 3,
+    title: "Starting with meta ads",
+    description: "Master Meta Ads from scratch for your business",
+    instructor: "Satish Kushwaha",
+    thumbnail: "/images/meta-ads-thumb.png",
+    duration: "5 hours",
+    learners: "New",
+    rating: 4.8,
+    playlistUrl: "#",
+  },
 ]
 
 export function CoursesSection() {
