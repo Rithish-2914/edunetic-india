@@ -1,122 +1,79 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { useAuth } from "@/context/auth-context";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { toast } from "sonner";
-import { motion } from "framer-motion";
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { registerWithEmail, signInWithEmail, signInWithGoogle } from '@/src/firebase'; // adjust path if needed
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { loginWithEmail, signInWithGoogle, signInWithApple } = useAuth();
   const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = async (e: React.FormEvent) => {
+  async function handleSignup(e: React.FormEvent) {
     e.preventDefault();
-    setIsSubmitting(true);
+    setLoading(true);
     try {
-      await loginWithEmail(email, password);
-      toast.success("Logged in successfully!");
-      router.push("/");
-    } catch (error: any) {
-      toast.error(error.message || "Failed to login");
+      console.log('UI: calling registerWithEmail', email);
+      const user = await registerWithEmail(email, password);
+      console.log('UI: signup success', user?.uid);
+      router.push('/');
+    } catch (err) {
+      console.error('UI: signup failed', err);
+      alert((err as Error).message || 'Signup failed');
     } finally {
-      setIsSubmitting(false);
+      setLoading(false);
     }
-  };
+  }
 
-  const handleSocialLogin = async (provider: 'google' | 'apple') => {
+  async function handleLogin(e: React.FormEvent) {
+    e.preventDefault();
+    setLoading(true);
     try {
-      if (provider === 'google') await signInWithGoogle();
-      else await signInWithApple();
-      toast.success("Logged in successfully!");
-      router.push("/");
-    } catch (error: any) {
-      toast.error(error.message || "Social login failed");
+      console.log('UI: calling signInWithEmail', email);
+      const user = await signInWithEmail(email, password);
+      console.log('UI: login success', user?.uid);
+      router.push('/');
+    } catch (err) {
+      console.error('UI: login failed', err);
+      alert((err as Error).message || 'Login failed');
+    } finally {
+      setLoading(false);
     }
-  };
+  }
+
+  async function handleGoogleSignIn() {
+    setLoading(true);
+    try {
+      console.log('UI: calling signInWithGoogle');
+      const user = await signInWithGoogle();
+      console.log('UI: google success', user?.uid);
+      router.push('/');
+    } catch (err) {
+      console.error('UI: google sign-in failed', err);
+      alert((err as Error).message || 'Google sign-in failed');
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col">
-      <Navbar />
-      <main className="flex-1 pt-32 pb-12 flex items-center justify-center px-4">
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="w-full max-w-md"
-        >
-          <Card className="bg-card/50 backdrop-blur-xl border-[#1A2328] shadow-2xl">
-            <CardHeader className="text-center">
-              <CardTitle className="text-3xl font-bold bg-gradient-to-r from-white to-[#00E5D4] bg-clip-text text-transparent">Welcome Back</CardTitle>
-              <CardDescription className="text-[#8E9BA4]">Login to continue your learning journey</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <form onSubmit={handleLogin} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input 
-                    id="email" 
-                    type="email" 
-                    placeholder="name@example.com" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="bg-background/50 border-[#1A2328] focus:border-[#00E5D4]"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="password">Password</Label>
-                  <Input 
-                    id="password" 
-                    type="password" 
-                    placeholder="••••••••" 
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    className="bg-background/50 border-[#1A2328] focus:border-[#00E5D4]"
-                  />
-                </div>
-                <Button 
-                  type="submit" 
-                  disabled={isSubmitting}
-                  className="w-full bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 font-bold h-11"
-                >
-                  {isSubmitting ? "Logging in..." : "Login"}
-                </Button>
-              </form>
+    <main>
+      <h1>Login / Signup</h1>
 
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-[#1A2328]"></span></div>
-                <div className="relative flex justify-center text-xs uppercase"><span className="bg-card px-2 text-[#8E9BA4]">Or continue with</span></div>
-              </div>
+      <form onSubmit={handleLogin}>
+        <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" />
+        <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="password" type="password" />
+        <button type="submit" disabled={loading}>Sign in</button>
+      </form>
 
-              <div className="grid grid-cols-2 gap-4">
-                <Button variant="outline" onClick={() => handleSocialLogin('google')} className="border-[#1A2328] hover:border-[#00E5D4]/50 gap-2">
-                  <img src="https://www.google.com/favicon.ico" className="w-4 h-4" alt="Google" /> Google
-                </Button>
-                <Button variant="outline" onClick={() => handleSocialLogin('apple')} className="border-[#1A2328] hover:border-[#00E5D4]/50 gap-2">
-                  <img src="/apple-icon.png" className="w-4 h-4" alt="Apple" /> Apple
-                </Button>
-              </div>
+      <form onSubmit={handleSignup}>
+        <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" />
+        <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="password" type="password" />
+        <button type="submit" disabled={loading}>Sign up</button>
+      </form>
 
-              <p className="text-center text-sm text-[#8E9BA4]">
-                Don't have an account?{" "}
-                <Link href="/signup" className="text-[#00E5D4] hover:underline font-semibold">Sign up</Link>
-              </p>
-            </CardContent>
-          </Card>
-        </motion.div>
-      </main>
-      <Footer />
-    </div>
+      <button onClick={handleGoogleSignIn} disabled={loading}>Sign in with Google</button>
+    </main>
   );
 }
