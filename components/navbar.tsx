@@ -103,8 +103,17 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* CTA Button / User Profile */}
+          {/* Theme Toggle & CTA */}
           <div className="flex items-center gap-3">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="w-8 h-8 rounded-full border border-white/10 hover:bg-white/5 text-[#8E9BA4] hover:text-[#00E5D4] transition-all duration-300"
+            >
+              {mounted && (theme === "dark" ? <Sun size={18} /> : <Moon size={18} />)}
+            </Button>
+
             {user ? (
               <div className="flex items-center gap-4">
                 <Button 
