@@ -4,127 +4,61 @@ import type React from "react"
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { TestimonialCard } from "@/components/testimonial-card"
+import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { Star } from "lucide-react"
 
 const testimonials = [
   {
-    name: "Arjun Patel",
-    role: "Software Developer",
+    name: "Shaurya Gaikwad",
+    role: "Founder, Leap",
     rating: 5,
-    text: "The AI courses are well-structured and practical. I finally understood concepts that felt overwhelming earlier.",
+    text: "Edunetic's approach to AI education is revolutionary. They bridge the gap between theory and practical industry application perfectly.",
   },
   {
-    name: "Sneha Reddy",
-    role: "Data Analyst",
+    name: "Raul John Aju",
+    role: "Founder, AI Realm Technologies",
     rating: 5,
-    text: "Edunetic made AI feel approachable. The teaching style is clear and beginner-friendly.",
+    text: "The quality of content provided here is top-notch. It's exactly what the next generation of Indian innovators needs to excel.",
   },
   {
-    name: "Vikram Singh",
-    role: "Engineering Student",
-    rating: 4,
-    text: "Great content with hands-on examples. It helped me build confidence in AI fundamentals.",
-  },
-  {
-    name: "Ananya Krishnan",
-    role: "Tech Enthusiast",
+    name: "Ayush Tiwari",
+    role: "Founder, Growth.ai",
     rating: 5,
-    text: "Complex AI concepts explained in a very simple and engaging way.",
+    text: "An incredible resource for anyone looking to scale their skills in the AI era. The clarity of instruction is unmatched.",
   },
   {
-    name: "Rohit Sharma",
-    role: "BCA Student",
+    name: "Sarthak Shukla",
+    role: "Founder, Spike",
     rating: 5,
-    text: "Perfect starting point for anyone curious about AI and future tech.",
+    text: "Edunetic India is making high-end tech education accessible. Their curriculum is forward-thinking and highly relevant.",
   },
   {
-    name: "Pooja Verma",
-    role: "Final Year Student",
-    rating: 4,
-    text: "Clear explanations and real-world relevance. Highly recommended.",
-  },
-  {
-    name: "Kunal Mehta",
-    role: "Startup Intern",
+    name: "Divyansh Shukla",
+    role: "Founder, Collabset",
     rating: 5,
-    text: "Edunetic helped me understand AI beyond buzzwords.",
+    text: "I'm impressed by how they simplify complex concepts. A must-have platform for students aiming for the future.",
   },
   {
-    name: "Neha Gupta",
-    role: "Computer Science Student",
+    name: "Gautam Miyani",
+    role: "Content Creator",
     rating: 5,
-    text: "The learning experience is smooth and well-paced.",
+    text: "The most engaging AI learning platform I've come across. They truly understand how to teach for the modern age.",
   },
   {
-    name: "Aman Yadav",
-    role: "Class 12 Student",
-    rating: 4,
-    text: "AI finally makes sense to me now. Very motivating content.",
-  },
-  {
-    name: "Shubham Mishra",
-    role: "Engineering Aspirant",
+    name: "Abhishek Dixit",
+    role: "CEO, Cosmic Soul",
     rating: 5,
-    text: "Simple explanations with modern examples make learning fun.",
-  },
-  {
-    name: "Ritika Jain",
-    role: "MBA Student",
-    rating: 4,
-    text: "Helped me understand how AI applies to business and analytics.",
-  },
-  {
-    name: "Saurabh Kumar",
-    role: "Self-Learner",
-    rating: 5,
-    text: "Exactly what I needed to start my AI journey.",
-  },
-  {
-    name: "Ishita Banerjee",
-    role: "College Student",
-    rating: 5,
-    text: "Well-curated courses with clear learning outcomes.",
-  },
-  {
-    name: "Manish Tiwari",
-    role: "Tech Trainer",
-    rating: 5,
-    text: "The content quality is impressive and thoughtfully designed.",
-  },
-  {
-    name: "Aditi Malhotra",
-    role: "UX Student",
-    rating: 4,
-    text: "AI concepts explained without unnecessary complexity.",
-  },
-  {
-    name: "Nikhil Joshi",
-    role: "Backend Developer",
-    rating: 5,
-    text: "Great foundation-building courses for AI beginners.",
-  },
-  {
-    name: "Kavya Nair",
-    role: "B.Tech Student",
-    rating: 5,
-    text: "Learning here feels structured and purposeful.",
-  },
-  {
-    name: "Harsh Vardhan",
-    role: "Freelancer",
-    rating: 4,
-    text: "Helped me upskill and understand AI trends.",
-  },
-  {
-    name: "Simran Kaur",
-    role: "AI Enthusiast",
-    rating: 5,
-    text: "One of the cleanest and clearest AI learning platforms.",
-  },
-  {
-    name: "Aditya Kulkarni",
-    role: "Tech Blogger",
-    rating: 5,
-    text: "Edunetic focuses on clarity, not hype. That's rare.",
+    text: "Visionary leadership and exceptional educational content. Edunetic is setting new benchmarks in Indian EdTech.",
   },
 ]
 
@@ -143,9 +77,9 @@ export function TestimonialsSection() {
       <section className="py-20 relative overflow-hidden bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-primary">What Students Say</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-primary">What People Say</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Trusted by learners across India who are building future-ready skills
+              Trusted by industry leaders and learners across India building future-ready skills
             </p>
           </div>
           <div className="flex gap-6 overflow-hidden py-4 opacity-0">
@@ -163,10 +97,10 @@ export function TestimonialsSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-foreground">What Students Say</span>
+            <span className="text-foreground">What People Say</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Trusted by learners across India who are building future-ready skills
+            Trusted by industry leaders and learners across India building future-ready skills
           </p>
         </div>
 
@@ -196,6 +130,52 @@ export function TestimonialsSection() {
               ))}
             </motion.div>
           </div>
+        </div>
+
+        {/* Feedback Button & Form */}
+        <div className="text-center mt-12">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                size="lg"
+                className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 font-black text-lg px-12 py-7 rounded-full shadow-[0_0_30px_rgba(0,229,212,0.4)] hover:shadow-[0_0_50px_rgba(0,229,212,0.6)] transition-all duration-300 transform hover:scale-105"
+              >
+                Share Your Feedback
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px] bg-[#0B1215] border-white/10 text-white">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-black text-[#00E5D4] uppercase tracking-tight">Student Feedback</DialogTitle>
+              </DialogHeader>
+              <form className="space-y-6 pt-4" onSubmit={(e) => { e.preventDefault(); alert('Feedback submitted! Thank you.'); }}>
+                <div className="space-y-2">
+                  <Label htmlFor="name" className="text-sm font-bold uppercase tracking-wider text-[#94A3B8]">Name</Label>
+                  <Input id="name" placeholder="Enter your name" className="bg-white/5 border-white/10 focus:border-[#00E5D4] h-12 rounded-xl" required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="number" className="text-sm font-bold uppercase tracking-wider text-[#94A3B8]">Phone Number</Label>
+                  <Input id="number" type="tel" placeholder="Enter your number" className="bg-white/5 border-white/10 focus:border-[#00E5D4] h-12 rounded-xl" required />
+                </div>
+                <div className="space-y-2">
+                  <Label className="text-sm font-bold uppercase tracking-wider text-[#94A3B8]">Rating</Label>
+                  <div className="flex gap-2">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button key={star} type="button" className="p-1 hover:scale-110 transition-transform text-[#00E5D4]">
+                        <Star className="w-6 h-6" fill={star <= 5 ? "currentColor" : "none"} />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="improve" className="text-sm font-bold uppercase tracking-wider text-[#94A3B8]">What can we improve?</Label>
+                  <Textarea id="improve" placeholder="Tell us how we can do better" className="bg-white/5 border-white/10 focus:border-[#00E5D4] min-h-[100px] rounded-xl" required />
+                </div>
+                <Button type="submit" className="w-full bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 font-black h-12 rounded-xl text-lg uppercase tracking-wider">
+                  Submit Feedback
+                </Button>
+              </form>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </section>

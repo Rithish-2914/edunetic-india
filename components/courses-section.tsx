@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { FeaturedCourseCard } from "./featured-course-card"
 import { VideoPlayer } from "./video-player"
+import { motion } from "framer-motion"
 
 const featuredCourses = [
   {
@@ -58,15 +59,37 @@ export function CoursesSection() {
           </p>
         </div>
 
-        {/* Courses Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {featuredCourses.map((course) => (
-            <FeaturedCourseCard
-              key={course.id}
-              {...course}
-              onViewPlaylist={() => setActiveVideo({ id: course.playlistUrl, title: course.title })}
-            />
-          ))}
+        {/* Courses Carousel */}
+        <div className="relative mt-10">
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+          
+          <div className="flex overflow-hidden">
+            <motion.div
+              className="flex gap-8 py-4"
+              animate={{
+                x: ["0%", "-100%"],
+              }}
+              transition={{
+                x: {
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatType: "loop",
+                  duration: 40,
+                  ease: "linear",
+                },
+              }}
+              style={{ width: "fit-content" }}
+            >
+              {[...featuredCourses, ...featuredCourses, ...featuredCourses].map((course, index) => (
+                <div key={`${course.id}-${index}`} className="w-[450px] flex-shrink-0">
+                  <FeaturedCourseCard
+                    {...course}
+                    onViewPlaylist={() => setActiveVideo({ id: course.playlistUrl, title: course.title })}
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </div>
 
         {/* View All Button */}
