@@ -39,19 +39,19 @@ export function HeroSection() {
       />
 
       <div className="container mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-          {/* Left Side: Text Content */}
-            <div className="space-y-8 text-center lg:text-left">
+        <div className="max-w-4xl mx-auto">
+          {/* Text Content */}
+            <div className="space-y-8 text-center">
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
-                <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter uppercase">
-                  Desh Ka <span className="text-[#00E5D4] cyan-glow">Vikaas</span> Sabke <span className="text-[#00E5D4] cyan-glow">Saath</span>
+                <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-tight tracking-tighter uppercase">
+                  Desh Ka <span className="text-[#00E5D4] cyan-glow">Vikaas</span> <br className="hidden md:block" /> Sabke <span className="text-[#00E5D4] cyan-glow">Saath</span>
                 </h1>
-                <div className="mt-6 space-y-4">
-                <p className="text-[#94A3B8] text-lg leading-relaxed font-medium max-w-md mx-auto lg:mx-0">
+                <div className="mt-8 space-y-6">
+                <p className="text-[#94A3B8] text-xl md:text-2xl leading-relaxed font-medium max-w-2xl mx-auto">
                   Experience the next generation of education. Our AI-powered platform provides cutting-edge learning paths for tomorrow's innovators in India.
                 </p>
               </div>
@@ -61,40 +61,17 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4"
+              className="flex flex-col sm:flex-row justify-center gap-4 pt-8"
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   asChild
                   size="lg"
-                  className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 font-black text-lg px-8 py-6 rounded-full shadow-[0_0_30px_rgba(0,229,212,0.3)]"
+                  className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 font-black text-xl px-12 py-8 rounded-full shadow-[0_0_30px_rgba(0,229,212,0.3)]"
                 >
                   <Link href="#courses">Explore Courses</Link>
                 </Button>
               </motion.div>
-            </motion.div>
-          </div>
-
-          {/* Right Side: Founder */}
-          <div className="flex flex-col items-center lg:items-end text-center lg:text-right">
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative group cursor-pointer"
-            >
-              <div className="relative w-64 h-80 md:w-80 md:h-[450px] overflow-hidden rounded-3xl border-2 border-[#00E5D4]/20 shadow-2xl transition-all duration-500 group-hover:scale-[1.02]">
-                <img 
-                  src="/founder-new.png" 
-                  alt="Ruthvik Mishra" 
-                  className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-40" />
-              </div>
-              <div className="mt-8 space-y-2 text-center lg:text-right">
-                <h3 className="text-3xl md:text-4xl font-black text-foreground tracking-tight">Ruthvik Mishra</h3>
-                <p className="text-[#00E5D4] font-bold text-lg md:text-xl uppercase tracking-wider">Founder & CEO</p>
-              </div>
             </motion.div>
           </div>
         </div>
