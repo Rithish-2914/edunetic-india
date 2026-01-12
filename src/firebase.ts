@@ -1,16 +1,17 @@
-// Firebase initialization + Auth helpers
-// Usage: import { auth, signInWithEmail, registerWithEmail, signInWithGoogle, signOutUser, onAuthStateChangedListener } from './firebase'
+// Firebase initialization + Auth helpers (browser-safe)
+// Usage: import { registerWithEmail, signInWithEmail, signInWithGoogle, signOutUser, sendPasswordReset, onAuthStateChangedListener, getCurrentUser } from './firebase'
 
 import { initializeApp } from "firebase/app";
+// getAnalytics will only be used in browser; wrap in try/catch
 import { getAnalytics } from "firebase/analytics";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut,
+  signOut as firebaseSignOut,
   GoogleAuthProvider,
   signInWithPopup,
-  onAuthStateChanged,
+  onAuthStateChanged as firebaseOnAuthStateChanged,
   sendPasswordResetEmail,
   User,
   Auth,
@@ -27,86 +28,145 @@ const firebaseConfig = {
   measurementId: "G-HLRWBJ2W24",
 };
 
-// Initialize Firebase
+// Initialize Firebase app (safe to run on server)
 const app = initializeApp(firebaseConfig);
 
-// Analytics (optional; only works in browser environments)
+// Analytics (optional; only initialize in browser)
 let analytics: ReturnType<typeof getAnalytics> | null = null;
-try {
-  analytics = getAnalytics(app);
-} catch (e) {
-  // getAnalytics can throw in non-browser environments (SSR), so we swallow errors
-  analytics = null;
+if (typeof window !== "undefined") {
+  try {
+    analytics = getAnalytics(app);
+  } catch (e) {
+    // analytics may fail in some environments; do not crash the app
+    // eslint-disable-next-line no-console
+    console.warn("Firebase analytics not available:", e);
+    analytics = null;
+  }
 }
 
-// Auth instance
-const auth: Auth = getAuth(app);
+// Lazy auth instance; don't call getAuth on import to avoid running on server
+let authInstance: Auth | null = null;
+let googleProviderInstance: GoogleAuthProvider | null = null;
 
-// Google provider
-const googleProvider = new GoogleAuthProvider();
-googleProvider.setCustomParameters({ prompt: "select_account" });
+function ensureAuth(): Auth {
+  if (authInstance) return authInstance;
+  if (typeof window === "undefined") {
+    throw new Error("Firebase Auth can only be used in the browser. Ensure you call auth functions from client components or inside useEffect.");
+  }
+  authInstance = getAuth(app);
+  return authInstance;
+}
 
-// Helper functions
+function ensureGoogleProvider(): GoogleAuthProvider {
+  if (googleProviderInstance) return googleProviderInstance;
+  if (typeof window === "undefined") {
+    throw new Error("GoogleAuthProvider can only be used in the browser.");
+  }
+  googleProviderInstance = new GoogleAuthProvider();
+  googleProviderInstance.setCustomParameters({ prompt: "select_account" });
+  return googleProviderInstance;
+}
 
-/**
- * Register a user with email and password.
- * Returns the created Firebase User on success.
- */
+// Helper functions with logging and browser-safety
 async function registerWithEmail(email: string, password: string): Promise<User> {
-  const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-  return userCredential.user;
+  if (typeof window === "undefined") throw new Error("registerWithEmail must be called in the browser");
+  try {
+    // eslint-disable-next-line no-console
+    console.log("Firebase: registerWithEmail", email);
+    const userCredential = await createUserWithEmailAndPassword(ensureAuth(), email, password);
+    // eslint-disable-next-line no-console
+    console.log("Firebase: registerWithEmail success", userCredential.user?.uid);
+    return userCredential.user;
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error("Firebase: registerWithEmail error", err);
+    throw err;
+  }
 }
 
-/**
- * Sign in existing user with email and password.
- * Returns the Firebase User on success.
- */
 async function signInWithEmail(email: string, password: string): Promise<User> {
-  const userCredential = await signInWithEmailAndPassword(auth, email, password);
-  return userCredential.user;
+  if (typeof window === "undefined") throw new Error("signInWithEmail must be called in the browser");
+  try {
+    // eslint-disable-next-line no-console
+    console.log("Firebase: signInWithEmail", email);
+    const userCredential = await signInWithEmailAndPassword(ensureAuth(), email, password);
+    // eslint-disable-next-line no-console
+    console.log("Firebase: signInWithEmail success", userCredential.user?.uid);
+    return userCredential.user;
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error("Firebase: signInWithEmail error", err);
+    throw err;
+  }
 }
 
-/**
- * Sign in with Google popup.
- * Returns the Firebase User on success.
- */
 async function signInWithGoogle(): Promise<User> {
-  const result = await signInWithPopup(auth, googleProvider);
-  return result.user;
+  if (typeof window === "undefined") throw new Error("signInWithGoogle must be called in the browser");
+  try {
+    // eslint-disable-next-line no-console
+    console.log("Firebase: signInWithGoogle popup starting");
+    const result = await signInWithPopup(ensureAuth(), ensureGoogleProvider());
+    // eslint-disable-next-line no-console
+    console.log("Firebase: signInWithGoogle success", result.user?.uid);
+    return result.user;
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error("Firebase: signInWithGoogle error", err);
+    throw err;
+  }
 }
 
-/**
- * Sign out the current user.
- */
 async function signOutUser(): Promise<void> {
-  await signOut(auth);
+  if (typeof window === "undefined") throw new Error("signOutUser must be called in the browser");
+  try {
+    // eslint-disable-next-line no-console
+    console.log("Firebase: signing out");
+    await firebaseSignOut(ensureAuth());
+    // eslint-disable-next-line no-console
+    console.log("Firebase: sign out success");
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error("Firebase: signOut error", err);
+    throw err;
+  }
 }
 
-/**
- * Send a password reset email to the given address.
- */
 async function sendPasswordReset(email: string): Promise<void> {
-  await sendPasswordResetEmail(auth, email);
+  if (typeof window === "undefined") throw new Error("sendPasswordReset must be called in the browser");
+  try {
+    // eslint-disable-next-line no-console
+    console.log("Firebase: sendPasswordReset", email);
+    await sendPasswordResetEmail(ensureAuth(), email);
+    // eslint-disable-next-line no-console
+    console.log("Firebase: sendPasswordReset email sent");
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error("Firebase: sendPasswordReset error", err);
+    throw err;
+  }
 }
 
-/**
- * Subscribe to auth state changes.
- * callback receives the current Firebase User or null.
- * Returns an unsubscribe function.
- */
 function onAuthStateChangedListener(callback: (user: User | null) => void) {
-  return onAuthStateChanged(auth, callback);
+  if (typeof window === "undefined") throw new Error("onAuthStateChangedListener must be called in the browser");
+  // returns unsubscribe function
+  return firebaseOnAuthStateChanged(ensureAuth(), callback);
 }
 
-// Optional convenience: get current user (may be null)
 function getCurrentUser(): User | null {
-  return auth.currentUser;
+  if (typeof window === "undefined") return null;
+  try {
+    return ensureAuth().currentUser;
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn("Firebase: getCurrentUser failed", e);
+    return null;
+  }
 }
 
 export {
   app,
   analytics,
-  auth,
+  // Note: export functions; avoid exporting an auth instance directly to prevent accidental server usage
   registerWithEmail,
   signInWithEmail,
   signInWithGoogle,
