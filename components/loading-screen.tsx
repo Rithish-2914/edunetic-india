@@ -115,15 +115,6 @@ export function LoadingScreen() {
               Desh Ka Vikaas Sabke Sath
             </motion.p>
             
-            {/* India/Coding Detail */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.8, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
-              className="absolute -bottom-40 font-mono text-xs md:text-sm text-[#00E5D4]/60 tracking-[0.3em]"
-            >
-              {`// INITIALIZING_INDIA_GEN_AI_...`}
-            </motion.div>
           </div>
           
           <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_center,var(--primary)_0%,transparent_70%)]" />
