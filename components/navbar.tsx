@@ -157,8 +157,8 @@ export function Navbar() {
         <nav
           className={`transition-all duration-500 rounded-full border border-black/10 dark:border-white/10 shadow-2xl overflow-hidden pointer-events-auto ${
             isScrolled 
-              ? "bg-white/80 dark:bg-[#0B1215]/80 backdrop-blur-xl py-2 px-6 w-full max-w-4xl" 
-              : "bg-white/40 dark:bg-[#0B1215]/40 backdrop-blur-md py-3 px-8 w-full max-w-4xl md:w-fit"
+              ? "bg-white/80 dark:bg-[#0B1215]/80 backdrop-blur-xl py-2 px-6 w-fit" 
+              : "bg-white/40 dark:bg-[#0B1215]/40 backdrop-blur-md py-3 px-8 w-fit"
           }`}
         >
             {navContent}
