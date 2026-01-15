@@ -20,8 +20,17 @@ export default function DashboardPage() {
     }
   }, [user, loading]);
 
-  if (loading) return null;
-  if (!user) return null;
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-[#00E5D4] border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">

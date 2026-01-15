@@ -53,10 +53,23 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       setUser(firebaseUser);
       if (firebaseUser) {
-        const docRef = doc(db, "users", firebaseUser.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          setProfile(docSnap.data() as UserProfile);
+        try {
+          const docRef = doc(db, "users", firebaseUser.uid);
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            setProfile(docSnap.data() as UserProfile);
+          } else {
+            // Create a default profile if it doesn't exist (e.g., for social login)
+            const defaultProfile = {
+              name: firebaseUser.displayName || "",
+              email: firebaseUser.email || "",
+              phone: "",
+              age: ""
+            };
+            setProfile(defaultProfile);
+          }
+        } catch (error) {
+          console.error("Error fetching profile:", error);
         }
       } else {
         setProfile(null);
@@ -67,13 +80,53 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const signInWithGoogle = async () => {
-    const provider = new GoogleAuthProvider();
-    await signInWithPopup(auth, provider);
+    try {
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      const firebaseUser = result.user;
+      
+      const docRef = doc(db, "users", firebaseUser.uid);
+      const docSnap = await getDoc(docRef);
+      
+      if (!docSnap.exists()) {
+        const userProfile = {
+          name: firebaseUser.displayName || "",
+          email: firebaseUser.email || "",
+          phone: "",
+          age: ""
+        };
+        await setDoc(docRef, userProfile);
+        setProfile(userProfile);
+      }
+    } catch (error) {
+      console.error("Google sign in error:", error);
+      throw error;
+    }
   };
 
   const signInWithApple = async () => {
-    const provider = new OAuthProvider('apple.com');
-    await signInWithPopup(auth, provider);
+    try {
+      const provider = new OAuthProvider('apple.com');
+      const result = await signInWithPopup(auth, provider);
+      const firebaseUser = result.user;
+      
+      const docRef = doc(db, "users", firebaseUser.uid);
+      const docSnap = await getDoc(docRef);
+      
+      if (!docSnap.exists()) {
+        const userProfile = {
+          name: firebaseUser.displayName || "",
+          email: firebaseUser.email || "",
+          phone: "",
+          age: ""
+        };
+        await setDoc(docRef, userProfile);
+        setProfile(userProfile);
+      }
+    } catch (error) {
+      console.error("Apple sign in error:", error);
+      throw error;
+    }
   };
 
   const signUpWithEmail = async (data: UserProfile & { password: string }) => {
