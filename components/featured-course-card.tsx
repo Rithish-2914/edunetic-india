@@ -28,18 +28,24 @@ export function FeaturedCourseCard({
 }: FeaturedCourseCardProps) {
   return (
     <Card className="group relative bg-card border-black/10 dark:border-[#1A2328] hover:border-[#00E5D4]/40 transition-all duration-500 overflow-hidden rounded-2xl flex flex-col h-full hover:shadow-[0_0_30px_rgba(0,229,212,0.1)] hover:-translate-y-1">
-      <CardContent className="p-0 flex flex-col h-full">
+      <CardContent className="p-0 flex flex-col h-full relative">
         {/* Top: Thumbnail */}
-        <div className="relative aspect-[16/9] overflow-hidden bg-muted">
+        <div className="relative aspect-[16/9] overflow-hidden bg-muted group/thumb">
           <Image
             src={thumbnail || "/placeholder.svg"}
             alt={title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
+          {/* Overlay on hover */}
+          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+             <div className="w-12 h-12 rounded-full bg-[#00E5D4] flex items-center justify-center shadow-[0_0_20px_rgba(0,229,212,0.4)]">
+                <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[12px] border-l-[#05080A] border-b-[8px] border-b-transparent ml-1" />
+             </div>
+          </div>
           {/* Subtle FREE pill badge */}
           <div className="absolute top-4 right-4 z-10">
-            <div className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-[#00E5D4]/10 border border-[#00E5D4]/20 text-[#00E5D4] backdrop-blur-md">
+            <div className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-[#00E5D4]/10 border border-[#00E5D4]/20 text-[#00E5D4] backdrop-blur-md shadow-[0_0_10px_rgba(0,229,212,0.1)]">
               Free
             </div>
           </div>
@@ -79,7 +85,7 @@ export function FeaturedCourseCard({
           <div className="mt-auto">
             <Button
               onClick={onViewPlaylist}
-              className="w-full bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 rounded-xl py-6 font-bold text-sm transition-all duration-300 uppercase tracking-wider"
+              className="w-full bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 rounded-xl py-6 font-bold text-sm transition-all duration-300 uppercase tracking-wider shadow-[0_0_20px_rgba(0,229,212,0.2)] hover:shadow-[0_0_30px_rgba(0,229,212,0.4)]"
             >
               Enroll Now
             </Button>

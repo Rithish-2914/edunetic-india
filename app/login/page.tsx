@@ -28,7 +28,7 @@ export default function LoginPage() {
     try {
       await loginWithEmail(formData.email, formData.password);
       toast.success("Welcome back!");
-      router.push("/dashboard");
+      router.push("/");
     } catch (error: any) {
       toast.error(error.message || "Login failed");
     } finally {
