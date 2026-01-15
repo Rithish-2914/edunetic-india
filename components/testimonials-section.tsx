@@ -37,7 +37,7 @@ const testimonials = [
     text: "An incredible resource for anyone looking to scale their skills in the AI era. The clarity of instruction is unmatched.",
   },
   {
-    name: "Sarthak Shukla",
+    name: "Sarthak Singh",
     role: "Founder, Spike",
     rating: 5,
     text: "Edunetic India is making high-end tech education accessible. Their curriculum is forward-thinking and highly relevant.",
