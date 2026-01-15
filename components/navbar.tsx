@@ -124,6 +124,13 @@ export function Navbar() {
       {user ? (
         <div className="flex items-center gap-4 bg-white/80 dark:bg-[#0B1215]/80 backdrop-blur-xl p-2 rounded-full border border-black/10 dark:border-white/10 shadow-2xl">
           <Button 
+            asChild
+            variant="ghost" 
+            className="text-foreground/70 dark:text-foreground/70 hover:text-[#00E5D4] text-[10px] uppercase font-bold tracking-widest h-8 px-4"
+          >
+            <Link href="/dashboard">Dashboard</Link>
+          </Button>
+          <Button 
             variant="ghost" 
             onClick={logout}
             className="text-foreground/70 dark:text-foreground/70 hover:text-[#00E5D4] text-[10px] uppercase font-bold tracking-widest h-8 px-4"
@@ -182,16 +189,24 @@ export function Navbar() {
                     {link.label}
                   </Link>
                 ))}
-                <div className="pt-4 border-t border-black/5 dark:border-white/5">
-                  {user ? (
+                {user ? (
+                  <>
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="w-full border-[#00E5D4]/20 text-[#00E5D4] hover:bg-[#00E5D4]/10 mb-2"
+                    >
+                      <Link href="/dashboard" onClick={() => setIsMobileMenuOpen(false)}>Dashboard</Link>
+                    </Button>
                     <Button 
                       variant="outline" 
                       onClick={logout}
-                      className="w-full border-[#00E5D4]/20 text-[#00E5D4] hover:bg-[#00E5D4]/10"
+                      className="w-full border-red-500/20 text-red-500 hover:bg-red-500/10"
                     >
                       Logout
                     </Button>
-                  ) : (
+                  </>
+                ) : (
                     <Button
                       asChild
                       className="w-full bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 font-black"
