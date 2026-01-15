@@ -52,10 +52,10 @@ export function CoursesSection() {
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-20">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-6 tracking-tight">
-            Learner To <span className="text-[#00E5D4] cyan-glow">Earner</span>
+            Learner To <span className="text-[#00E5D4] cyan-glow">Creator</span>
           </h2>
-          <p className="text-[#8E9BA4] text-lg md:text-xl leading-relaxed">
-            Carefully curated free courses to introduce students to AI and future skills.
+          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
+            Creator led free courses to introduce students to AI and future skills.
           </p>
         </div>
 
@@ -68,19 +68,19 @@ export function CoursesSection() {
             <motion.div
               className="flex gap-8 py-4"
               animate={{
-                x: ["0%", "-100%"],
+                x: ["0%", "-50%"],
               }}
               transition={{
                 x: {
                   repeat: Number.POSITIVE_INFINITY,
                   repeatType: "loop",
-                  duration: 40,
+                  duration: 30,
                   ease: "linear",
                 },
               }}
               style={{ width: "fit-content" }}
             >
-              {[...featuredCourses, ...featuredCourses, ...featuredCourses].map((course, index) => (
+              {[...featuredCourses, ...featuredCourses].map((course, index) => (
                 <div key={`${course.id}-${index}`} className="w-[450px] flex-shrink-0">
                   <FeaturedCourseCard
                     {...course}

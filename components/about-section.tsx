@@ -71,7 +71,7 @@ export function AboutSection() {
             <span className="text-foreground">About </span>
             <span className="text-[#00E5D4]">Us</span>
           </h2>
-          <p className="text-[#94A3B8] text-lg md:text-xl font-medium leading-relaxed">
+          <p className="text-muted-foreground text-lg md:text-xl font-medium leading-relaxed">
             Edunetic India is an education innovation company transforming how students learn, think, and grow.
           </p>
         </motion.div>
@@ -87,7 +87,7 @@ export function AboutSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Card
-                className="bg-card border-white/5 hover:border-[#00E5D4]/30 transition-all duration-500 group overflow-hidden relative rounded-2xl flex flex-col h-full hover:shadow-[0_0_30px_rgba(0,229,212,0.1)] hover:-translate-y-1"
+                className="bg-card border-black/10 dark:border-white/5 hover:border-[#00E5D4]/30 transition-all duration-500 group overflow-hidden relative rounded-2xl flex flex-col h-full hover:shadow-[0_0_30px_rgba(0,229,212,0.1)] hover:-translate-y-1"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 
@@ -101,7 +101,7 @@ export function AboutSection() {
                     <h3 className="text-2xl font-black text-foreground group-hover:text-[#00E5D4] transition-colors">
                       {card.title}
                     </h3>
-                    <p className="text-[#94A3B8] text-base leading-relaxed font-medium">
+                    <p className="text-muted-foreground text-base leading-relaxed font-medium">
                       {card.description}
                     </p>
                   </div>
@@ -119,7 +119,7 @@ export function AboutSection() {
           transition={{ duration: 0.6 }}
           className="mt-20 text-center max-w-2xl mx-auto"
         >
-          <div className="p-8 rounded-3xl bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5 border border-white/5">
+          <div className="p-8 rounded-3xl bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5 border border-black/10 dark:border-white/5">
              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">Our belief is clear:</h3>
              <p className="text-[#00E5D4] text-xl md:text-2xl font-black italic">
                "Education should prepare students for life, not just exams."

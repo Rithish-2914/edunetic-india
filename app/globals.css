@@ -118,8 +118,8 @@
   }
 
   .grid-background {
-    background-image: linear-gradient(to right, oklch(0.2 0.02 210 / 0.8) 1.5px, transparent 1.5px),
-      linear-gradient(to bottom, oklch(0.2 0.02 210 / 0.8) 1.5px, transparent 1.5px);
+    background-image: linear-gradient(to right, var(--border) 1.5px, transparent 1.5px),
+      linear-gradient(to bottom, var(--border) 1.5px, transparent 1.5px);
     background-size: 4rem 4rem;
     position: relative;
     overflow: hidden;

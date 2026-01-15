@@ -27,7 +27,7 @@ export function FeaturedCourseCard({
   onViewPlaylist,
 }: FeaturedCourseCardProps) {
   return (
-    <Card className="group relative bg-[#0B1215] border-[#1A2328] hover:border-[#00E5D4]/40 transition-all duration-500 overflow-hidden rounded-2xl flex flex-col h-full hover:shadow-[0_0_30px_rgba(0,229,212,0.1)] hover:-translate-y-1">
+    <Card className="group relative bg-card border-black/10 dark:border-[#1A2328] hover:border-[#00E5D4]/40 transition-all duration-500 overflow-hidden rounded-2xl flex flex-col h-full hover:shadow-[0_0_30px_rgba(0,229,212,0.1)] hover:-translate-y-1">
       <CardContent className="p-0 flex flex-col h-full">
         {/* Top: Thumbnail */}
         <div className="relative aspect-[16/9] overflow-hidden bg-muted">
@@ -52,15 +52,15 @@ export function FeaturedCourseCard({
               <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-[#00E5D4] transition-colors duration-300 leading-tight tracking-tight">
                 {title}
               </h3>
-              <p className="text-[#8E9BA4] text-sm leading-relaxed line-clamp-1">{description}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed line-clamp-1">{description}</p>
             </div>
-            <p className="text-[11px] font-medium text-[#4A555E] uppercase tracking-widest">
-              By <span className="text-[#8E9BA4]">{instructor}</span>
+            <p className="text-[11px] font-medium text-slate-500 dark:text-[#4A555E] uppercase tracking-widest">
+              By <span className="text-muted-foreground">{instructor}</span>
             </p>
           </div>
 
           {/* Meta Row */}
-          <div className="flex items-center gap-6 text-[13px] text-[#8E9BA4] border-t border-[#1A2328] pt-6 mb-8">
+          <div className="flex items-center gap-6 text-[13px] text-muted-foreground border-t border-black/5 dark:border-[#1A2328] pt-6 mb-8">
             <div className="flex items-center gap-2">
               <Clock size={16} className="text-[#00E5D4]" />
               <span>{duration}</span>

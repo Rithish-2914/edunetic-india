@@ -11,11 +11,11 @@ export function Footer() {
   ]
 
   const quickLinks = [
-    { href: "#home", label: "Home" },
-    { href: "#courses", label: "Courses" },
-    { href: "#about", label: "About Us" },
-    { href: "#team", label: "Team" },
-    { href: "#contact", label: "Contact" },
+    { href: "/#home", label: "Home" },
+    { href: "/#courses", label: "Courses" },
+    { href: "/#about", label: "About Us" },
+    { href: "/#team", label: "Team" },
+    { href: "/#contact", label: "Contact" },
   ]
 
   return (

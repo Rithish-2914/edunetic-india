@@ -88,7 +88,7 @@ function TeamMemberCard({ name, title, image, quote, delay = 0 }: any) {
       transition={{ duration: 0.5, delay }}
       className="group relative"
     >
-      <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/5 bg-card transition-all duration-500 hover:border-[#00E5D4]/30 hover:-translate-y-2">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-black/10 dark:border-white/5 bg-card transition-all duration-500 hover:border-[#00E5D4]/30 hover:-translate-y-2">
         {/* Main Image */}
         {image ? (
           <img

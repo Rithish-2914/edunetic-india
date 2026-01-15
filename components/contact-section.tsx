@@ -122,16 +122,30 @@ export function ContactSection() {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="subject" className="text-sm text-slate-400 ml-1">
-                      Subject
-                    </Label>
-                    <Input
-                      id="subject"
-                      placeholder="Partnership Inquiry"
-                      required
-                      className="bg-background border-white/10 h-12 focus:border-[#00E5D4]/50 focus:ring-[#00E5D4]/20 rounded-xl"
-                    />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="phone" className="text-sm text-slate-400 ml-1">
+                        Phone Number
+                      </Label>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        placeholder="+91 98765 43210"
+                        required
+                        className="bg-background border-white/10 h-12 focus:border-[#00E5D4]/50 focus:ring-[#00E5D4]/20 rounded-xl"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="subject" className="text-sm text-slate-400 ml-1">
+                        Subject
+                      </Label>
+                      <Input
+                        id="subject"
+                        placeholder="Partnership Inquiry"
+                        required
+                        className="bg-background border-white/10 h-12 focus:border-[#00E5D4]/50 focus:ring-[#00E5D4]/20 rounded-xl"
+                      />
+                    </div>
                   </div>
 
                   <div className="space-y-2">

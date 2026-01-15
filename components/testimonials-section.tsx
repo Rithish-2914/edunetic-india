@@ -68,6 +68,8 @@ const duplicatedTestimonials = [...testimonials, ...testimonials]
 export function TestimonialsSection() {
   const [mounted, setMounted] = useState(false)
 
+  const [rating, setRating] = useState(5)
+
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -140,38 +142,38 @@ export function TestimonialsSection() {
                 size="lg"
                 className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 font-black text-lg px-12 py-7 rounded-full shadow-[0_0_30px_rgba(0,229,212,0.4)] hover:shadow-[0_0_50px_rgba(0,229,212,0.6)] transition-all duration-300 transform hover:scale-105"
               >
-                Share Your Feedback
+                Share Your Review
               </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px] bg-[#0B1215] border-white/10 text-white">
+            <DialogContent className="sm:max-w-[425px] bg-white dark:bg-[#0B1215] border-black/10 dark:border-white/10 text-foreground dark:text-white">
               <DialogHeader>
-                <DialogTitle className="text-2xl font-black text-[#00E5D4] uppercase tracking-tight">Student Feedback</DialogTitle>
+                <DialogTitle className="text-2xl font-black text-[#00E5D4] uppercase tracking-tight">Student Review</DialogTitle>
               </DialogHeader>
-              <form className="space-y-6 pt-4" onSubmit={(e) => { e.preventDefault(); alert('Feedback submitted! Thank you.'); }}>
+              <form className="space-y-6 pt-4" onSubmit={(e) => { e.preventDefault(); alert('Review submitted! Thank you.'); }}>
                 <div className="space-y-2">
-                  <Label htmlFor="name" className="text-sm font-bold uppercase tracking-wider text-[#94A3B8]">Name</Label>
-                  <Input id="name" placeholder="Enter your name" className="bg-white/5 border-white/10 focus:border-[#00E5D4] h-12 rounded-xl" required />
+                  <Label htmlFor="name" className="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-[#94A3B8]">Name</Label>
+                  <Input id="name" placeholder="Enter your name" className="bg-slate-50 dark:bg-white/5 border-black/10 dark:border-white/10 focus:border-[#00E5D4] h-12 rounded-xl" required />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="number" className="text-sm font-bold uppercase tracking-wider text-[#94A3B8]">Phone Number</Label>
-                  <Input id="number" type="tel" placeholder="Enter your number" className="bg-white/5 border-white/10 focus:border-[#00E5D4] h-12 rounded-xl" required />
+                  <Label htmlFor="number" className="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-[#94A3B8]">Phone Number</Label>
+                  <Input id="number" type="tel" placeholder="Enter your number" className="bg-slate-50 dark:bg-white/5 border-black/10 dark:border-white/10 focus:border-[#00E5D4] h-12 rounded-xl" required />
                 </div>
                 <div className="space-y-2">
-                  <Label className="text-sm font-bold uppercase tracking-wider text-[#94A3B8]">Rating</Label>
+                  <Label className="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-[#94A3B8]">Rating</Label>
                   <div className="flex gap-2">
                     {[1, 2, 3, 4, 5].map((star) => (
-                      <button key={star} type="button" className="p-1 hover:scale-110 transition-transform text-[#00E5D4]">
-                        <Star className="w-6 h-6" fill={star <= 5 ? "currentColor" : "none"} />
+                      <button key={star} type="button" onClick={() => setRating(star)} className="p-1 hover:scale-110 transition-transform text-[#00E5D4]">
+                        <Star className="w-6 h-6" fill={star <= rating ? "currentColor" : "none"} />
                       </button>
                     ))}
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="improve" className="text-sm font-bold uppercase tracking-wider text-[#94A3B8]">What can we improve?</Label>
-                  <Textarea id="improve" placeholder="Tell us how we can do better" className="bg-white/5 border-white/10 focus:border-[#00E5D4] min-h-[100px] rounded-xl" required />
+                  <Label htmlFor="review" className="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-[#94A3B8]">Share your review</Label>
+                  <Textarea id="review" placeholder="Tell us about your experience" className="bg-slate-50 dark:bg-white/5 border-black/10 dark:border-white/10 focus:border-[#00E5D4] min-h-[100px] rounded-xl" required />
                 </div>
                 <Button type="submit" className="w-full bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 font-black h-12 rounded-xl text-lg uppercase tracking-wider">
-                  Submit Feedback
+                  Submit Review
                 </Button>
               </form>
             </DialogContent>

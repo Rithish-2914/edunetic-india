@@ -43,19 +43,19 @@ export function HeroSection() {
           {/* Left Side: Text Content */}
             <div className="space-y-8 text-center lg:text-left">
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-              >
-                <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter uppercase">
-                  Desh Ka <span className="text-[#00E5D4] cyan-glow">Vikaas</span> <br className="hidden md:block" /> Sabke <span className="text-[#00E5D4] cyan-glow">Saath</span>
-                </h1>
-                <div className="mt-6 space-y-4">
-                <p className="text-[#94A3B8] text-lg leading-relaxed font-medium max-w-md mx-auto lg:mx-0">
-                  Experience the next generation of education. Our AI-powered platform provides cutting-edge learning paths for tomorrow's innovators in India.
-                </p>
-              </div>
-            </motion.div>
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tighter uppercase text-foreground">
+                Desh Ka <span className="text-[#00E5D4] cyan-glow">Vikaas</span> <br className="hidden md:block" /> Sabke <span className="text-[#00E5D4] cyan-glow">Saath</span>
+              </h1>
+              <div className="mt-6 space-y-4">
+              <p className="text-muted-foreground text-lg leading-relaxed font-medium max-w-md mx-auto lg:mx-0">
+                Experience the next generation of education. Our AI-powered platform provides cutting-edge learning paths for tomorrow's innovators in India.
+              </p>
+            </div>
+          </motion.div>
 
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
