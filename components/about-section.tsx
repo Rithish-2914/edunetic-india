@@ -119,9 +119,12 @@ export function AboutSection() {
           transition={{ duration: 0.6 }}
           className="mt-20 text-center max-w-2xl mx-auto"
         >
-          <div className="p-8 rounded-3xl bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5 border border-black/10 dark:border-white/5">
-             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">Our belief is clear:</h3>
-             <p className="text-[#00E5D4] text-xl md:text-2xl font-black italic">
+          <div className="p-12 rounded-[2rem] bg-card/50 backdrop-blur-xl border border-black/10 dark:border-white/5 relative overflow-hidden group">
+            {/* Background Accent */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#00E5D4]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            
+             <h3 className="text-2xl md:text-4xl font-black text-foreground mb-4 uppercase tracking-tight relative z-10">Our belief is clear:</h3>
+             <p className="text-[#00E5D4] text-xl md:text-3xl font-black italic relative z-10 cyan-glow">
                "Education should prepare students for life, not just exams."
              </p>
           </div>
