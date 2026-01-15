@@ -35,6 +35,7 @@ const testimonials = [
   {
     name: "Ayush Tiwari",
     role: "Founder, Growth.ai",
+    image: "/images/ayush-profile.jpg",
     rating: 5,
     text: "An incredible resource for anyone looking to scale their skills in the AI era. The clarity of instruction is unmatched.",
   },
