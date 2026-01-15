@@ -120,9 +120,9 @@ export function Navbar() {
   )
 
   const authContent = (
-    <div className="fixed top-8 right-8 z-50 hidden lg:block">
+    <div className="fixed top-6 right-8 z-60 hidden lg:block">
       {user ? (
-        <div className="flex items-center gap-4 bg-white/40 dark:bg-[#0B1215]/40 backdrop-blur-md p-2 rounded-full border border-black/10 dark:border-white/10 shadow-xl">
+        <div className="flex items-center gap-4 bg-white/80 dark:bg-[#0B1215]/80 backdrop-blur-xl p-2 rounded-full border border-black/10 dark:border-white/10 shadow-2xl">
           <Button 
             variant="ghost" 
             onClick={logout}
@@ -141,7 +141,7 @@ export function Navbar() {
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Button
             asChild
-            className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 transition-all duration-300 font-black text-[10px] uppercase tracking-wider px-6 h-10 rounded-full shadow-[0_0_20px_rgba(0,229,212,0.3)]"
+            className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 transition-all duration-300 font-black text-[10px] uppercase tracking-wider px-6 h-10 rounded-full shadow-[0_0_30px_rgba(0,229,212,0.4)]"
           >
             <Link href="/login">Login/Signup</Link>
           </Button>
@@ -153,9 +153,9 @@ export function Navbar() {
   return (
     <>
       {authContent}
-      <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+      <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
         <nav
-          className={`transition-all duration-500 rounded-full border border-black/10 dark:border-white/10 shadow-2xl overflow-hidden ${
+          className={`transition-all duration-500 rounded-full border border-black/10 dark:border-white/10 shadow-2xl overflow-hidden pointer-events-auto ${
             isScrolled 
               ? "bg-white/80 dark:bg-[#0B1215]/80 backdrop-blur-xl py-2 px-6 w-full max-w-6xl" 
               : "bg-white/40 dark:bg-[#0B1215]/40 backdrop-blur-md py-3 px-8 w-full max-w-6xl md:w-fit"
