@@ -3,12 +3,13 @@
 import { useAuth } from "@/context/auth-context";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { PlayCircle, BookOpen, Clock, ChevronRight } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { PlayCircle, BookOpen, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function DashboardPage() {
   const { user, profile, loading } = useAuth();
@@ -38,8 +39,8 @@ export default function DashboardPage() {
               </h1>
               <p className="text-muted-foreground mt-2">Ready to continue your "Learner to Creator" journey?</p>
             </div>
-            <Button className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 font-black uppercase tracking-wider h-12 rounded-xl px-8 transition-all shadow-[0_0_20px_rgba(0,229,212,0.2)]">
-              Browse More Courses
+            <Button asChild className="bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 font-black uppercase tracking-wider h-12 rounded-xl px-8 transition-all shadow-[0_0_20px_rgba(0,229,212,0.2)]">
+              <Link href="/#courses">Browse More Courses</Link>
             </Button>
           </div>
 
@@ -51,15 +52,15 @@ export default function DashboardPage() {
               </h2>
               
               <div className="grid grid-cols-1 gap-4">
-                {/* Empty State for now */}
+                {/* For now, we show a CTA to explore courses */}
                 <Card className="bg-card/40 backdrop-blur-xl border-dashed border-2 border-black/10 dark:border-white/10 rounded-3xl p-12 text-center">
                   <div className="bg-[#00E5D4]/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
                     <BookOpen className="text-[#00E5D4] w-10 h-10" />
                   </div>
                   <h3 className="text-xl font-bold uppercase mb-2">No courses enrolled yet</h3>
                   <p className="text-muted-foreground mb-6">Explore our AI-powered courses and start creating today.</p>
-                  <Button variant="outline" className="border-[#00E5D4] text-[#00E5D4] hover:bg-[#00E5D4] hover:text-[#05080A] font-bold uppercase rounded-xl h-11 px-8 transition-all">
-                    Explore Courses
+                  <Button asChild variant="outline" className="border-[#00E5D4] text-[#00E5D4] hover:bg-[#00E5D4] hover:text-[#05080A] font-bold uppercase rounded-xl h-11 px-8 transition-all">
+                    <Link href="/#courses">Explore Courses</Link>
                   </Button>
                 </Card>
               </div>
