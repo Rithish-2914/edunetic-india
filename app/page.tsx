@@ -15,9 +15,9 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
+        <AboutSection />
         <CoursesSection />
         <TestimonialsSection />
-        <AboutSection />
         <FutureSchoolSection />
         <TeamSection />
         <ContactSection />
