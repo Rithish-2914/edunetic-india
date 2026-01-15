@@ -56,7 +56,7 @@ const testimonials = [
   {
     name: "Gautam Miyani",
     role: "Content Creator",
-    image: "/images/gautam-profile.jpg",
+    image: "/images/gautam-profile-new.jpg",
     rating: 5,
     text: "The most engaging AI learning platform I've come across. They truly understand how to teach for the modern age.",
   },
