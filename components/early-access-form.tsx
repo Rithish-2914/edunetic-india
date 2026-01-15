@@ -29,7 +29,7 @@ export function EarlyAccessForm() {
       <div className="container mx-auto px-4 relative z-10 text-center">
         <div className="max-w-3xl mx-auto mb-12">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-6 tracking-tight">
-            Get Early Access to <span className="text-[#00E5D4] cyan-glow">Premium Courses</span>
+            Get Early Access to <span className="text-[#00E5D4] cyan-glow">Our Platform</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl leading-relaxed">
             Be the first to know when we launch our advanced AI and future skills curriculum. 
