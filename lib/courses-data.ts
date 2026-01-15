@@ -18,7 +18,7 @@ export const COURSES: Course[] = [
   {
     id: "ai-curious-to-ai-serious",
     title: "AI Curious to AI Serious",
-    creator: "Rahul John Aju · AI Kid of India",
+    creator: "Raul John Aju · AI Kid of India",
     duration: "12 hours",
     type: "playlist",
     isPaid: false,
@@ -29,7 +29,7 @@ export const COURSES: Course[] = [
   {
     id: "ai-learner-to-ai-earner",
     title: "AI Learner to AI Earner",
-    creator: "Rahul John Aju · AI Kid of India",
+    creator: "Raul John Aju · AI Kid of India",
     duration: "18 hours",
     type: "playlist",
     isPaid: false,
