@@ -214,7 +214,6 @@ export function Navbar() {
                       <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>Login/Signup</Link>
                     </Button>
                   )}
-                </div>
               </motion.div>
             )}
           </AnimatePresence>
