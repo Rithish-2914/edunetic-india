@@ -42,24 +42,28 @@ const testimonials = [
   {
     name: "Sarthak Singh",
     role: "Founder, Spike",
+    image: "/images/sarthak-profile.jpg",
     rating: 5,
     text: "Edunetic India is making high-end tech education accessible. Their curriculum is forward-thinking and highly relevant.",
   },
   {
     name: "Divyansh Shukla",
     role: "Founder, Collabset",
+    image: "/images/divyansh-profile.jpg",
     rating: 5,
     text: "I'm impressed by how they simplify complex concepts. A must-have platform for students aiming for the future.",
   },
   {
     name: "Gautam Miyani",
     role: "Content Creator",
+    image: "/images/gautam-profile.jpg",
     rating: 5,
     text: "The most engaging AI learning platform I've come across. They truly understand how to teach for the modern age.",
   },
   {
     name: "Abhishek Dixit",
     role: "CEO, Cosmic Soul",
+    image: "/images/abhishek-profile.jpg",
     rating: 5,
     text: "Visionary leadership and exceptional educational content. Edunetic is setting new benchmarks in Indian EdTech.",
   },
