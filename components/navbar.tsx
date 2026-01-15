@@ -67,7 +67,7 @@ export function Navbar() {
   ]
 
   const navContent = (
-    <div className="flex items-center justify-between gap-4 md:gap-12 w-full">
+    <div className="flex items-center justify-between gap-4 w-full">
       <Link href="/" onClick={() => { if (pathname === "/") window.location.reload(); }} className="flex items-center gap-2 group shrink-0">
         <motion.img 
           whileHover={{ rotate: 10, scale: 1.1 }}
@@ -162,7 +162,7 @@ export function Navbar() {
       {authContent}
       <div className="fixed top-6 left-0 right-0 z-50 flex justify-center lg:justify-start px-4 md:px-8 pointer-events-none">
         <nav
-          className={`transition-all duration-500 rounded-full border border-black/10 dark:border-white/10 shadow-2xl overflow-hidden pointer-events-auto w-full max-w-[90vw] lg:w-fit ${
+          className={`transition-all duration-500 rounded-full border border-black/10 dark:border-white/10 shadow-2xl overflow-hidden pointer-events-auto w-full lg:w-fit ${
             isScrolled 
               ? "bg-white/80 dark:bg-[#0B1215]/80 backdrop-blur-xl py-2 px-4 md:px-6" 
               : "bg-white/40 dark:bg-[#0B1215]/40 backdrop-blur-md py-3 px-6 md:px-8"
