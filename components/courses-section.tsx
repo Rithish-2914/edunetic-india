@@ -30,17 +30,6 @@ const featuredCourses = [
     rating: 5.0,
     playlistUrl: "https://youtube.com/playlist?list=PLYPXjk4-uioZwrEIAMZHjjcQWkwT2eEMs",
   },
-  {
-    id: 3,
-    title: "Starting with meta ads",
-    description: "Master Meta Ads from scratch for your business",
-    instructor: "Satish Kushwaha",
-    thumbnail: "/images/meta-ads-thumb.png",
-    duration: "5 hours",
-    learners: "New",
-    rating: 4.8,
-    playlistUrl: "#",
-  },
 ]
 
 export function CoursesSection() {
@@ -59,37 +48,16 @@ export function CoursesSection() {
           </p>
         </div>
 
-        {/* Courses Carousel */}
-        <div className="relative mt-10">
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-          
-          <div className="flex overflow-hidden">
-            <motion.div
-              className="flex gap-8 py-4"
-              animate={{
-                x: ["0%", "-50%"],
-              }}
-              transition={{
-                x: {
-                  repeat: Number.POSITIVE_INFINITY,
-                  repeatType: "loop",
-                  duration: 30,
-                  ease: "linear",
-                },
-              }}
-              style={{ width: "fit-content" }}
-            >
-              {[...featuredCourses, ...featuredCourses].map((course, index) => (
-                <div key={`${course.id}-${index}`} className="w-[450px] flex-shrink-0">
-                  <FeaturedCourseCard
-                    {...course}
-                    onViewPlaylist={() => setActiveVideo({ id: course.playlistUrl, title: course.title })}
-                  />
-                </div>
-              ))}
-            </motion.div>
-          </div>
+        {/* Courses Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {featuredCourses.map((course) => (
+            <div key={course.id} className="w-full">
+              <FeaturedCourseCard
+                {...course}
+                onViewPlaylist={() => setActiveVideo({ id: course.playlistUrl, title: course.title })}
+              />
+            </div>
+          ))}
         </div>
 
         {/* View All Button */}

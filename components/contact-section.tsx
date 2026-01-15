@@ -56,7 +56,6 @@ export function ContactSection() {
                   >
                     eduneticindia@zohomail.in
                   </a>
-                  <p className="text-sm text-slate-500 italic">We usually respond within 24 hours</p>
                 </div>
               </div>
 
