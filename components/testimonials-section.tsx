@@ -28,6 +28,7 @@ const testimonials = [
   {
     name: "Raul John Aju",
     role: "Founder, AI Realm Technologies",
+    image: "/images/raul-profile.jpg",
     rating: 5,
     text: "The quality of content provided here is top-notch. It's exactly what the next generation of Indian innovators needs to excel.",
   },
