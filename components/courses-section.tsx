@@ -21,7 +21,7 @@ const featuredCourses = [
   },
   {
     id: 2,
-    title: "How to use ChatGPT",
+    title: "How to use ChatGPT for Beginners",
     description: "Master the art of prompting and AI collaboration",
     instructor: "Sarthak Singh · AI Expert",
     thumbnail: "/images/chatgpt-thumbnail.png",
