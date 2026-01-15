@@ -21,6 +21,7 @@ const testimonials = [
   {
     name: "Shaurya Gaikwad",
     role: "Founder, Leap",
+    image: "/images/shaurya-profile.jpg",
     rating: 5,
     text: "Edunetic's approach to AI education is revolutionary. They bridge the gap between theory and practical industry application perfectly.",
   },
