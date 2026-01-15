@@ -79,9 +79,9 @@ export function FeaturedCourseCard({
           <div className="mt-auto">
             <Button
               onClick={onViewPlaylist}
-              className="w-full bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 rounded-xl py-6 font-bold text-sm transition-all duration-300"
+              className="w-full bg-[#00E5D4] text-[#05080A] hover:bg-[#00E5D4]/90 rounded-xl py-6 font-bold text-sm transition-all duration-300 uppercase tracking-wider"
             >
-              View Playlist
+              Enroll Now
             </Button>
           </div>
         </div>

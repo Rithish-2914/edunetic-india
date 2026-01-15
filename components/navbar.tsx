@@ -123,26 +123,23 @@ export function Navbar() {
     <div className="fixed top-6 right-8 z-60 hidden lg:block">
       {user ? (
         <div className="flex items-center gap-4 bg-white/80 dark:bg-[#0B1215]/80 backdrop-blur-xl p-2 rounded-full border border-black/10 dark:border-white/10 shadow-2xl">
-          <Button 
-            asChild
-            variant="ghost" 
-            className="text-foreground/70 dark:text-foreground/70 hover:text-[#00E5D4] text-[10px] uppercase font-bold tracking-widest h-8 px-4"
-          >
-            <Link href="/dashboard">Dashboard</Link>
-          </Button>
+          <Link href="/dashboard" className="flex items-center gap-3 pl-2 pr-4 py-1 hover:bg-[#00E5D4]/10 rounded-full transition-colors group">
+            <Avatar className="h-8 w-8 border border-[#00E5D4]/20 shadow-[0_0_15px_rgba(0,229,212,0.1)]">
+              <AvatarImage src={user.photoURL || ""} alt={user.displayName || "User"} />
+              <AvatarFallback className="bg-slate-100 dark:bg-[#1A2328] text-[#00E5D4] text-[10px] font-bold">
+                {user.displayName?.charAt(0) || user.email?.charAt(0) || "U"}
+              </AvatarFallback>
+            </Avatar>
+            <span className="text-foreground/70 dark:text-foreground/70 group-hover:text-[#00E5D4] text-[10px] uppercase font-bold tracking-widest transition-colors">Dashboard</span>
+          </Link>
+          <div className="w-px h-4 bg-black/10 dark:bg-white/10" />
           <Button 
             variant="ghost" 
             onClick={logout}
-            className="text-foreground/70 dark:text-foreground/70 hover:text-[#00E5D4] text-[10px] uppercase font-bold tracking-widest h-8 px-4"
+            className="text-foreground/70 dark:text-foreground/70 hover:text-red-500 text-[10px] uppercase font-bold tracking-widest h-8 px-4"
           >
             Logout
           </Button>
-          <Avatar className="h-8 w-8 border border-[#00E5D4]/20 shadow-[0_0_15px_rgba(0,229,212,0.1)]">
-            <AvatarImage src={user.photoURL || ""} alt={user.displayName || "User"} />
-            <AvatarFallback className="bg-slate-100 dark:bg-[#1A2328] text-[#00E5D4] text-[10px] font-bold">
-              {user.displayName?.charAt(0) || user.email?.charAt(0) || "U"}
-            </AvatarFallback>
-          </Avatar>
         </div>
       ) : (
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
