@@ -69,6 +69,33 @@ export default function DashboardPage() {
             <div className="space-y-6">
               <h2 className="text-2xl font-black uppercase tracking-tight flex items-center gap-2">
                 <Clock className="text-[#00E5D4] w-6 h-6" />
+                Profile Information
+              </h2>
+              <Card className="bg-card/40 backdrop-blur-xl border-black/10 dark:border-white/5 rounded-3xl overflow-hidden">
+                <CardContent className="p-6">
+                  <div className="space-y-4">
+                    <div className="space-y-1">
+                      <p className="text-[10px] font-bold text-muted-foreground uppercase">Full Name</p>
+                      <p className="font-bold">{profile?.name || user.displayName || "Not provided"}</p>
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-[10px] font-bold text-muted-foreground uppercase">Email Address</p>
+                      <p className="font-bold">{profile?.email || user.email || "Not provided"}</p>
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-[10px] font-bold text-muted-foreground uppercase">Phone Number</p>
+                      <p className="font-bold">{profile?.phone || "Not provided"}</p>
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-[10px] font-bold text-muted-foreground uppercase">Age</p>
+                      <p className="font-bold">{profile?.age || "Not provided"}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <h2 className="text-2xl font-black uppercase tracking-tight flex items-center gap-2 mt-8">
+                <Clock className="text-[#00E5D4] w-6 h-6" />
                 Recent Activity
               </h2>
               <Card className="bg-card/40 backdrop-blur-xl border-black/10 dark:border-white/5 rounded-3xl overflow-hidden">
