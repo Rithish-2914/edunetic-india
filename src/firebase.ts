@@ -19,13 +19,13 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBZjgVGWjrdDdXuLwdd4HW11mTOEv-Ylug",
-  authDomain: "edunetic.firebaseapp.com",
-  projectId: "edunetic",
-  storageBucket: "edunetic.firebasestorage.app",
-  messagingSenderId: "581598236096",
-  appId: "1:581598236096:web:6606ddcee4ba211e2d4c25",
-  measurementId: "G-HLRWBJ2W24",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "AIzaSyBZjgVGWjrdDdXuLwdd4HW11mTOEv-Ylug",
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "edunetic.firebaseapp.com",
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "edunetic",
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "edunetic.firebasestorage.app",
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || "581598236096",
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || "1:581598236096:web:6606ddcee4ba211e2d4c25",
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_ANALYTICS_ID || "G-HLRWBJ2W24",
 };
 
 // Initialize Firebase app only once (works in server or client)
